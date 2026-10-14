@@ -5,7 +5,9 @@ titel: Datenschutzerklärung
 
 ## Verantwortlicher
 
-Angelsportverein Krebsbach e. V., [Anschrift], [E-Mail]
+ASV Krebsbach 1983 e. V., Ablassweg, 74924 Neckarbischofsheim
+E-Mail: [vorstand@asv-krebsbach.de](mailto:vorstand@asv-krebsbach.de)
+Vertreten durch: Maik Seussler (1. Vorsitzender)
 
 ## Hosting
 

@@ -1,6 +1,6 @@
 {
   "name": "ASV Krebsbach",
-  "vollerName": "Angelsportverein Krebsbach e. V.",
+  "vollerName": "ASV Krebsbach 1983 e. V.",
   "gruendungsjahr": 1983,
   "orte": [
     "Neckarbischofsheim",
@@ -8,7 +8,8 @@
     "Untergimpern"
   ],
   "slogan": "Gemeinsam angeln, Gewässer schützen, Natur erleben.",
-  "anschrift": "[Straße Hausnummer]\n[PLZ Ort]",
-  "email": "info@example.de",
-  "telefon": ""
+  "anschrift": "Ablassweg\n74924 Neckarbischofsheim",
+  "email": "vorstand@asv-krebsbach.de",
+  "telefon": "",
+  "termineHinweis": "Weitere Arbeitseinsätze werden von der Vorstandschaft in der WhatsApp-Gruppe mitgeteilt."
 }

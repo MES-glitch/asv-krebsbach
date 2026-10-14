@@ -3,33 +3,33 @@
   "titel": "Komm ans Wasser.",
   "titelAkzent": "Wir zeigen dir, wie.",
   "text": "Ob Anfänger oder alter Hase: Beim ASV Krebsbach findest du Gewässer, Gemeinschaft und Leute, die ihr Wissen gern teilen – in Neckarbischofsheim, Helmhof und Untergimpern.",
-  "bildGross": "",
-  "bildKlein": "",
+  "bildGross": "/uploads/auenteich.jpg",
+  "bildKlein": "/uploads/fang-spiegelkarpfen-vereinsheim.jpg",
   "vorteileTitel": "Was dich bei uns erwartet",
   "vorteile": [
     {
       "titel": "Unsere Gewässer",
-      "text": "Ruhige Plätze, gepflegte Ufer und ein gesunder Fischbestand – um den wir uns gemeinsam kümmern.",
+      "text": "Unser Auenteich direkt am Vereinsheim, der Schlossteich, Krebsbach, Schwarzbach und Rosenbach – rund um Neckarbischofsheim.",
       "link": "/gewaesser/",
-      "bild": "",
+      "bild": "/uploads/schwarzbach.jpg",
       "platzhalter": "Foto: Vereinsgewässer"
     },
     {
       "titel": "Gemeinschaft",
-      "text": "Arbeitseinsätze, Hegefischen und gemütliche Runden: Bei uns angelt man nicht allein.",
+      "text": "Arbeitseinsätze, Anfischen, Helferfest und Abfischen: Bei uns angelt man nicht allein – und einige Gründungsmitglieder sind bis heute dabei.",
       "link": "/termine/",
-      "bild": "",
+      "bild": "/uploads/fang-karpfen-auenteich.jpg",
       "platzhalter": "Foto: Vereinsleben"
     },
     {
       "titel": "Einstieg leicht gemacht",
-      "text": "Du willst anfangen? Wir erklären dir Mitgliedschaft, Fischereischein und Gastkarten.",
+      "text": "Du willst anfangen? Wir erklären dir Mitgliedschaft, Fischereischein und Gastkarten – und beim Jugendangeln geht es direkt ans Wasser.",
       "link": "/mitgliedschaft/",
-      "bild": "",
+      "bild": "/uploads/fang-jugend-spiegelkarpfen.jpg",
       "platzhalter": "Foto: Jugend / Einsteiger"
     }
   ],
   "aufrufTitel": "Lust bekommen?",
   "aufrufText": "Schreib uns einfach oder komm bei einem unserer Termine vorbei. Wir freuen uns auf dich!",
-  "aufrufBild": ""
+  "aufrufBild": "/uploads/fang-stoer.jpg"
 }

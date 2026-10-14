@@ -1,29 +1,28 @@
 ---
 titel: Impressum
 ---
-> **Achtung:** Diese Angaben sind Platzhalter und müssen vor der Veröffentlichung vom Vorstand vervollständigt werden.
-
 ## Angaben gemäß § 5 DDG
 
-Angelsportverein Krebsbach e. V.
-[Straße Hausnummer]
-[PLZ Ort]
+ASV Krebsbach 1983 e. V.
+Ablassweg
+74924 Neckarbischofsheim
 
 **Vertreten durch den Vorstand:**
-[Name], 1. Vorsitzende/r
-[Name], 2. Vorsitzende/r
+Maik Seussler (1. Vorsitzender)
+
+> **Platzhalter** – weitere vertretungsberechtigte Vorstandsmitglieder bitte ergänzen.
 
 **Registereintrag:**
 Eingetragen im Vereinsregister
-Registergericht: [Amtsgericht]
-Registernummer: VR [Nummer]
+Registergericht: Amtsgericht Mannheim
+Registernummer: 370
 
 ## Kontakt
 
-E-Mail: [E-Mail-Adresse]
-Telefon: [optional]
+E-Mail: [vorstand@asv-krebsbach.de](mailto:vorstand@asv-krebsbach.de)
 
 ## Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV
 
-[Name]
-[Anschrift]
+Maik Seussler
+Ablassweg
+74924 Neckarbischofsheim

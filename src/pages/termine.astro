@@ -3,6 +3,7 @@ import { getCollection } from 'astro:content';
 import Basis from '../layouts/Basis.astro';
 import SeitenKopf from '../components/SeitenKopf.astro';
 import TerminListe from '../components/TerminListe.astro';
+import verein from '../data/verein.json';
 import { heute } from '../lib/utils';
 
 const alle = await getCollection('termine');
@@ -20,6 +21,7 @@ const vergangen = alle
   <section class="abschnitt">
     <div class="container prosa">
       {kommend.length ? <TerminListe termine={kommend} /> : <p class="leise">Aktuell sind keine Termine eingetragen.</p>}
+      {verein.termineHinweis && <p class="termine-hinweis">{verein.termineHinweis}</p>}
       {vergangen.length > 0 && (
         <details class="vergangen">
           <summary>Vergangene Termine</summary>
@@ -31,6 +33,7 @@ const vergangen = alle
 </Basis>
 
 <style>
+  .termine-hinweis { margin-top: 1.5rem; padding: 0.9rem 1.25rem; background: var(--blau-100); color: var(--blau-900); border-radius: var(--radius-klein); }
   .vergangen { margin-top: 2.5rem; opacity: 0.8; }
   .vergangen summary { cursor: pointer; font-weight: 600; margin-bottom: 1rem; }
 </style>

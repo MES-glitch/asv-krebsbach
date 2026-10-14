@@ -1,9 +1,39 @@
 {
   "mitglieder": [
-    { "amt": "1. Vorsitzende/r", "name": "N. N.", "email": "", "telefon": "", "foto": "" },
-    { "amt": "2. Vorsitzende/r", "name": "N. N.", "email": "", "telefon": "", "foto": "" },
-    { "amt": "Kassenwart/in", "name": "N. N.", "email": "", "telefon": "", "foto": "" },
-    { "amt": "Gewässerwart/in", "name": "N. N.", "email": "", "telefon": "", "foto": "" },
-    { "amt": "Jugendwart/in", "name": "N. N.", "email": "", "telefon": "", "foto": "" }
+    {
+      "amt": "1. Vorsitzender",
+      "name": "Maik Seussler",
+      "email": "vorstand@asv-krebsbach.de",
+      "telefon": "",
+      "foto": ""
+    },
+    {
+      "amt": "2. Vorsitzende/r",
+      "name": "N. N.",
+      "email": "",
+      "telefon": "",
+      "foto": ""
+    },
+    {
+      "amt": "Kassenwart/in",
+      "name": "N. N.",
+      "email": "",
+      "telefon": "",
+      "foto": ""
+    },
+    {
+      "amt": "Gewässerwart/in",
+      "name": "N. N.",
+      "email": "",
+      "telefon": "",
+      "foto": ""
+    },
+    {
+      "amt": "Jugendwart/in",
+      "name": "N. N.",
+      "email": "",
+      "telefon": "",
+      "foto": ""
+    }
   ]
 }

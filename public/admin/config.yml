@@ -112,6 +112,7 @@ collections:
           - { name: anschrift, label: Anschrift, widget: text }
           - { name: email, label: E-Mail, widget: string }
           - { name: telefon, label: Telefon, widget: string, required: false }
+          - { name: termineHinweis, label: Hinweis auf der Terminseite, widget: text, required: false }
       - name: vorstand
         label: Vorstand
         file: src/data/vorstand.json
