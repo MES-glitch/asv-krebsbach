@@ -23,7 +23,9 @@ const seitenTitel = titel ? `${titel} – ${verein.name}` : `${verein.name} – 
     <meta name="description" content={beschreibung} />
     <meta property="og:title" content={seitenTitel} />
     <meta property="og:description" content={beschreibung} />
-    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+    <link rel="icon" href={url('/favicon-32.png')} type="image/png" sizes="32x32" />
+    <link rel="apple-touch-icon" href={url('/apple-touch-icon.png')} />
+    <meta property="og:image" content={new URL(url('/apple-touch-icon.png'), Astro.site).href} />
   </head>
   <body>
     <Kopf />

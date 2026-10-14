@@ -16,11 +16,7 @@ const istAktiv = (href: string) => (href === '/' ? aktuell === '/' : aktuell.sta
 <header class="kopf">
   <div class="container kopf__innen">
     <a class="marke" href={url('/')}>
-      <svg class="marke__logo" viewBox="0 0 64 64" aria-hidden="true">
-        <circle cx="32" cy="32" r="30" fill="#14506a" />
-        <path d="M14 33c6-8 15-11 23-9 4 1 7 3 10 6l5-5v16l-5-5c-3 3-6 5-10 6-8 2-17-1-23-9z" fill="#fff" />
-        <circle cx="22" cy="31" r="2" fill="#14506a" />
-      </svg>
+      <img class="marke__logo" src={url('/logo.webp')} alt="Wappen des ASV Krebsbach" width="143" height="192" />
       <span>{verein.name}</span>
     </a>
     <details class="menue">
@@ -40,9 +36,9 @@ const istAktiv = (href: string) => (href === '/' ? aktuell === '/' : aktuell.sta
 
 <style>
   .kopf { background: var(--weiss); border-bottom: 1px solid var(--rand); position: sticky; top: 0; z-index: 10; }
-  .kopf__innen { display: flex; align-items: center; justify-content: space-between; min-height: 4.25rem; }
+  .kopf__innen { display: flex; align-items: center; justify-content: space-between; min-height: 4.5rem; padding-top: 0.4rem; padding-bottom: 0.4rem; }
   .marke { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; font-family: 'Fraunces', serif; font-weight: 700; font-size: 1.25rem; color: var(--wasser-900); }
-  .marke__logo { width: 2.4rem; height: 2.4rem; }
+  .marke__logo { height: 3rem; width: auto; }
   .menue summary { list-style: none; cursor: pointer; padding: 0.6rem; display: grid; gap: 5px; }
   .menue summary::-webkit-details-marker { display: none; }
   .menue__strich { display: block; width: 24px; height: 2px; background: var(--wasser-900); border-radius: 2px; }

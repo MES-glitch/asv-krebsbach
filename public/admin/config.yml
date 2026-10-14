@@ -11,6 +11,7 @@ backend:
     deleteMedia: "Bild „{{path}}“ gelöscht"
 
 locale: de
+logo_url: ../logo.webp
 media_folder: public/uploads
 public_folder: /uploads
 
