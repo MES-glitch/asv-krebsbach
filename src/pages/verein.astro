@@ -1,0 +1,67 @@
+---
+import { getEntry, render } from 'astro:content';
+import Basis from '../layouts/Basis.astro';
+import verein from '../data/verein.json';
+import vorstand from '../data/vorstand.json';
+import { url } from '../lib/utils';
+
+const seite = await getEntry('seiten', 'verein');
+const inhalt = seite ? await render(seite) : null;
+const initialen = (name: string) =>
+  name.split(/\s+/).filter((t) => /^[A-ZÄÖÜ]/.test(t)).map((t) => t[0]).slice(0, 2).join('');
+---
+<Basis titel="Verein & Kontakt" beschreibung={seite?.data.beschreibung}>
+  <header class="seitenkopf">
+    <div class="container">
+      <h1>{seite?.data.titel ?? 'Verein & Kontakt'}</h1>
+      {seite?.data.beschreibung && <p>{seite.data.beschreibung}</p>}
+    </div>
+  </header>
+
+  {inhalt && (
+    <section class="abschnitt">
+      <div class="container prosa"><inhalt.Content /></div>
+    </section>
+  )}
+
+  <section class="abschnitt abschnitt--hell">
+    <div class="container">
+      <h2>Der Vorstand</h2>
+      <div class="raster">
+        {vorstand.mitglieder.map((m) => (
+          <div class="person karte">
+            {m.foto ? <img src={url(m.foto)} alt={m.name} /> : <div class="person__initialen" aria-hidden="true">{initialen(m.name) || '?'}</div>}
+            <div>
+              <p class="person__amt">{m.amt}</p>
+              <p class="person__name">{m.name}</p>
+              {m.telefon && <p><a href={`tel:${m.telefon.replace(/[^+\d]/g, '')}`}>{m.telefon}</a></p>}
+              {m.email && <p><a href={`mailto:${m.email}`}>{m.email}</a></p>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt">
+    <div class="container">
+      <h2>Kontakt</h2>
+      <div class="kontakt karte">
+        <p><strong>{verein.vollerName}</strong><br /><Fragment set:html={verein.anschrift.replace(/\n/g, '<br />')} /></p>
+        {verein.email && <p>E-Mail: <a href={`mailto:${verein.email}`}>{verein.email}</a></p>}
+        {verein.telefon && <p>Telefon: <a href={`tel:${verein.telefon.replace(/[^+\d]/g, '')}`}>{verein.telefon}</a></p>}
+      </div>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .person { display: flex; gap: 1rem; align-items: center; padding: 1.1rem; }
+  .person img, .person__initialen { width: 4.5rem; height: 4.5rem; border-radius: 50%; object-fit: cover; flex: none; }
+  .person__initialen { display: grid; place-items: center; background: var(--wasser-100); color: var(--wasser-700); font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; }
+  .person p { margin: 0; }
+  .person__amt { font-size: 0.85rem; color: var(--text-leise); }
+  .person__name { font-weight: 600; font-size: 1.05rem; }
+  .kontakt { padding: 1.5rem; max-width: 32rem; }
+  .kontakt p { margin: 0 0 0.6rem; }
+</style>

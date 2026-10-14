@@ -1,0 +1,27 @@
+---
+// Frei gestaltbare Seiten aus dem CMS (Gewässer, Mitgliedschaft, Impressum, Datenschutz, …).
+// Die Seite "verein" hat eine eigene Vorlage (verein.astro).
+import { getCollection, render } from 'astro:content';
+import Basis from '../layouts/Basis.astro';
+
+export async function getStaticPaths() {
+  const seiten = await getCollection('seiten', (s) => s.id !== 'verein');
+  return seiten.map((seite) => ({ params: { seite: seite.id }, props: { seite } }));
+}
+
+const { seite } = Astro.props;
+const { Content } = await render(seite);
+---
+<Basis titel={seite.data.titel} beschreibung={seite.data.beschreibung}>
+  <header class="seitenkopf">
+    <div class="container">
+      <h1>{seite.data.titel}</h1>
+      {seite.data.beschreibung && <p>{seite.data.beschreibung}</p>}
+    </div>
+  </header>
+  <section class="abschnitt">
+    <div class="container prosa">
+      <Content />
+    </div>
+  </section>
+</Basis>

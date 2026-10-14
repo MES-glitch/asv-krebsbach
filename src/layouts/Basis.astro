@@ -1,0 +1,35 @@
+---
+import '@fontsource-variable/inter';
+import '@fontsource-variable/fraunces';
+import '../styles/global.css';
+import Kopf from '../components/Kopf.astro';
+import Fuss from '../components/Fuss.astro';
+import verein from '../data/verein.json';
+import { url } from '../lib/utils';
+
+interface Props {
+  titel?: string;
+  beschreibung?: string;
+}
+const { titel, beschreibung = verein.slogan } = Astro.props;
+const seitenTitel = titel ? `${titel} – ${verein.name}` : `${verein.name} – ${verein.vollerName}`;
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seitenTitel}</title>
+    <meta name="description" content={beschreibung} />
+    <meta property="og:title" content={seitenTitel} />
+    <meta property="og:description" content={beschreibung} />
+    <link rel="icon" href={url('/favicon.svg')} type="image/svg+xml" />
+  </head>
+  <body>
+    <Kopf />
+    <main>
+      <slot />
+    </main>
+    <Fuss />
+  </body>
+</html>

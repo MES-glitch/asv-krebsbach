@@ -1,0 +1,28 @@
+---
+import verein from '../data/verein.json';
+import { url } from '../lib/utils';
+const jahr = new Date().getFullYear();
+---
+<footer class="fuss">
+  <div class="container fuss__innen">
+    <div>
+      <strong>{verein.vollerName}</strong>
+      <p set:html={verein.anschrift.replace(/\n/g, '<br />')} />
+      {verein.email && <p><a href={`mailto:${verein.email}`}>{verein.email}</a></p>}
+    </div>
+    <nav aria-label="Rechtliches">
+      <a href={url('/impressum/')}>Impressum</a>
+      <a href={url('/datenschutz/')}>Datenschutz</a>
+    </nav>
+  </div>
+  <div class="container fuss__unten">© {jahr} {verein.vollerName}</div>
+</footer>
+
+<style>
+  .fuss { background: var(--wasser-900); color: rgb(255 255 255 / 0.85); padding: 2.5rem 0 1.5rem; margin-top: 3rem; }
+  .fuss a { color: var(--weiss); }
+  .fuss__innen { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; }
+  .fuss p { margin: 0.4rem 0 0; }
+  .fuss nav { display: flex; gap: 1.25rem; align-items: flex-start; }
+  .fuss__unten { margin-top: 2rem; font-size: 0.85rem; opacity: 0.7; }
+</style>

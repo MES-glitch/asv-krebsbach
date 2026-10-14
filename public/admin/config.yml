@@ -1,0 +1,103 @@
+# Konfiguration des Redaktionsbereichs (Sveltia CMS) – erreichbar unter /admin
+backend:
+  name: github
+  repo: MES-glitch/asv-krebsbach
+  branch: main
+  commit_messages:
+    create: "{{collection}}: „{{slug}}“ angelegt"
+    update: "{{collection}}: „{{slug}}“ geändert"
+    delete: "{{collection}}: „{{slug}}“ gelöscht"
+    uploadMedia: "Bild „{{path}}“ hochgeladen"
+    deleteMedia: "Bild „{{path}}“ gelöscht"
+
+locale: de
+media_folder: public/uploads
+public_folder: /uploads
+
+slug:
+  encoding: ascii
+  clean_accents: true
+
+collections:
+  - name: termine
+    label: Termine
+    label_singular: Termin
+    description: Arbeitseinsätze, Hegefischen, Versammlungen und Veranstaltungen. Vergangene Termine wandern automatisch ins Archiv.
+    folder: src/content/termine
+    create: true
+    slug: "{{datum}}-{{titel}}"
+    summary: "{{datum}} · {{titel}}"
+    sortable_fields: [datum, titel]
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - { name: datum, label: Datum, widget: datetime, time_format: false, date_format: "DD.MM.YYYY", format: "YYYY-MM-DD" }
+      - { name: bis, label: "Bis (nur bei mehrtägigen Terminen)", widget: datetime, time_format: false, date_format: "DD.MM.YYYY", format: "YYYY-MM-DD", required: false }
+      - { name: uhrzeit, label: Uhrzeit, widget: string, required: false, hint: "z. B. 09:00 oder 09:00–13:00" }
+      - { name: ort, label: Ort, widget: string, required: false }
+      - name: kategorie
+        label: Kategorie
+        widget: select
+        options: [Arbeitseinsatz, Hegefischen, Versammlung, Veranstaltung, Sonstiges]
+        default: Sonstiges
+      - { name: nurMitglieder, label: Nur für Mitglieder, widget: boolean, default: false }
+      - { name: body, label: Beschreibung, widget: text, required: false }
+
+  - name: neuigkeiten
+    label: Neuigkeiten
+    label_singular: Neuigkeit
+    description: Berichte und Neuigkeiten aus dem Vereinsleben.
+    folder: src/content/neuigkeiten
+    create: true
+    slug: "{{titel}}"
+    summary: "{{datum}} · {{titel}}"
+    sortable_fields: [datum, titel]
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - { name: datum, label: Datum, widget: datetime, time_format: false, date_format: "DD.MM.YYYY", format: "YYYY-MM-DD" }
+      - { name: kurztext, label: Kurztext (Vorschau), widget: text, required: false }
+      - { name: bild, label: Titelbild, widget: image, required: false }
+      - { name: entwurf, label: "Entwurf (noch nicht veröffentlichen)", widget: boolean, default: false }
+      - { name: body, label: Text, widget: markdown }
+
+  - name: seiten
+    label: Seiten
+    label_singular: Seite
+    description: Feste Seiten der Webseite.
+    files:
+      - { name: gewaesser, label: Gewässer, file: src/content/seiten/gewaesser.md, fields: &seitenfelder [ { name: titel, label: Titel, widget: string }, { name: beschreibung, label: Untertitel, widget: string, required: false }, { name: body, label: Inhalt, widget: markdown } ] }
+      - { name: mitgliedschaft, label: Mitgliedschaft & Gastkarten, file: src/content/seiten/mitgliedschaft.md, fields: *seitenfelder }
+      - { name: verein, label: "Verein & Kontakt (Einleitung)", file: src/content/seiten/verein.md, fields: *seitenfelder }
+      - { name: impressum, label: Impressum, file: src/content/seiten/impressum.md, fields: *seitenfelder }
+      - { name: datenschutz, label: Datenschutz, file: src/content/seiten/datenschutz.md, fields: *seitenfelder }
+
+  - name: einstellungen
+    label: Verein & Vorstand
+    description: Allgemeine Angaben zum Verein und die Vorstandsmitglieder.
+    files:
+      - name: verein
+        label: Vereinsangaben & Startseite
+        file: src/data/verein.json
+        fields:
+          - { name: name, label: Kurzname, widget: string }
+          - { name: vollerName, label: Vollständiger Name, widget: string }
+          - { name: slogan, label: Überschrift Startseite, widget: string }
+          - { name: einleitung, label: Begrüßungstext Startseite, widget: text }
+          - { name: titelbild, label: Titelbild Startseite, widget: image, required: false }
+          - { name: anschrift, label: Anschrift, widget: text }
+          - { name: email, label: E-Mail, widget: string }
+          - { name: telefon, label: Telefon, widget: string, required: false }
+      - name: vorstand
+        label: Vorstand
+        file: src/data/vorstand.json
+        fields:
+          - name: mitglieder
+            label: Vorstandsmitglieder
+            label_singular: Vorstandsmitglied
+            widget: list
+            summary: "{{amt}}: {{name}}"
+            fields:
+              - { name: amt, label: Amt, widget: string }
+              - { name: name, label: Name, widget: string }
+              - { name: email, label: E-Mail, widget: string, required: false }
+              - { name: telefon, label: Telefon, widget: string, required: false }
+              - { name: foto, label: Foto, widget: image, required: false }

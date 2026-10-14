@@ -1,0 +1,25 @@
+---
+import { getCollection, render } from 'astro:content';
+import Basis from '../../layouts/Basis.astro';
+import { url, datumLang } from '../../lib/utils';
+
+export async function getStaticPaths() {
+  const news = await getCollection('neuigkeiten', (n) => !n.data.entwurf);
+  return news.map((eintrag) => ({ params: { id: eintrag.id }, props: { eintrag } }));
+}
+
+const { eintrag } = Astro.props;
+const { Content } = await render(eintrag);
+const { titel, datum, kurztext, bild } = eintrag.data;
+---
+<Basis titel={titel} beschreibung={kurztext}>
+  <article class="abschnitt">
+    <div class="container prosa">
+      <p><a href={url('/neuigkeiten/')}>← Alle Neuigkeiten</a></p>
+      <time class="leise" datetime={datum.toISOString().slice(0, 10)}>{datumLang(datum)}</time>
+      <h1>{titel}</h1>
+      {bild && <img src={url(bild)} alt="" />}
+      <Content />
+    </div>
+  </article>
+</Basis>

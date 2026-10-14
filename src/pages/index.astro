@@ -1,0 +1,91 @@
+---
+import { getCollection } from 'astro:content';
+import Basis from '../layouts/Basis.astro';
+import TerminListe from '../components/TerminListe.astro';
+import NewsKarte from '../components/NewsKarte.astro';
+import verein from '../data/verein.json';
+import { url, heute } from '../lib/utils';
+
+const termine = (await getCollection('termine', (t) => (t.data.bis ?? t.data.datum) >= heute()))
+  .sort((a, b) => a.data.datum.getTime() - b.data.datum.getTime())
+  .slice(0, 3);
+
+const news = (await getCollection('neuigkeiten', (n) => !n.data.entwurf))
+  .sort((a, b) => b.data.datum.getTime() - a.data.datum.getTime())
+  .slice(0, 3);
+
+const titelbild = verein.titelbild ? url(verein.titelbild) : null;
+---
+<Basis>
+  <section class="held" style={titelbild ? `--bild: url('${titelbild}')` : undefined}>
+    <div class="container held__innen">
+      <p class="held__dach">{verein.vollerName}</p>
+      <h1>{verein.slogan}</h1>
+      <p class="held__text">{verein.einleitung}</p>
+      <div class="held__knoepfe">
+        <a class="knopf knopf--hell" href={url('/termine/')}>Termine ansehen</a>
+        <a class="knopf" href={url('/mitgliedschaft/')}>Mitglied werden</a>
+      </div>
+    </div>
+    <svg class="held__welle" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 40c120 20 240 30 360 20S600 20 720 20s240 30 360 30 240-20 360-30v60H0z" fill="var(--sand-50)" />
+    </svg>
+  </section>
+
+  <section class="abschnitt">
+    <div class="container start-raster">
+      <div>
+        <div class="kopfzeile-abschnitt">
+          <h2>Nächste Termine</h2>
+          <a href={url('/termine/')}>Alle Termine →</a>
+        </div>
+        {termine.length ? <TerminListe termine={termine} /> : <p class="leise">Aktuell sind keine Termine eingetragen.</p>}
+      </div>
+      <aside class="schnell karte">
+        <h2>Schnell gefunden</h2>
+        <ul>
+          <li><a href={url('/gewaesser/')}>Unsere Gewässer & Gewässerordnung</a></li>
+          <li><a href={url('/mitgliedschaft/')}>Mitgliedschaft & Gastkarten</a></li>
+          <li><a href={url('/verein/')}>Vorstand & Kontakt</a></li>
+        </ul>
+      </aside>
+    </div>
+  </section>
+
+  <section class="abschnitt abschnitt--hell">
+    <div class="container">
+      <div class="kopfzeile-abschnitt">
+        <h2>Neuigkeiten aus dem Verein</h2>
+        <a href={url('/neuigkeiten/')}>Alle Neuigkeiten →</a>
+      </div>
+      {news.length ? (
+        <div class="raster">{news.map((n) => <NewsKarte eintrag={n} />)}</div>
+      ) : (
+        <p class="leise">Noch keine Neuigkeiten.</p>
+      )}
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .held {
+    position: relative; color: var(--weiss); padding: 5rem 0 6rem;
+    background:
+      linear-gradient(160deg, rgb(12 45 58 / 0.92), rgb(20 80 106 / 0.75)),
+      var(--bild, linear-gradient(160deg, var(--wasser-900), var(--wasser-500))) center / cover;
+  }
+  .held__innen { position: relative; z-index: 1; max-width: var(--breite); }
+  .held h1 { color: var(--weiss); max-width: 38rem; }
+  .held__dach { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; font-weight: 600; opacity: 0.8; margin: 0 0 0.75rem; }
+  .held__text { max-width: 36rem; font-size: 1.1rem; opacity: 0.9; }
+  .held__knoepfe { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.75rem; }
+  .held__knoepfe .knopf:not(.knopf--hell) { background: var(--schilf-600); }
+  .held__welle { position: absolute; bottom: -1px; left: 0; width: 100%; height: 50px; }
+  .start-raster { display: grid; gap: 2rem; }
+  @media (min-width: 900px) { .start-raster { grid-template-columns: 2fr 1fr; align-items: start; } }
+  .schnell { padding: 1.5rem; }
+  .schnell h2 { margin-top: 0; font-size: 1.3rem; }
+  .schnell ul { list-style: none; padding: 0; margin: 0; }
+  .schnell li + li { border-top: 1px solid var(--rand); }
+  .schnell a { display: block; padding: 0.7rem 0; text-decoration: none; font-weight: 500; }
+</style>

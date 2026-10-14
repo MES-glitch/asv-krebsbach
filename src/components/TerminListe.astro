@@ -1,0 +1,47 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import { tag, monat, datumKurz } from '../lib/utils';
+
+interface Props {
+  termine: CollectionEntry<'termine'>[];
+}
+const { termine } = Astro.props;
+---
+<ul class="termine">
+  {termine.map((t) => (
+    <li class="termin karte">
+      <div class="termin__datum" aria-hidden="true">
+        <span class="termin__tag">{tag(t.data.datum)}</span>
+        <span class="termin__monat">{monat(t.data.datum)}</span>
+      </div>
+      <div class="termin__info">
+        <span class={`etikett etikett--${t.data.kategorie.toLowerCase()}`}>{t.data.kategorie}</span>
+        {t.data.nurMitglieder && <span class="etikett">nur Mitglieder</span>}
+        <h3>{t.data.titel}</h3>
+        <p class="leise">
+          {datumKurz(t.data.datum)}{t.data.bis && ` – ${datumKurz(t.data.bis)}`}
+          {t.data.uhrzeit && ` · ${t.data.uhrzeit} Uhr`}
+          {t.data.ort && ` · ${t.data.ort}`}
+        </p>
+        {t.body?.trim() && <p class="termin__text">{t.body.trim()}</p>}
+      </div>
+    </li>
+  ))}
+</ul>
+
+<style>
+  .termine { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
+  .termin { display: flex; gap: 1.25rem; padding: 1.1rem 1.25rem; align-items: flex-start; }
+  .termin__datum { flex: none; width: 4rem; text-align: center; background: var(--wasser-100); border-radius: 10px; padding: 0.5rem 0; color: var(--wasser-900); }
+  .termin__tag { display: block; font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 700; line-height: 1.1; }
+  .termin__monat { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
+  .termin__info { min-width: 0; }
+  .termin h3 { margin: 0.35rem 0 0.15rem; overflow-wrap: break-word; hyphens: auto; }
+  .termin p { margin: 0; }
+  .termin__text { margin-top: 0.4rem !important; white-space: pre-line; }
+  .etikett { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0.1rem 0.55rem; border-radius: 999px; background: #eef1f2; color: var(--text-leise); margin-right: 0.3rem; }
+  .etikett--arbeitseinsatz { background: #fdf0dc; color: #8a5a12; }
+  .etikett--hegefischen { background: var(--wasser-100); color: var(--wasser-700); }
+  .etikett--versammlung { background: #ece6f6; color: #5a3e8a; }
+  .etikett--veranstaltung { background: var(--schilf-100); color: var(--schilf-600); }
+</style>

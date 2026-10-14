@@ -1,0 +1,40 @@
+---
+import { getCollection } from 'astro:content';
+import Basis from '../layouts/Basis.astro';
+import TerminListe from '../components/TerminListe.astro';
+import { heute } from '../lib/utils';
+
+const alle = await getCollection('termine');
+const ab = heute();
+const kommend = alle
+  .filter((t) => (t.data.bis ?? t.data.datum) >= ab)
+  .sort((a, b) => a.data.datum.getTime() - b.data.datum.getTime());
+const vergangen = alle
+  .filter((t) => (t.data.bis ?? t.data.datum) < ab)
+  .sort((a, b) => b.data.datum.getTime() - a.data.datum.getTime())
+  .slice(0, 10);
+---
+<Basis titel="Termine" beschreibung="Arbeitseinsätze, Hegefischen, Versammlungen und Veranstaltungen des Vereins.">
+  <header class="seitenkopf">
+    <div class="container">
+      <h1>Termine</h1>
+      <p>Arbeitseinsätze, Hegefischen, Versammlungen und Veranstaltungen.</p>
+    </div>
+  </header>
+  <section class="abschnitt">
+    <div class="container prosa">
+      {kommend.length ? <TerminListe termine={kommend} /> : <p class="leise">Aktuell sind keine Termine eingetragen.</p>}
+      {vergangen.length > 0 && (
+        <details class="vergangen">
+          <summary>Vergangene Termine</summary>
+          <TerminListe termine={vergangen} />
+        </details>
+      )}
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .vergangen { margin-top: 2.5rem; opacity: 0.8; }
+  .vergangen summary { cursor: pointer; font-weight: 600; margin-bottom: 1rem; }
+</style>
