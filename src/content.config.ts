@@ -31,6 +31,9 @@ const seiten = defineCollection({
   schema: z.object({
     titel: z.string(),
     beschreibung: z.string().optional(),
+    dachzeile: z.string().optional(),
+    bild: z.string().optional(),
+    bildPlatzhalter: z.string().optional(),
   }),
 });
 

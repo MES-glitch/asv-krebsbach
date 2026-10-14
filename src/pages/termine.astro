@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import Basis from '../layouts/Basis.astro';
+import SeitenKopf from '../components/SeitenKopf.astro';
 import TerminListe from '../components/TerminListe.astro';
 import { heute } from '../lib/utils';
 
@@ -15,12 +16,7 @@ const vergangen = alle
   .slice(0, 10);
 ---
 <Basis titel="Termine" beschreibung="Arbeitseinsätze, Hegefischen, Versammlungen und Veranstaltungen des Vereins.">
-  <header class="seitenkopf">
-    <div class="container">
-      <h1>Termine</h1>
-      <p>Arbeitseinsätze, Hegefischen, Versammlungen und Veranstaltungen.</p>
-    </div>
-  </header>
+  <SeitenKopf dachzeile="Was ansteht" titel="Termine" beschreibung="Arbeitseinsätze, Hegefischen, Versammlungen und Veranstaltungen." />
   <section class="abschnitt">
     <div class="container prosa">
       {kommend.length ? <TerminListe termine={kommend} /> : <p class="leise">Aktuell sind keine Termine eingetragen.</p>}

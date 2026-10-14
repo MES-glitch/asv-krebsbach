@@ -1,18 +1,14 @@
 ---
 import { getCollection } from 'astro:content';
 import Basis from '../../layouts/Basis.astro';
+import SeitenKopf from '../../components/SeitenKopf.astro';
 import NewsKarte from '../../components/NewsKarte.astro';
 
 const news = (await getCollection('neuigkeiten', (n) => !n.data.entwurf))
   .sort((a, b) => b.data.datum.getTime() - a.data.datum.getTime());
 ---
 <Basis titel="Neuigkeiten" beschreibung="Berichte und Neuigkeiten aus dem Vereinsleben.">
-  <header class="seitenkopf">
-    <div class="container">
-      <h1>Neuigkeiten</h1>
-      <p>Berichte und Neuigkeiten aus dem Vereinsleben.</p>
-    </div>
-  </header>
+  <SeitenKopf dachzeile="Aus dem Verein" titel="Neuigkeiten" beschreibung="Berichte und Neuigkeiten aus dem Vereinsleben." />
   <section class="abschnitt">
     <div class="container">
       {news.length ? <div class="raster">{news.map((n) => <NewsKarte eintrag={n} />)}</div> : <p class="leise">Noch keine Neuigkeiten.</p>}

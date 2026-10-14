@@ -1,6 +1,8 @@
 ---
 titel: Unsere Gewässer
 beschreibung: Gewässer, Fischbestand und Gewässerordnung des ASV Krebsbach.
+dachzeile: Unser Revier
+bildPlatzhalter: "Foto: Vereinsgewässer"
 ---
 > **Platzhalter** – dieser Text wird vom Vorstand ergänzt.
 

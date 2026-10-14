@@ -65,16 +65,41 @@ collections:
     label_singular: Seite
     description: Feste Seiten der Webseite.
     files:
-      - { name: gewaesser, label: Gewässer, file: src/content/seiten/gewaesser.md, fields: &seitenfelder [ { name: titel, label: Titel, widget: string }, { name: beschreibung, label: Untertitel, widget: string, required: false }, { name: body, label: Inhalt, widget: markdown } ] }
+      - { name: gewaesser, label: Gewässer, file: src/content/seiten/gewaesser.md, fields: &seitenfelder [ { name: dachzeile, label: Dachzeile, widget: string, required: false, hint: "Kleine Zeile über dem Titel" }, { name: titel, label: Titel, widget: string }, { name: beschreibung, label: Untertitel, widget: string, required: false }, { name: bild, label: Foto, widget: image, required: false, hint: "Erscheint rechts neben dem Titel" }, { name: bildPlatzhalter, label: Foto-Platzhalter, widget: hidden, required: false }, { name: body, label: Inhalt, widget: markdown } ] }
       - { name: mitgliedschaft, label: Mitgliedschaft & Gastkarten, file: src/content/seiten/mitgliedschaft.md, fields: *seitenfelder }
       - { name: verein, label: "Verein & Kontakt (Einleitung)", file: src/content/seiten/verein.md, fields: *seitenfelder }
       - { name: impressum, label: Impressum, file: src/content/seiten/impressum.md, fields: *seitenfelder }
       - { name: datenschutz, label: Datenschutz, file: src/content/seiten/datenschutz.md, fields: *seitenfelder }
 
   - name: einstellungen
-    label: Verein & Vorstand
-    description: Allgemeine Angaben zum Verein und die Vorstandsmitglieder.
+    label: Startseite, Verein & Vorstand
+    description: Texte und Fotos der Startseite, allgemeine Angaben zum Verein und die Vorstandsmitglieder.
     files:
+      - name: startseite
+        label: Startseite
+        file: src/data/startseite.json
+        fields:
+          - { name: hinweis, label: Hinweis-Etikett, widget: string, hint: "Kleines Etikett über der Überschrift" }
+          - { name: titel, label: Überschrift, widget: string }
+          - { name: titelAkzent, label: Überschrift (zweite Zeile in Blau), widget: string }
+          - { name: text, label: Begrüßungstext, widget: text }
+          - { name: bildGross, label: Großes Foto (Gewässer / Steg), widget: image, required: false }
+          - { name: bildKlein, label: Kleines Foto (Menschen im Verein), widget: image, required: false }
+          - { name: vorteileTitel, label: Überschrift der drei Kacheln, widget: string }
+          - name: vorteile
+            label: Kacheln
+            label_singular: Kachel
+            widget: list
+            summary: "{{titel}}"
+            fields:
+              - { name: titel, label: Titel, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: link, label: Verlinkte Seite, widget: select, options: ["/gewaesser/", "/termine/", "/mitgliedschaft/", "/verein/", "/neuigkeiten/"] }
+              - { name: bild, label: Foto, widget: image, required: false }
+              - { name: platzhalter, label: Text im Foto-Platzhalter, widget: string, required: false }
+          - { name: aufrufTitel, label: Aufruf unten – Überschrift, widget: string }
+          - { name: aufrufText, label: Aufruf unten – Text, widget: text }
+          - { name: aufrufBild, label: Aufruf unten – Foto, widget: image, required: false }
       - name: verein
         label: Vereinsangaben & Startseite
         file: src/data/verein.json
@@ -83,9 +108,7 @@ collections:
           - { name: vollerName, label: Vollständiger Name, widget: string }
           - { name: gruendungsjahr, label: Gründungsjahr, widget: number, value_type: int }
           - { name: orte, label: Orte, widget: list, hint: "Orte, für die der Verein steht (erscheinen auf Startseite und im Fußbereich)" }
-          - { name: slogan, label: Überschrift Startseite, widget: string }
-          - { name: einleitung, label: Begrüßungstext Startseite, widget: text }
-          - { name: titelbild, label: Titelbild Startseite, widget: image, required: false }
+          - { name: slogan, label: Kurzbeschreibung (für Suchmaschinen), widget: string }
           - { name: anschrift, label: Anschrift, widget: text }
           - { name: email, label: E-Mail, widget: string }
           - { name: telefon, label: Telefon, widget: string, required: false }

@@ -1,6 +1,8 @@
 ---
 titel: Mitgliedschaft & Gastkarten
 beschreibung: So wirst du Mitglied im ASV Krebsbach – und so bekommst du eine Gastkarte.
+dachzeile: Mitmachen
+bildPlatzhalter: "Foto: Einsteiger / Jugend am Wasser"
 ---
 > **Platzhalter** – dieser Text wird vom Vorstand ergänzt.
 

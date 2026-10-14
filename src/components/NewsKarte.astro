@@ -20,11 +20,11 @@ const { titel, datum, kurztext, bild } = eintrag.data;
 <style>
   .news { overflow: hidden; display: flex; flex-direction: column; position: relative; }
   .news img, .news__platzhalter { aspect-ratio: 16 / 9; width: 100%; object-fit: cover; }
-  .news__platzhalter { background: linear-gradient(135deg, var(--blau-500), var(--schilf-600)); opacity: 0.85; }
-  .news__inhalt { padding: 1rem 1.25rem 1.25rem; }
+  .news__platzhalter { background: var(--blau-300); background-image: repeating-linear-gradient(135deg, rgb(255 255 255 / 0.18) 0 12px, transparent 12px 24px); }
+  .news__inhalt { padding: 1.1rem 1.4rem 1.4rem; }
   .news time { font-size: 0.85rem; }
-  .news h3 { margin: 0.3rem 0 0.4rem; }
-  .news h3 a { text-decoration: none; color: var(--blau-900); }
+  .news h3 { font-size: 1.45rem; margin: 0.3rem 0 0.4rem; }
+  .news h3 a { text-decoration: none; color: var(--text); }
   .news h3 a::after { content: ''; position: absolute; inset: 0; }
   .news:hover h3 a { color: var(--blau-500); }
   .news p { margin: 0; color: var(--text-leise); }

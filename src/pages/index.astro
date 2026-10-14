@@ -1,9 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import Basis from '../layouts/Basis.astro';
+import Foto from '../components/Foto.astro';
 import TerminListe from '../components/TerminListe.astro';
 import NewsKarte from '../components/NewsKarte.astro';
 import verein from '../data/verein.json';
+import start from '../data/startseite.json';
 import { url, heute } from '../lib/utils';
 
 const termine = (await getCollection('termine', (t) => (t.data.bis ?? t.data.datum) >= heute()))
@@ -14,88 +16,146 @@ const news = (await getCollection('neuigkeiten', (n) => !n.data.entwurf))
   .sort((a, b) => b.data.datum.getTime() - a.data.datum.getTime())
   .slice(0, 3);
 
-const titelbild = verein.titelbild ? url(verein.titelbild) : null;
+const farben = ['schilf', 'blau', 'koralle'] as const;
+const formen = ['blatt', 'tropfen', 'blatt-gespiegelt'] as const;
 ---
 <Basis>
-  <section class="held" style={titelbild ? `--bild: url('${titelbild}')` : undefined}>
+  <!-- Willkommen -->
+  <section class="held">
     <div class="container held__innen">
-      <div>
-        <p class="held__dach">{verein.vollerName} · seit {verein.gruendungsjahr}</p>
-        <h1>{verein.slogan}</h1>
-        <p class="held__text">{verein.einleitung}</p>
+      <div class="held__text">
+        <span class="pille">{start.hinweis}</span>
+        <h1>{start.titel}<br /><span class="held__akzent">{start.titelAkzent}</span></h1>
+        <p class="held__einleitung">{start.text}</p>
         <div class="held__knoepfe">
-          <a class="knopf knopf--hell" href={url('/termine/')}>Termine ansehen</a>
-          <a class="knopf" href={url('/mitgliedschaft/')}>Mitglied werden</a>
+          <a class="knopf" href={url('/verein/#kontakt')}>Lerne uns kennen</a>
+          <a class="knopf knopf--leise" href={url('/termine/')}>Termine ansehen →</a>
         </div>
-        <p class="held__orte">{verein.orte.join(' · ')}</p>
       </div>
-      <img class="held__wappen" src={url('/logo-gross.webp')} alt="Wappen des ASV Krebsbach" width="268" height="360" />
+      <div class="collage" aria-label="Eindrücke aus dem Verein">
+        <div class="collage__gross">
+          <Foto bild={start.bildGross} alt="Am Vereinsgewässer" platzhalter="Foto: am Steg / Gewässer" form="blatt" farbe="schilf" laden="eager" />
+        </div>
+        <div class="collage__klein">
+          <Foto bild={start.bildKlein} alt="Vereinsleben" platzhalter="Foto: Menschen im Verein" form="blatt-gespiegelt" farbe="blau" laden="eager" />
+        </div>
+        <div class="sticker" aria-hidden="true"><span>seit</span><strong>{verein.gruendungsjahr}</strong></div>
+      </div>
     </div>
-    <svg class="held__welle" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M0 40c120 20 240 30 360 20S600 20 720 20s240 30 360 30 240-20 360-30v60H0z" fill="var(--sand-50)" />
-    </svg>
   </section>
 
+  <!-- Was dich erwartet -->
   <section class="abschnitt">
-    <div class="container start-raster">
+    <div class="container">
+      <span class="dachzeile">Angeln in {verein.orte.join(', ').replace(/, ([^,]*)$/, ' & $1')}</span>
+      <h2>{start.vorteileTitel}</h2>
+      <div class="vorteile">
+        {start.vorteile.map((v, i) => (
+          <a class="vorteil" href={url(v.link)}>
+            <div class="vorteil__foto">
+              <Foto bild={v.bild} alt={v.titel} platzhalter={v.platzhalter} form={formen[i % 3]} farbe={farben[i % 3]} />
+            </div>
+            <h3>{v.titel}</h3>
+            <p>{v.text}</p>
+            <span class="mehr-link">Mehr erfahren →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Termine -->
+  <section class="abschnitt abschnitt--weiss abschnitt--rund">
+    <div class="container termine-raster">
       <div>
-        <div class="kopfzeile-abschnitt">
-          <h2>Nächste Termine</h2>
-          <a href={url('/termine/')}>Alle Termine →</a>
-        </div>
+        <span class="dachzeile">Was ansteht</span>
+        <h2>Nächste Termine</h2>
+        <p class="leise">Arbeitseinsätze, Hegefischen und Versammlungen – komm vorbei und lern uns kennen.</p>
+        <a class="mehr-link" href={url('/termine/')}>Alle Termine →</a>
+      </div>
+      <div>
         {termine.length ? <TerminListe termine={termine} /> : <p class="leise">Aktuell sind keine Termine eingetragen.</p>}
       </div>
-      <aside class="schnell karte">
-        <h2>Schnell gefunden</h2>
-        <ul>
-          <li><a href={url('/gewaesser/')}>Unsere Gewässer & Gewässerordnung</a></li>
-          <li><a href={url('/mitgliedschaft/')}>Mitgliedschaft & Gastkarten</a></li>
-          <li><a href={url('/verein/')}>Vorstand & Kontakt</a></li>
-        </ul>
-      </aside>
     </div>
   </section>
 
-  <section class="abschnitt abschnitt--hell">
-    <div class="container">
-      <div class="kopfzeile-abschnitt">
-        <h2>Neuigkeiten aus dem Verein</h2>
-        <a href={url('/neuigkeiten/')}>Alle Neuigkeiten →</a>
-      </div>
-      {news.length ? (
+  <!-- Neuigkeiten -->
+  {news.length > 0 && (
+    <section class="abschnitt">
+      <div class="container">
+        <div class="kopfzeile-abschnitt">
+          <div>
+            <span class="dachzeile">Aus dem Verein</span>
+            <h2>Neuigkeiten</h2>
+          </div>
+          <a class="mehr-link" href={url('/neuigkeiten/')}>Alle Neuigkeiten →</a>
+        </div>
         <div class="raster">{news.map((n) => <NewsKarte eintrag={n} />)}</div>
-      ) : (
-        <p class="leise">Noch keine Neuigkeiten.</p>
-      )}
+      </div>
+    </section>
+  )}
+
+  <!-- Aufruf -->
+  <section class="abschnitt">
+    <div class="container">
+      <div class="aufruf">
+        <div class="aufruf__text">
+          <h2>{start.aufrufTitel}</h2>
+          <p>{start.aufrufText}</p>
+          <div class="held__knoepfe">
+            <a class="knopf knopf--hell" href={url('/verein/#kontakt')}>Kontakt aufnehmen</a>
+            <a class="knopf knopf--rand" href={url('/mitgliedschaft/')}>Mitglied werden</a>
+          </div>
+        </div>
+        <div class="aufruf__foto">
+          <Foto bild={start.aufrufBild} alt="Gemeinsam am Wasser" platzhalter="Foto: Gruppenbild / Fang" form="tropfen" farbe="sonne" />
+        </div>
+      </div>
     </div>
   </section>
 </Basis>
 
 <style>
-  .held {
-    position: relative; color: var(--weiss); padding: 5rem 0 6rem;
-    background:
-      linear-gradient(160deg, rgb(29 24 80 / 0.93), rgb(58 50 144 / 0.8)),
-      var(--bild, linear-gradient(160deg, var(--blau-900), var(--blau-500))) center / cover;
+  .held { padding: 3rem 0 2rem; overflow: hidden; }
+  .held__innen { display: grid; gap: 2.5rem; align-items: center; }
+  @media (min-width: 900px) { .held { padding: 4.5rem 0 3rem; } .held__innen { grid-template-columns: 1.05fr 1fr; gap: 3rem; } }
+  .held h1 { margin: 1rem 0 1.25rem; }
+  .held__akzent { color: var(--blau-700); }
+  .held__einleitung { font-size: 1.2rem; color: var(--text-leise); max-width: 34rem; margin: 0; }
+  .held__knoepfe { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 2rem; }
+
+  .collage { position: relative; height: 22rem; }
+  @media (min-width: 900px) { .collage { height: 30rem; } }
+  .collage__gross { position: absolute; right: 0; top: 0; width: 72%; height: 70%; }
+  .collage__klein { position: absolute; left: 0; bottom: 0; width: 52%; height: 50%; border: 6px solid var(--creme); border-radius: 26px 70px 26px 70px; overflow: hidden; }
+  .sticker {
+    position: absolute; right: 6%; bottom: 6%; width: 6.5rem; height: 6.5rem; border-radius: 50%;
+    background: var(--sonne-300); color: var(--sonne-800); display: flex; flex-direction: column; align-items: center; justify-content: center;
+    transform: rotate(-10deg); font-family: var(--schrift-titel); box-shadow: var(--schatten); line-height: 1;
   }
-  .held__innen { position: relative; z-index: 1; max-width: var(--breite); display: grid; gap: 2rem; align-items: center; }
-  .held__wappen { display: none; width: 15rem; height: auto; justify-self: center; filter: drop-shadow(0 12px 30px rgb(0 0 0 / 0.35)); }
-  @media (min-width: 900px) {
-    .held__innen { grid-template-columns: 1fr auto; }
-    .held__wappen { display: block; }
-  }
-  .held__orte { margin: 1.5rem 0 0; font-size: 0.9rem; letter-spacing: 0.04em; opacity: 0.75; }
-  .held h1 { color: var(--weiss); max-width: 38rem; }
-  .held__dach { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; font-weight: 600; opacity: 0.8; margin: 0 0 0.75rem; }
-  .held__text { max-width: 36rem; font-size: 1.1rem; opacity: 0.9; }
-  .held__knoepfe { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1.75rem; }
-  .held__knoepfe .knopf:not(.knopf--hell) { background: var(--schilf-600); }
-  .held__welle { position: absolute; bottom: -1px; left: 0; width: 100%; height: 50px; }
-  .start-raster { display: grid; gap: 2rem; }
-  @media (min-width: 900px) { .start-raster { grid-template-columns: 2fr 1fr; align-items: start; } }
-  .schnell { padding: 1.5rem; }
-  .schnell h2 { margin-top: 0; font-size: 1.3rem; }
-  .schnell ul { list-style: none; padding: 0; margin: 0; }
-  .schnell li + li { border-top: 1px solid var(--rand); }
-  .schnell a { display: block; padding: 0.7rem 0; text-decoration: none; font-weight: 500; }
+  .sticker span { font-weight: 600; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.1em; }
+  .sticker strong { font-weight: 700; font-size: 1.9rem; }
+
+  .vorteile { display: grid; gap: 1.5rem; margin-top: 2rem; }
+  @media (min-width: 800px) { .vorteile { grid-template-columns: repeat(3, 1fr); } }
+  .vorteil { display: block; text-decoration: none; color: var(--text); }
+  .vorteil__foto { height: 12rem; transition: transform 0.2s; }
+  @media (min-width: 800px) { .vorteil__foto { height: 15rem; } }
+  .vorteil:hover .vorteil__foto { transform: translateY(-4px); }
+  .vorteil h3 { margin: 1.1rem 0 0.35rem; font-size: 1.6rem; font-weight: 700; }
+  .vorteil p { margin: 0 0 0.6rem; color: var(--text-leise); }
+  .vorteil:hover h3 { color: var(--blau-700); }
+
+  .abschnitt--rund { border-radius: 40px; margin: 0 0.5rem; }
+  @media (min-width: 1200px) { .abschnitt--rund { margin: 0 1.5rem; } }
+  .termine-raster { display: grid; gap: 2rem; }
+  @media (min-width: 900px) { .termine-raster { grid-template-columns: 1fr 1.6fr; align-items: start; } }
+
+  .aufruf { background: var(--blau-700); color: var(--weiss); border-radius: 40px; padding: 2.5rem 1.5rem; display: grid; gap: 2rem; align-items: center; overflow: hidden; }
+  @media (min-width: 800px) { .aufruf { grid-template-columns: 1.3fr 1fr; padding: 3.5rem; } }
+  .aufruf h2 { color: var(--weiss); }
+  .aufruf p { font-size: 1.2rem; opacity: 0.9; margin: 0; max-width: 32rem; }
+  .aufruf__foto { height: 15rem; }
+  .knopf--rand { background: transparent; box-shadow: inset 0 0 0 2px rgb(255 255 255 / 0.6); }
+  .knopf--rand:hover { background: rgb(255 255 255 / 0.12); }
 </style>

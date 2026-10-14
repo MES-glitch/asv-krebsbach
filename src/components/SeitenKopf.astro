@@ -1,0 +1,40 @@
+---
+// Kopfbereich der Unterseiten: Titel links, optional Foto (bzw. Platzhalter) rechts.
+import Foto from './Foto.astro';
+
+interface Props {
+  dachzeile?: string;
+  titel: string;
+  beschreibung?: string;
+  bild?: string;
+  bildPlatzhalter?: string;
+}
+const { dachzeile, titel, beschreibung, bild, bildPlatzhalter } = Astro.props;
+const mitFoto = Boolean(bild || bildPlatzhalter);
+---
+<header class:list={['seitenkopf', { 'seitenkopf--foto': mitFoto }]}>
+  <div class="container seitenkopf__innen">
+    <div>
+      {dachzeile && <span class="dachzeile">{dachzeile}</span>}
+      <h1>{titel}</h1>
+      {beschreibung && <p class="seitenkopf__text">{beschreibung}</p>}
+    </div>
+    {mitFoto && (
+      <div class="seitenkopf__foto">
+        <Foto bild={bild} alt={titel} platzhalter={bildPlatzhalter ?? 'Foto'} form="blatt" laden="eager" />
+      </div>
+    )}
+  </div>
+</header>
+
+<style>
+  .seitenkopf { padding: 3.5rem 0 1rem; }
+  .seitenkopf__innen { display: grid; gap: 2rem; align-items: center; }
+  .seitenkopf h1 { margin-bottom: 0.25em; }
+  .seitenkopf__text { font-size: 1.2rem; color: var(--text-leise); max-width: 38rem; margin: 0; }
+  .seitenkopf__foto { height: 14rem; }
+  @media (min-width: 800px) {
+    .seitenkopf--foto .seitenkopf__innen { grid-template-columns: 1.2fr 1fr; }
+    .seitenkopf__foto { height: 18rem; }
+  }
+</style>

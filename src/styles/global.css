@@ -1,61 +1,102 @@
 :root {
-  /* Farben aus dem Vereinswappen (Wappenblau #3a3290) */
+  /* Wappenblau #3a3290 als Leitfarbe, dazu warme, freundliche Akzente */
   --blau-900: #1d1850;
   --blau-700: #3a3290;
   --blau-500: #5a51c0;
+  --blau-300: #a9a3e6;
   --blau-100: #ecebf8;
-  --schilf-600: #4f7a3a;
-  --schilf-100: #eaf2e3;
-  --sand-50: #f7f7fb;
-  --text: #1e1c33;
-  --text-leise: #5b5a70;
-  --rand: #e0dfec;
+  --koralle-100: #ffe1d6;
+  --koralle-800: #7a2e14;
+  --sonne-300: #ffd66b;
+  --sonne-800: #5c4300;
+  --schilf-300: #8fb3a3;
+  --schilf-100: #dcefe6;
+  --schilf-800: #123d2e;
+  --creme: #fffaf2;
   --weiss: #fff;
-  --radius: 14px;
-  --schatten: 0 1px 2px rgb(29 24 80 / 0.06), 0 6px 20px rgb(29 24 80 / 0.08);
-  --breite: 72rem;
-  font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --text: #1e1c33;
+  --text-leise: #55536e;
+  --rand: #ece6da;
+
+  --radius: 20px;
+  --radius-klein: 12px;
+  --schatten: 0 1px 2px rgb(29 24 80 / 0.05), 0 8px 24px rgb(29 24 80 / 0.07);
+  --breite: 74rem;
+
+  /* Schrift abgeleitet vom Wappen: DIN-artige Grotesk */
+  --schrift: 'Barlow', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --schrift-titel: 'Barlow Semi Condensed', 'Barlow', system-ui, sans-serif;
+
+  font-family: var(--schrift);
+  font-size: 1.0625rem;
   color: var(--text);
-  background: var(--sand-50);
-  line-height: 1.6;
+  background: var(--creme);
+  line-height: 1.65;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: var(--sand-50); }
+body { margin: 0; min-height: 100vh; display: flex; flex-direction: column; background: var(--creme); }
 main { flex: 1; }
 img { max-width: 100%; height: auto; display: block; }
-a { color: var(--blau-700); }
+a { color: var(--blau-700); text-underline-offset: 0.15em; }
 a:hover { color: var(--blau-500); }
-h1, h2, h3 { overflow-wrap: break-word; hyphens: auto; font-family: 'Fraunces', Georgia, serif; line-height: 1.2; color: var(--blau-900); letter-spacing: -0.01em; }
-h1 { font-size: clamp(2rem, 5vw, 3rem); margin: 0 0 0.5em; }
-h2 { font-size: clamp(1.5rem, 3.5vw, 2rem); margin: 1.6em 0 0.6em; }
-h3 { font-size: 1.2rem; margin: 1.4em 0 0.4em; }
+
+h1, h2, h3 {
+  font-family: var(--schrift-titel); font-weight: 700; line-height: 1.08; letter-spacing: -0.01em;
+  color: var(--text); overflow-wrap: break-word; hyphens: auto;
+}
+h1 { font-size: clamp(2.5rem, 7vw, 4.25rem); margin: 0 0 0.4em; }
+h2 { font-size: clamp(1.9rem, 4.5vw, 2.75rem); margin: 0 0 0.5em; }
+h3 { font-size: 1.4rem; font-weight: 600; margin: 1.4em 0 0.4em; line-height: 1.2; }
+
+/* Kleine Überschrift über Titeln – in Versalien wie auf dem Wappen */
+.dachzeile {
+  display: block; font-family: var(--schrift-titel); font-weight: 600; font-size: 0.9rem;
+  letter-spacing: 0.12em; text-transform: uppercase; color: var(--blau-700); margin: 0 0 0.6rem;
+}
 
 .container { width: 100%; max-width: var(--breite); margin: 0 auto; padding: 0 1rem; }
-.abschnitt { padding: 3.5rem 0; }
-.abschnitt--hell { background: var(--weiss); }
+@media (min-width: 640px) { .container { padding: 0 1.5rem; } }
+.abschnitt { padding: 4rem 0; }
+.abschnitt--weiss { background: var(--weiss); }
 
-.prosa { max-width: 44rem; }
+.prosa { max-width: 46rem; }
+/* Lesebreite begrenzen, aber linksbündig mit Seitenkopf */
+.container.prosa { max-width: var(--breite); }
+.container.prosa > * { max-width: 46rem; }
+.prosa h2 { font-size: 2rem; margin-top: 1.6em; }
 .prosa img { border-radius: var(--radius); margin: 1.5rem 0; }
 .prosa table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; display: block; overflow-x: auto; }
 .prosa th, .prosa td { border: 1px solid var(--rand); padding: 0.5rem 0.75rem; text-align: left; }
-.prosa th { background: var(--blau-100); }
-.prosa blockquote { margin: 1.5rem 0; padding: 0.75rem 1.25rem; border-left: 4px solid var(--schilf-600); background: var(--schilf-100); border-radius: 0 var(--radius) var(--radius) 0; }
+.prosa th { background: var(--blau-100); font-weight: 600; }
+.prosa blockquote { margin: 1.5rem 0; padding: 0.9rem 1.25rem; background: var(--koralle-100); color: var(--koralle-800); border-radius: var(--radius-klein); }
+.prosa blockquote p { margin: 0; }
 
 .knopf {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  padding: 0.7rem 1.3rem; border-radius: 999px; font-weight: 600; text-decoration: none;
-  background: var(--blau-700); color: var(--weiss); transition: background 0.15s;
+  display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.8rem 1.4rem; border-radius: 999px;
+  font-family: var(--schrift-titel); font-weight: 600; font-size: 1.05rem; letter-spacing: 0.01em;
+  text-decoration: none; background: var(--blau-700); color: var(--weiss); transition: background 0.15s, transform 0.15s;
 }
-.knopf:hover { background: var(--blau-500); color: var(--weiss); }
-.knopf--hell { background: var(--weiss); color: var(--blau-900); }
-.knopf--hell:hover { background: var(--blau-100); color: var(--blau-900); }
+.knopf:hover { background: var(--blau-500); color: var(--weiss); transform: translateY(-1px); }
+.knopf--leise { background: transparent; color: var(--blau-700); padding-left: 0.6rem; padding-right: 0.6rem; }
+.knopf--leise:hover { background: var(--blau-100); color: var(--blau-700); }
+.knopf--hell { background: var(--weiss); color: var(--blau-700); }
+.knopf--hell:hover { background: var(--blau-100); color: var(--blau-700); }
 
-.karte { background: var(--weiss); border: 1px solid var(--rand); border-radius: var(--radius); box-shadow: var(--schatten); }
-.raster { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
+.pille {
+  display: inline-block; font-family: var(--schrift-titel); font-weight: 600; font-size: 0.9rem;
+  padding: 0.3rem 0.9rem; border-radius: 999px; background: var(--koralle-100); color: var(--koralle-800);
+}
+
+.karte { background: var(--weiss); border-radius: var(--radius); box-shadow: var(--schatten); }
+.raster { display: grid; gap: 1.25rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 19rem), 1fr)); }
 .leise { color: var(--text-leise); }
-.kopfzeile-abschnitt { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; flex-wrap: wrap; }
-.kopfzeile-abschnitt h2 { margin-top: 0; }
-.seitenkopf { background: linear-gradient(135deg, var(--blau-900), var(--blau-700)); color: var(--weiss); padding: 3rem 0 2.5rem; }
-.seitenkopf h1 { color: var(--weiss); margin: 0; }
-.seitenkopf p { margin: 0.5rem 0 0; opacity: 0.85; max-width: 40rem; }
+.kopfzeile-abschnitt { display: flex; justify-content: space-between; align-items: flex-end; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.kopfzeile-abschnitt h2 { margin: 0; }
+.mehr-link { font-family: var(--schrift-titel); font-weight: 600; font-size: 1.05rem; text-decoration: none; }
+
+/* Organische Bildformen (für Fotos und Foto-Platzhalter) */
+.form-blatt { border-radius: 64px 20px 64px 20px; }
+.form-blatt-gespiegelt { border-radius: 20px 64px 20px 64px; }
+.form-tropfen { border-radius: 120px 120px 120px 24px; }
+.form-rund { border-radius: var(--radius); }

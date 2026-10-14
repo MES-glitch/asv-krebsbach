@@ -1,0 +1,35 @@
+{
+  "hinweis": "Neue Mitglieder willkommen",
+  "titel": "Komm ans Wasser.",
+  "titelAkzent": "Wir zeigen dir, wie.",
+  "text": "Ob Anfänger oder alter Hase: Beim ASV Krebsbach findest du Gewässer, Gemeinschaft und Leute, die ihr Wissen gern teilen – in Neckarbischofsheim, Helmhof und Untergimpern.",
+  "bildGross": "",
+  "bildKlein": "",
+  "vorteileTitel": "Was dich bei uns erwartet",
+  "vorteile": [
+    {
+      "titel": "Unsere Gewässer",
+      "text": "Ruhige Plätze, gepflegte Ufer und ein gesunder Fischbestand – um den wir uns gemeinsam kümmern.",
+      "link": "/gewaesser/",
+      "bild": "",
+      "platzhalter": "Foto: Vereinsgewässer"
+    },
+    {
+      "titel": "Gemeinschaft",
+      "text": "Arbeitseinsätze, Hegefischen und gemütliche Runden: Bei uns angelt man nicht allein.",
+      "link": "/termine/",
+      "bild": "",
+      "platzhalter": "Foto: Vereinsleben"
+    },
+    {
+      "titel": "Einstieg leicht gemacht",
+      "text": "Du willst anfangen? Wir erklären dir Mitgliedschaft, Fischereischein und Gastkarten.",
+      "link": "/mitgliedschaft/",
+      "bild": "",
+      "platzhalter": "Foto: Jugend / Einsteiger"
+    }
+  ],
+  "aufrufTitel": "Lust bekommen?",
+  "aufrufText": "Schreib uns einfach oder komm bei einem unserer Termine vorbei. Wir freuen uns auf dich!",
+  "aufrufBild": ""
+}

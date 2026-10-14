@@ -1,6 +1,7 @@
 ---
 import { getEntry, render } from 'astro:content';
 import Basis from '../layouts/Basis.astro';
+import SeitenKopf from '../components/SeitenKopf.astro';
 import verein from '../data/verein.json';
 import vorstand from '../data/vorstand.json';
 import { url } from '../lib/utils';
@@ -11,12 +12,13 @@ const initialen = (name: string) =>
   name.split(/\s+/).filter((t) => /^[A-ZÄÖÜ]/.test(t)).map((t) => t[0]).slice(0, 2).join('');
 ---
 <Basis titel="Verein & Kontakt" beschreibung={seite?.data.beschreibung}>
-  <header class="seitenkopf">
-    <div class="container">
-      <h1>{seite?.data.titel ?? 'Verein & Kontakt'}</h1>
-      {seite?.data.beschreibung && <p>{seite.data.beschreibung}</p>}
-    </div>
-  </header>
+  <SeitenKopf
+    dachzeile={"Seit " + verein.gruendungsjahr}
+    titel={seite?.data.titel ?? 'Verein & Kontakt'}
+    beschreibung={seite?.data.beschreibung}
+    bild={seite?.data.bild}
+    bildPlatzhalter={seite?.data.bildPlatzhalter}
+  />
 
   {inhalt && (
     <section class="abschnitt">
@@ -24,8 +26,9 @@ const initialen = (name: string) =>
     </section>
   )}
 
-  <section class="abschnitt abschnitt--hell">
+  <section class="abschnitt abschnitt--weiss">
     <div class="container">
+      <span class="dachzeile">Ansprechpartner</span>
       <h2>Der Vorstand</h2>
       <div class="raster">
         {vorstand.mitglieder.map((m) => (
@@ -43,8 +46,9 @@ const initialen = (name: string) =>
     </div>
   </section>
 
-  <section class="abschnitt">
+  <section class="abschnitt" id="kontakt">
     <div class="container">
+      <span class="dachzeile">Schreib uns</span>
       <h2>Kontakt</h2>
       <div class="kontakt karte">
         <p><strong>{verein.vollerName}</strong><br /><Fragment set:html={verein.anschrift.replace(/\n/g, '<br />')} /></p>
@@ -58,7 +62,7 @@ const initialen = (name: string) =>
 <style>
   .person { display: flex; gap: 1rem; align-items: center; padding: 1.1rem; }
   .person img, .person__initialen { width: 4.5rem; height: 4.5rem; border-radius: 50%; object-fit: cover; flex: none; }
-  .person__initialen { display: grid; place-items: center; background: var(--blau-100); color: var(--blau-700); font-family: 'Fraunces', serif; font-size: 1.4rem; font-weight: 700; }
+  .person__initialen { display: grid; place-items: center; background: var(--blau-100); color: var(--blau-700); font-family: var(--schrift-titel); font-size: 1.5rem; font-weight: 700; }
   .person p { margin: 0; }
   .person__amt { font-size: 0.85rem; color: var(--text-leise); }
   .person__name { font-weight: 600; font-size: 1.05rem; }

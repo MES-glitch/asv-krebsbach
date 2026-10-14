@@ -1,6 +1,7 @@
 ---
 titel: Verein & Kontakt
 beschreibung: Wer wir sind und wie ihr uns erreicht.
+bildPlatzhalter: "Foto: Gruppenbild Verein"
 ---
 Der **ASV Krebsbach** wurde **1983** gegründet und ist der Angelsportverein für **Neckarbischofsheim, Helmhof und Untergimpern**.
 
