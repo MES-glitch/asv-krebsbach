@@ -17,7 +17,13 @@
       "beschreibung": "[Platzhalter] Hier stellt sich das Team vor: Gründung, Spielstil, größte Erfolge.",
       "liga": "A-Liga",
       "bild": "/uploads/krebsbachbomber-team.jpg",
-      "spieler": [],
+      "spieler": [
+        {
+          "name": "Maik Seussler",
+          "spitzname": "Captain Jack",
+          "rolle": "Kapitän"
+        }
+      ],
       "eventId": 40354,
       "participantId": 683347,
       "logo": "/uploads/krebsbachbomber-logo.webp",
