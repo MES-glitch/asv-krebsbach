@@ -1,0 +1,44 @@
+{
+  "titel": "Dart im Vereinsheim",
+  "untertitel": "Zwei eigene Dart-Mannschaften unter dem Dach des ASV Krebsbach.",
+  "einleitung": "In unserem Vereinsheim fliegen nicht nur Geschichten vom großen Fang durch den Raum: Mit den „Krebsbachbombern“ und „Petri Pfeil“ beherbergen wir zwei eigene Dart-Mannschaften. Beide trainieren in unseren Räumlichkeiten und tragen hier auch einen Teil ihrer Ligaspiele aus.",
+  "bild": "",
+  "dartHeld": "Steel. Spitze. Krebsbach.",
+  "dartIntro": "Zwei Teams, ein Board, null Gnade. Die Dart-Abteilung des ASV Krebsbach trainiert und spielt im Vereinsheim am Ablassweg – und wirft in der Liga um jeden Punkt.",
+  "spielort": "Vereinsheim ASV Krebsbach, Ablassweg, 74924 Neckarbischofsheim",
+  "training": "[Trainingszeiten eintragen]",
+  "teams": [
+    {
+      "id": "krebsbachbomber",
+      "name": "Krebsbachbomber",
+      "kuerzel": "KB",
+      "farbe": "rot",
+      "slogan": "Wir werfen nicht. Wir schlagen ein.",
+      "beschreibung": "[Platzhalter] Hier stellt sich das Team vor: Gründung, Spielstil, größte Erfolge.",
+      "liga": "[Liga eintragen]",
+      "bild": "",
+      "spieler": [
+        { "name": "[Spieler 1]", "spitzname": "", "rolle": "Kapitän" },
+        { "name": "[Spieler 2]", "spitzname": "", "rolle": "" },
+        { "name": "[Spieler 3]", "spitzname": "", "rolle": "" },
+        { "name": "[Spieler 4]", "spitzname": "", "rolle": "" }
+      ]
+    },
+    {
+      "id": "petri-pfeil",
+      "name": "Petri Pfeil",
+      "kuerzel": "PP",
+      "farbe": "gruen",
+      "slogan": "Petri Heil – und ab ins Triple.",
+      "beschreibung": "[Platzhalter] Hier stellt sich das Team vor: Gründung, Spielstil, größte Erfolge.",
+      "liga": "[Liga eintragen]",
+      "bild": "",
+      "spieler": [
+        { "name": "[Spieler 1]", "spitzname": "", "rolle": "Kapitän" },
+        { "name": "[Spieler 2]", "spitzname": "", "rolle": "" },
+        { "name": "[Spieler 3]", "spitzname": "", "rolle": "" },
+        { "name": "[Spieler 4]", "spitzname": "", "rolle": "" }
+      ]
+    }
+  ]
+}

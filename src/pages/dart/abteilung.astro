@@ -1,0 +1,89 @@
+---
+import DartBasis from '../../layouts/DartBasis.astro';
+import Dartscheibe from '../../components/dart/Dartscheibe.astro';
+import dart from '../../data/dart.json';
+import { url } from '../../lib/utils';
+---
+<DartBasis>
+  <section class="held">
+    <Dartscheibe class="held__scheibe" />
+    <div class="d-container held__innen">
+      <span class="d-label">ASV Krebsbach · Dart-Abteilung</span>
+      <h1>{dart.dartHeld.split('. ').map((t, i, a) => <span class:list={{ rot: i === a.length - 1 }}>{t}{i < a.length - 1 ? '.' : ''}</span>)}</h1>
+      <p class="held__text">{dart.dartIntro}</p>
+      <div class="held__knoepfe">
+        {dart.teams.map((t) => (
+          <a class:list={['d-knopf', { 'd-knopf--gruen': t.farbe === 'gruen' }]} href={url(`/dart/${t.id}/`)}>{t.name} →</a>
+        ))}
+      </div>
+    </div>
+    <div class="held__180" aria-hidden="true">180</div>
+  </section>
+  <div class="d-kante"></div>
+
+  <section class="d-container teams">
+    {dart.teams.map((t) => (
+      <a class:list={['team', `team--${t.farbe}`]} href={url(`/dart/${t.id}/`)}>
+        <span class="team__kuerzel" aria-hidden="true">{t.kuerzel}</span>
+        <span class="d-label">{t.liga}</span>
+        <h2>{t.name}</h2>
+        <p class="team__slogan">„{t.slogan}“</p>
+        <span class="team__mehr">Zum Team →</span>
+      </a>
+    ))}
+  </section>
+
+  <section class="d-container fakten">
+    <div class="fakt">
+      <span class="d-label">Heimspielort</span>
+      <p>{dart.spielort}</p>
+    </div>
+    <div class="fakt">
+      <span class="d-label">Training</span>
+      <p>{dart.training}</p>
+    </div>
+    <div class="fakt">
+      <span class="d-label">Checkout</span>
+      <p>T20 · T20 · Bull – und danach ein Getränk im Vereinsheim.</p>
+    </div>
+  </section>
+</DartBasis>
+
+<style>
+  .held { position: relative; overflow: hidden; padding: 4.5rem 0 5rem; }
+  :global(.held__scheibe) { position: absolute; right: -14rem; top: 50%; transform: translateY(-50%) rotate(-9deg); width: 44rem; max-width: none; opacity: 0.9; filter: drop-shadow(0 30px 60px rgb(0 0 0 / 0.6)); }
+  @media (max-width: 899px) { :global(.held__scheibe) { width: 26rem; right: -11rem; top: 2rem; transform: rotate(-9deg); opacity: 0.35; } }
+  .held__innen { position: relative; z-index: 1; }
+  .held h1 { font-size: clamp(4rem, 13vw, 9.5rem); margin: 1rem 0 1.5rem; max-width: 11ch; text-shadow: 0 4px 30px rgb(0 0 0 / 0.6); }
+  .held h1 span { display: block; }
+  .held h1 .rot { color: var(--d-rot); }
+  .held__text { max-width: 34rem; font-size: 1.35rem; color: var(--d-sisal); margin: 0; }
+  .held__knoepfe { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
+  .held__180 { position: absolute; left: -1rem; bottom: -3.5rem; font-family: var(--d-titel); font-size: 16rem; line-height: 1; color: transparent; -webkit-text-stroke: 2px rgb(239 226 194 / 0.08); pointer-events: none; }
+
+  .teams { display: grid; gap: 1.5rem; margin-top: 4rem; }
+  @media (min-width: 800px) { .teams { grid-template-columns: 1fr 1fr; } }
+  .team {
+    position: relative; overflow: hidden; display: block; text-decoration: none; padding: 2.25rem 2rem 2rem; min-height: 19rem;
+    background: var(--d-flaeche); border: 1px solid var(--d-linie); transition: transform 0.2s, border-color 0.2s;
+    clip-path: polygon(0 0, calc(100% - 28px) 0, 100% 28px, 100% 100%, 28px 100%, 0 calc(100% - 28px));
+  }
+  .team:hover { transform: translateY(-4px); }
+  .team--rot:hover { border-color: var(--d-rot); }
+  .team--gruen:hover { border-color: var(--d-gruen); }
+  .team::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 8px; }
+  .team--rot::before { background: var(--d-rot); }
+  .team--gruen::before { background: var(--d-gruen); }
+  .team--gruen .d-label { color: var(--d-gruen); }
+  .team__kuerzel { position: absolute; right: -0.5rem; bottom: -2.5rem; font-family: var(--d-titel); font-size: 13rem; line-height: 1; color: rgb(255 255 255 / 0.04); }
+  .team h2 { font-size: clamp(3rem, 6vw, 4.5rem); margin: 0.5rem 0 0.75rem; }
+  .team__slogan { font-size: 1.3rem; color: var(--d-sisal); margin: 0 0 1.75rem; font-style: italic; max-width: 22rem; }
+  .team__mehr { font-family: var(--d-titel); font-size: 1.4rem; letter-spacing: 0.06em; }
+  .team--rot .team__mehr { color: var(--d-rot); }
+  .team--gruen .team__mehr { color: var(--d-gruen); }
+
+  .fakten { display: grid; margin-top: 3rem; }
+  @media (min-width: 800px) { .fakten { grid-template-columns: repeat(3, 1fr); } }
+  .fakt { padding: 1.5rem; border: 1px solid var(--d-linie); margin: 0 -1px -1px 0; }
+  .fakt p { margin: 0.4rem 0 0; font-size: 1.2rem; }
+</style>

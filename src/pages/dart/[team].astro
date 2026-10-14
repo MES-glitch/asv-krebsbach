@@ -1,0 +1,104 @@
+---
+import DartBasis from '../../layouts/DartBasis.astro';
+import Dartscheibe from '../../components/dart/Dartscheibe.astro';
+import dart from '../../data/dart.json';
+import { url } from '../../lib/utils';
+
+export function getStaticPaths() {
+  return dart.teams.map((team) => ({ params: { team: team.id }, props: { team } }));
+}
+const { team } = Astro.props;
+const anderes = dart.teams.find((t) => t.id !== team.id);
+---
+<DartBasis titel={team.name} beschreibung={team.slogan}>
+  <section class:list={['held', `held--${team.farbe}`]}>
+    <Dartscheibe class="held__scheibe" zahlen={false} />
+    <div class="d-container held__innen">
+      <div>
+        <span class="d-label">{team.liga}</span>
+        <h1>{team.name}</h1>
+        <p class="held__slogan">„{team.slogan}“</p>
+      </div>
+      <div class="held__bild">
+        {team.bild ? <img src={url(team.bild)} alt={`Mannschaft ${team.name}`} /> : (
+          <div class="held__platzhalter"><span>{team.kuerzel}</span><small>Mannschaftsfoto folgt</small></div>
+        )}
+      </div>
+    </div>
+  </section>
+  <div class="d-kante"></div>
+
+  <section class:list={['d-container', 'inhalt', `inhalt--${team.farbe}`]}>
+    <div class="ueber">
+      <span class="d-label">Das Team</span>
+      <p>{team.beschreibung}</p>
+      <dl>
+        <div><dt>Liga</dt><dd>{team.liga}</dd></div>
+        <div><dt>Heimspielort</dt><dd>{dart.spielort}</dd></div>
+        <div><dt>Training</dt><dd>{dart.training}</dd></div>
+      </dl>
+    </div>
+
+    <div>
+      <span class="d-label">Line-up</span>
+      <h2>Die Spieler</h2>
+      <ol class="spieler">
+        {team.spieler.map((s, i) => (
+          <li>
+            <span class="spieler__nr">{String(i + 1).padStart(2, '0')}</span>
+            <span class="spieler__name">{s.name}{s.spitzname && <em> „{s.spitzname}“</em>}</span>
+            {s.rolle && <span class="spieler__rolle">{s.rolle}</span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  {anderes && (
+    <section class="d-container weiter">
+      <p>Auch im Vereinsheim zu Hause:</p>
+      <a class:list={['d-knopf', { 'd-knopf--gruen': anderes.farbe === 'gruen' }]} href={url(`/dart/${anderes.id}/`)}>{anderes.name} →</a>
+    </section>
+  )}
+</DartBasis>
+
+<style>
+  .held { position: relative; overflow: hidden; padding: 4rem 0; --akzent: var(--d-rot); }
+  .held--gruen { --akzent: var(--d-gruen); }
+  :global(.held__scheibe) { position: absolute; left: -16rem; bottom: -16rem; width: 34rem; max-width: none; opacity: 0.18; transform: rotate(12deg); }
+  .held__innen { position: relative; display: grid; gap: 2.5rem; align-items: center; }
+  @media (min-width: 900px) { .held__innen { grid-template-columns: 1.2fr 1fr; } }
+  .held .d-label { color: var(--akzent); }
+  .held h1 { font-size: clamp(4rem, 12vw, 8.5rem); margin: 0.75rem 0 1rem; }
+  .held__slogan { font-size: 1.5rem; font-style: italic; color: var(--d-sisal); margin: 0; border-left: 6px solid var(--akzent); padding-left: 1rem; }
+  .held__bild img, .held__platzhalter {
+    width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+    clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px));
+  }
+  .held__platzhalter {
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25rem;
+    background: repeating-linear-gradient(-45deg, var(--d-flaeche) 0 18px, #1d1d1d 18px 36px); border: 2px solid var(--akzent);
+  }
+  .held__platzhalter span { font-family: var(--d-titel); font-size: 8rem; line-height: 0.9; color: var(--akzent); }
+  .held__platzhalter small { color: var(--d-leise); letter-spacing: 0.1em; text-transform: uppercase; }
+
+  .inhalt { display: grid; gap: 3rem; margin-top: 4rem; }
+  @media (min-width: 900px) { .inhalt { grid-template-columns: 1fr 1.2fr; } }
+  .ueber p { font-size: 1.3rem; color: var(--d-sisal); margin: 0.75rem 0 2rem; }
+  dl { margin: 0; display: grid; gap: 1px; background: var(--d-linie); border: 1px solid var(--d-linie); }
+  dl div { background: var(--d-schwarz); padding: 1rem 1.25rem; }
+  dt { font-family: var(--d-titel); letter-spacing: 0.12em; color: var(--d-leise); font-size: 1rem; }
+  dd { margin: 0.2rem 0 0; font-size: 1.15rem; }
+  h2 { font-size: clamp(2.8rem, 6vw, 4rem); margin: 0.5rem 0 1.25rem; }
+  .spieler { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.6rem; }
+  .spieler li { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 1rem; padding: 0.9rem 1.2rem; background: var(--d-flaeche); border-left: 6px solid var(--d-rot); }
+  .inhalt--gruen .spieler li { border-left-color: var(--d-gruen); }
+  .inhalt--gruen .d-label { color: var(--d-gruen); }
+  .spieler__nr { font-family: var(--d-titel); font-size: 2rem; color: var(--d-leise); line-height: 1; }
+  .spieler__name { font-weight: 700; font-size: 1.3rem; }
+  .spieler__name em { font-weight: 500; color: var(--d-sisal); }
+  .spieler__rolle { font-family: var(--d-titel); letter-spacing: 0.1em; font-size: 1rem; padding: 0.25rem 0.6rem 0.1rem; background: var(--d-sisal); color: var(--d-schwarz); }
+
+  .weiter { margin-top: 4rem; display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; justify-content: space-between; padding-top: 2rem; border-top: 1px solid var(--d-linie); }
+  .weiter p { margin: 0; font-family: var(--d-titel); font-size: 2rem; letter-spacing: 0.04em; }
+</style>

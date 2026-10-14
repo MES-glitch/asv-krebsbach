@@ -21,6 +21,7 @@ Eine moderne, mobilfreundliche Vereinswebseite, die Mitglieder und Interessierte
 - Technik: Astro 7 (statisch) + Sveltia CMS unter `/admin` – der Vorstand pflegt Termine, Neuigkeiten, Seiten und Vorstand selbst
 - Repo: github.com/MES-glitch/asv-krebsbach (öffentlich), Hosting über GitHub Pages (Deploy per GitHub Actions, täglicher Rebuild)
 - **Mitgliedschaft:** Aktive Plätze sind durch die Zahl der Gewässerkarten begrenzt – auf der Seite **nicht als Aufnahmestopp** formulieren, sondern „Vergabe nach Verfügbarkeit“. Aktive und passive Mitgliedschaft per Anfrage; passive Mitglieder wertschätzend als voll eingebunden darstellen. **Keine Gastkarten.** Jugendabteilung ab 10 J., Jugendfischereischein, **50 €/Jahr** → `/jugend/` (`src/data/jugend.json`), Mitgliedschaft: `src/data/mitgliedschaft.json`
+- **Dart-Abteilung** (Teams „Krebsbachbomber“, „Petri Pfeil“): `/dart/` im ASV-Design als Teaser, ab `/dart/abteilung/` und `/dart/<team>/` **eigenes Design** (`layouts/DartBasis.astro`: dunkel, Rot/Grün, Bebas Neue). Jede Dart-Seite braucht die Leiste „Zurück zum ASV“ + Impressum/Datenschutz. Daten: `src/data/dart.json`
 - **Anfrageformular** `/mitgliedschaft/anfrage/`: erzeugt eine mailto-E-Mail an den Vorstand (kein Server/Drittanbieter), bewusst **ohne Bankdaten** – Beitrittserklärung bleibt auf Papier
 - Design „Komm ans Wasser“ (Variante E): Creme-Hintergrund, Wappenblau #3a3290, Pastell-Akzente, organische Fotoformen
 - Schrift vom Wappen abgeleitet: Barlow Semi Condensed (Titel) + Barlow (Text), DIN-artige Grotesk

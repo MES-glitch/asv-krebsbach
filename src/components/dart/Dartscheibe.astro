@@ -1,0 +1,30 @@
+---
+// Dekorative Dartscheibe als SVG (20 Segmente, Doubles, Triples, Bull).
+interface Props { class?: string; zahlen?: boolean }
+const { class: klasse = '', zahlen = true } = Astro.props;
+const reihenfolge = [20, 1, 18, 4, 13, 6, 10, 15, 2, 17, 3, 19, 7, 16, 8, 11, 14, 9, 12, 5];
+const rad = (g: number) => ((g - 90) * Math.PI) / 180;
+const pt = (r: number, g: number) => `${(200 + r * Math.cos(rad(g))).toFixed(2)} ${(200 + r * Math.sin(rad(g))).toFixed(2)}`;
+const ring = (r1: number, r2: number, a: number, b: number) =>
+  `M${pt(r1, a)} L${pt(r2, a)} A${r2} ${r2} 0 0 1 ${pt(r2, b)} L${pt(r1, b)} A${r1} ${r1} 0 0 0 ${pt(r1, a)}Z`;
+const segmente = reihenfolge.map((z, i) => {
+  const a = i * 18 - 9, b = a + 18, dunkel = i % 2 === 0;
+  return { z, a, b, dunkel };
+});
+---
+<svg class={klasse} viewBox="0 0 400 400" aria-hidden="true">
+  <circle cx="200" cy="200" r="198" fill="#111" />
+  {segmente.map((s) => (
+    <>
+      <path d={ring(18, 98, s.a, s.b)} fill={s.dunkel ? '#161616' : '#efe2c2'} />
+      <path d={ring(98, 108, s.a, s.b)} fill={s.dunkel ? '#e3262b' : '#1a9e4b'} />
+      <path d={ring(108, 160, s.a, s.b)} fill={s.dunkel ? '#161616' : '#efe2c2'} />
+      <path d={ring(160, 170, s.a, s.b)} fill={s.dunkel ? '#e3262b' : '#1a9e4b'} />
+      {zahlen && (
+        <text x={pt(184, s.a + 9).split(' ')[0]} y={pt(184, s.a + 9).split(' ')[1]} fill="#efe2c2" font-size="17" font-family="Bebas Neue, sans-serif" text-anchor="middle" dominant-baseline="central">{s.z}</text>
+      )}
+    </>
+  ))}
+  <circle cx="200" cy="200" r="18" fill="#1a9e4b" />
+  <circle cx="200" cy="200" r="7.5" fill="#e3262b" />
+</svg>

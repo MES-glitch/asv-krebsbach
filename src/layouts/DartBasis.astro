@@ -1,0 +1,143 @@
+---
+// Eigenes Layout für die Dart-Abteilung – bewusst anderes Design als die ASV-Seite.
+// Jede Dart-Seite hat oben eine feste Leiste zurück zum ASV (Mutterverein).
+import '@fontsource/bebas-neue/400.css';
+import '@fontsource/barlow-condensed/500.css';
+import '@fontsource/barlow-condensed/700.css';
+import '@fontsource/barlow-condensed/800.css';
+import dart from '../data/dart.json';
+import verein from '../data/verein.json';
+import { url } from '../lib/utils';
+
+interface Props { titel?: string; beschreibung?: string }
+const { titel, beschreibung = dart.dartIntro } = Astro.props;
+const seitenTitel = titel ? `${titel} – Dart | ${verein.name}` : `Dart-Abteilung | ${verein.name}`;
+const aktuell = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').replace(/\/$/, '');
+const links = [
+  { href: '/dart/abteilung', text: 'Übersicht' },
+  ...dart.teams.map((t) => ({ href: `/dart/${t.id}`, text: t.name })),
+];
+---
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{seitenTitel}</title>
+    <meta name="description" content={beschreibung} />
+    <meta name="theme-color" content="#0b0b0b" />
+    <link rel="icon" href={url('/favicon-32.png')} type="image/png" sizes="32x32" />
+  </head>
+  <body>
+    <a class="asv-leiste" href={url('/')}>
+      <img src={url('/logo.webp')} alt="" width="144" height="192" />
+      <span><strong>← Zurück zum ASV Krebsbach</strong><small>Die Dart-Abteilung ist Teil des {verein.vollerName}</small></span>
+    </a>
+    <header class="d-kopf">
+      <div class="d-container d-kopf__innen">
+        <a class="d-marke" href={url('/dart/abteilung/')}>
+          <span class="d-marke__punkt" aria-hidden="true"></span>
+          <span>ASV <em>Darts</em></span>
+        </a>
+        <nav aria-label="Dart-Navigation">
+          {links.map((l) => (
+            <a href={url(l.href + '/')} aria-current={aktuell === l.href ? 'page' : undefined}>{l.text}</a>
+          ))}
+        </nav>
+      </div>
+    </header>
+    <main>
+      <slot />
+    </main>
+    <footer class="d-fuss">
+      <div class="d-container d-fuss__innen">
+        <div>
+          <p class="d-fuss__gross">Game on.</p>
+          <p>Eine Abteilung des <a href={url('/')}>{verein.vollerName}</a></p>
+        </div>
+        <nav aria-label="Rechtliches">
+          <a class="d-knopf d-knopf--rand" href={url('/')}>← ASV-Hauptseite</a>
+          <a href={url('/impressum/')}>Impressum</a>
+          <a href={url('/datenschutz/')}>Datenschutz</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --d-schwarz: #0b0b0b;
+    --d-flaeche: #161616;
+    --d-linie: #2a2a2a;
+    --d-rot: #e3262b;
+    --d-gruen: #1a9e4b;
+    --d-sisal: #efe2c2;
+    --d-text: #f4f1ea;
+    --d-leise: #a8a39a;
+    --d-titel: 'Bebas Neue', 'Impact', sans-serif;
+    --d-schrift: 'Barlow Condensed', 'Arial Narrow', sans-serif;
+    --d-breite: 76rem;
+  }
+  *, *::before, *::after { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  html { background: var(--d-schwarz); }
+  body {
+    margin: 0; min-height: 100vh; display: flex; flex-direction: column; color: var(--d-text);
+    font-family: var(--d-schrift); font-size: 1.15rem; line-height: 1.55; font-weight: 500;
+    background:
+      radial-gradient(circle at 85% -10%, rgb(227 38 43 / 0.18), transparent 45%),
+      radial-gradient(circle at -10% 60%, rgb(26 158 75 / 0.12), transparent 40%),
+      var(--d-schwarz);
+  }
+  main { flex: 1; }
+  img { max-width: 100%; display: block; }
+  a { color: var(--d-text); }
+  h1, h2, h3 { font-family: var(--d-titel); font-weight: 400; letter-spacing: 0.02em; line-height: 0.95; margin: 0; text-transform: uppercase; }
+  .d-container { width: 100%; max-width: var(--d-breite); margin: 0 auto; padding: 0 1rem; }
+  @media (min-width: 640px) { .d-container { padding: 0 1.5rem; } }
+
+  .d-knopf {
+    display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--d-titel); font-size: 1.35rem; letter-spacing: 0.06em;
+    padding: 0.7rem 1.4rem 0.55rem; background: var(--d-rot); color: #fff; text-decoration: none;
+    clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%); transition: transform 0.15s, background 0.15s;
+  }
+  .d-knopf:hover { transform: translateY(-2px); background: #ff3238; color: #fff; }
+  .d-knopf--gruen { background: var(--d-gruen); }
+  .d-knopf--gruen:hover { background: #22b85a; }
+  .d-knopf--rand { background: transparent; box-shadow: inset 0 0 0 2px var(--d-sisal); clip-path: none; color: var(--d-sisal); }
+  .d-knopf--rand:hover { background: var(--d-sisal); color: var(--d-schwarz); }
+
+  /* Schachbrett-Kante wie der Doppelring der Scheibe */
+  .d-kante { height: 10px; background: repeating-linear-gradient(90deg, var(--d-rot) 0 28px, var(--d-gruen) 28px 56px); }
+  .d-label { font-family: var(--d-titel); font-size: 1.1rem; letter-spacing: 0.18em; color: var(--d-rot); }
+</style>
+
+<style>
+  .asv-leiste {
+    display: flex; align-items: center; gap: 0.75rem; padding: 0.5rem 1rem; text-decoration: none;
+    background: #fffaf2; color: #1e1c33; font-family: 'Barlow', var(--d-schrift); border-bottom: 3px solid #3a3290;
+  }
+  .asv-leiste img { height: 2rem; width: auto; }
+  .asv-leiste span { display: flex; flex-direction: column; line-height: 1.15; }
+  .asv-leiste strong { color: #3a3290; font-size: 1rem; }
+  .asv-leiste small { font-size: 0.8rem; color: #55536e; }
+  .asv-leiste:hover strong { text-decoration: underline; }
+
+  .d-kopf { position: sticky; top: 0; z-index: 10; background: rgb(11 11 11 / 0.92); backdrop-filter: blur(8px); border-bottom: 1px solid var(--d-linie); }
+  .d-kopf__innen { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.5rem 1.5rem; min-height: 4rem; padding-top: 0.5rem; padding-bottom: 0.5rem; }
+  .d-marke { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; font-family: var(--d-titel); font-size: 2rem; letter-spacing: 0.04em; line-height: 1; }
+  .d-marke em { font-style: normal; color: var(--d-rot); }
+  .d-marke__punkt { width: 1.4rem; height: 1.4rem; border-radius: 50%; background: radial-gradient(circle, var(--d-rot) 0 28%, var(--d-gruen) 29% 52%, var(--d-sisal) 53% 70%, #222 71%); box-shadow: 0 0 0 2px #222; }
+  .d-kopf nav { display: flex; gap: 0.25rem; flex-wrap: wrap; }
+  .d-kopf nav a { font-family: var(--d-titel); font-size: 1.3rem; letter-spacing: 0.05em; text-decoration: none; padding: 0.35rem 0.75rem 0.2rem; color: var(--d-leise); }
+  .d-kopf nav a:hover { color: var(--d-text); }
+  .d-kopf nav a[aria-current='page'] { color: var(--d-text); box-shadow: inset 0 -3px 0 var(--d-rot); }
+
+  .d-fuss { margin-top: 5rem; border-top: 10px solid; border-image: repeating-linear-gradient(90deg, var(--d-rot) 0 28px, var(--d-gruen) 28px 56px) 10; padding: 3rem 0 2.5rem; background: #070707; }
+  .d-fuss__innen { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 2rem; align-items: flex-end; }
+  .d-fuss__gross { font-family: var(--d-titel); font-size: 3.5rem; line-height: 1; margin: 0 0 0.5rem; }
+  .d-fuss p { margin: 0; color: var(--d-leise); }
+  .d-fuss nav { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; }
+  .d-fuss nav a:not(.d-knopf) { color: var(--d-leise); }
+</style>

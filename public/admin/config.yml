@@ -146,6 +146,43 @@ collections:
           - { name: anmeldung, label: Anmeldung, widget: text }
           - { name: regeln, label: Wichtigste Regeln, widget: list }
           - { name: regelnHinweis, label: Hinweis unter den Regeln, widget: text }
+      - name: dart
+        label: Dart-Abteilung
+        file: src/data/dart.json
+        fields:
+          - { name: titel, label: Titel (ASV-Seite), widget: string }
+          - { name: untertitel, label: Untertitel (ASV-Seite), widget: string }
+          - { name: einleitung, label: Einleitung (ASV-Seite), widget: text }
+          - { name: bild, label: Foto (ASV-Seite), widget: image, required: false }
+          - { name: dartHeld, label: Große Überschrift Dart-Bereich, widget: string, hint: "Sätze mit Punkt trennen – der letzte Satz wird rot" }
+          - { name: dartIntro, label: Einleitung Dart-Bereich, widget: text }
+          - { name: spielort, label: Heimspielort, widget: string }
+          - { name: training, label: Trainingszeiten, widget: string }
+          - name: teams
+            label: Mannschaften
+            label_singular: Mannschaft
+            widget: list
+            allow_add: false
+            allow_remove: false
+            summary: "{{name}}"
+            fields:
+              - { name: id, label: Kennung, widget: hidden }
+              - { name: name, label: Name, widget: string }
+              - { name: kuerzel, label: Kürzel, widget: string }
+              - { name: farbe, label: Farbe, widget: select, options: [rot, gruen] }
+              - { name: slogan, label: Slogan, widget: string }
+              - { name: beschreibung, label: Beschreibung, widget: text }
+              - { name: liga, label: Liga, widget: string }
+              - { name: bild, label: Mannschaftsfoto, widget: image, required: false }
+              - name: spieler
+                label: Spieler
+                label_singular: Spieler
+                widget: list
+                summary: "{{name}}"
+                fields:
+                  - { name: name, label: Name, widget: string }
+                  - { name: spitzname, label: Spitzname, widget: string, required: false }
+                  - { name: rolle, label: Rolle, widget: string, required: false, hint: "z. B. Kapitän" }
       - name: verein
         label: Vereinsangaben & Startseite
         file: src/data/verein.json
