@@ -20,6 +20,7 @@ Eine moderne, mobilfreundliche Vereinswebseite, die Mitglieder und Interessierte
 ## Entscheidungen
 - Technik: Astro 7 (statisch) + Sveltia CMS unter `/admin` – der Vorstand pflegt Termine, Neuigkeiten, Seiten und Vorstand selbst
 - Repo: github.com/MES-glitch/asv-krebsbach (öffentlich), Hosting über GitHub Pages (Deploy per GitHub Actions, täglicher Rebuild)
+- **Aufnahmestopp, keine Gastkarten:** Der Verein hat mehr Mitglieder als ausgebbare Karten – die Seite wirbt nicht um neue Mitglieder
 - Design „Komm ans Wasser“ (Variante E): Creme-Hintergrund, Wappenblau #3a3290, Pastell-Akzente, organische Fotoformen
 - Schrift vom Wappen abgeleitet: Barlow Semi Condensed (Titel) + Barlow (Text), DIN-artige Grotesk
 - Keine externen Schriften/Tracking (DSGVO) – Fonts per `@fontsource` selbst gehostet

@@ -11,7 +11,7 @@ Natürlich steht nicht nur Angeln auf unserem Plan: Auch die Hege und Pflege der
 
 ## Krebsbach-Auenteich
 
-Von der Planung im Jahr 1989 bis zur ersten Baggerschaufel im Jahre 1992 vergingen drei Jahre und unzählige Stunden harte Arbeit unserer Mitglieder. Trotz einiger Rückschläge – Verunreinigungen durch Öl, ein Rohrbruch am Zulauf, Bisamratten, die sich vom See zum Bach durchgruben, Hochwasser und Verunreinigungen durch Gülle – setzte man seine Energie weiterhin in den Wunsch nach einem eigenen See.
+Von der Planung im Jahr 1989 bis zur ersten Baggerschaufel im Jahre 1992 vergingen drei Jahre und unzählige Stunden harte Arbeit unserer Mitglieder. Trotz einiger Rückschläge – Verunreinigungen des Krebsbachs durch Öl und Gülle, ein Rohrbruch am Zulauf, Bisamratten, die sich vom See zum Bach durchgruben, und Hochwasser – setzte man seine Energie weiterhin in den Wunsch nach einem eigenen See.
 
 Dank dieser unermüdlichen Mitglieder besitzen wir heute unseren See direkt am Vereinsheim.
 

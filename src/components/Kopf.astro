@@ -7,7 +7,8 @@ const links = [
   { href: '/neuigkeiten/', text: 'Neuigkeiten' },
   { href: '/termine/', text: 'Termine' },
   { href: '/gewaesser/', text: 'Gewässer' },
-  { href: '/verein/', text: 'Verein & Kontakt' },
+  { href: '/verein/', text: 'Verein' },
+  { href: '/mitgliedschaft/', text: 'Mitgliedschaft' },
 ];
 const aktuell = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '') || '/';
 const istAktiv = (href: string) => (href === '/' ? aktuell === '/' : aktuell.startsWith(href.replace(/\/$/, '')));
@@ -30,7 +31,7 @@ const istAktiv = (href: string) => (href === '/' ? aktuell === '/' : aktuell.sta
           {links.map((l) => (
             <li><a href={url(l.href)} aria-current={istAktiv(l.href) ? 'page' : undefined}>{l.text}</a></li>
           ))}
-          <li class="nav__aufruf"><a class="knopf" href={url('/mitgliedschaft/')}>Mitglied werden</a></li>
+          <li class="nav__aufruf"><a class="knopf" href={url('/verein/#kontakt')}>Kontakt</a></li>
         </ul>
       </nav>
     </details>

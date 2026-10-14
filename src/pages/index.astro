@@ -28,7 +28,7 @@ const formen = ['blatt', 'tropfen', 'blatt-gespiegelt'] as const;
         <h1>{start.titel}<br /><span class="held__akzent">{start.titelAkzent}</span></h1>
         <p class="held__einleitung">{start.text}</p>
         <div class="held__knoepfe">
-          <a class="knopf" href={url('/verein/#kontakt')}>Lerne uns kennen</a>
+          <a class="knopf" href={url('/gewaesser/')}>Unsere Gewässer</a>
           <a class="knopf knopf--leise" href={url('/termine/')}>Termine ansehen →</a>
         </div>
       </div>
@@ -70,7 +70,7 @@ const formen = ['blatt', 'tropfen', 'blatt-gespiegelt'] as const;
       <div>
         <span class="dachzeile">Was ansteht</span>
         <h2>Nächste Termine</h2>
-        <p class="leise">Arbeitseinsätze, Hegefischen und Versammlungen – komm vorbei und lern uns kennen.</p>
+        <p class="leise">Arbeitseinsätze, Hegefischen, Versammlungen und Feste im Überblick.</p>
         <a class="mehr-link" href={url('/termine/')}>Alle Termine →</a>
       </div>
       <div>
@@ -104,7 +104,6 @@ const formen = ['blatt', 'tropfen', 'blatt-gespiegelt'] as const;
           <p>{start.aufrufText}</p>
           <div class="held__knoepfe">
             <a class="knopf knopf--hell" href={url('/verein/#kontakt')}>Kontakt aufnehmen</a>
-            <a class="knopf knopf--rand" href={url('/mitgliedschaft/')}>Mitglied werden</a>
           </div>
         </div>
         <div class="aufruf__foto">

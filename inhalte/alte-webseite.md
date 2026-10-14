@@ -94,7 +94,7 @@ Standardtext von IONOS – wird **nicht** übernommen, da die neue Seite anders 
 
 ## Offene Fragen an den Vorstand
 1. Offizieller Name: „ASV Krebsbach 1983 e. V.“ oder „Angelsportverein Krebsbach e. V.“?
-2. Welche Ämter haben Udo Rödler, Maik Seussler und Kevin Canales? Ist der Vorstand noch aktuell?
+2. Welche Ämter haben Udo Rödler und Kevin Canales? (Maik Seussler = 1. Vorsitzender, Konstantin Lackmann = Jugendverantwortlicher)
 3. Rosenbach: Wird er noch bewirtschaftet? Kurzer Text dazu?
-4. Gastkarten: Gibt es welche? Preise, Ausgabestelle?
+4. ~~Gastkarten~~ – geklärt: keine Gastkarten, Aufnahmestopp
 5. Dürfen die Fangfotos (mit erkennbaren Personen) weiterverwendet werden?

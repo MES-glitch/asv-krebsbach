@@ -1,20 +1,18 @@
 ---
-titel: Mitgliedschaft & Gastkarten
-beschreibung: So wirst du Mitglied im ASV Krebsbach – und so bekommst du eine Gastkarte.
-dachzeile: Mitmachen
+titel: Mitgliedschaft
+beschreibung: Aktuell können wir leider keine neuen Mitglieder aufnehmen.
+dachzeile: Aufnahmestopp
 bild: /uploads/fang-schuppenkarpfen.jpg
-bildPlatzhalter: "Foto: Einsteiger / Jugend am Wasser"
+bildPlatzhalter: "Foto: Fang am Vereinsgewässer"
 ---
-> **Platzhalter** – dieser Text wird vom Vorstand ergänzt.
+Wir freuen uns über jedes Interesse an unserem Verein. Die Zahl der Fischereikarten, die wir für unsere Gewässer ausgeben dürfen, ist allerdings begrenzt – und schon heute haben wir mehr Mitglieder als Karten.
 
-## Mitglied werden
-
-Voraussetzungen (z. B. Fischereischein), Aufnahmegebühr, Jahresbeitrag und Arbeitsstunden. Der Aufnahmeantrag kann hier als PDF verlinkt werden.
-
-## Jugendgruppe
-
-Informationen zur Jugendarbeit im Verein.
+Deshalb nehmen wir **derzeit keine neuen Mitglieder auf**.
 
 ## Gastkarten
 
-Wo und zu welchen Preisen Gastkarten erhältlich sind.
+Gastkarten bieten wir **nicht** an.
+
+## Fragen?
+
+Wenn du Fragen zum Verein hast, [schreib uns gern](/verein/#kontakt).

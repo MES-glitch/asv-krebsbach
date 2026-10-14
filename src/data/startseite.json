@@ -1,11 +1,11 @@
 {
-  "hinweis": "Neue Mitglieder willkommen",
-  "titel": "Komm ans Wasser.",
-  "titelAkzent": "Wir zeigen dir, wie.",
-  "text": "Ob Anfänger oder alter Hase: Beim ASV Krebsbach findest du Gewässer, Gemeinschaft und Leute, die ihr Wissen gern teilen – in Neckarbischofsheim, Helmhof und Untergimpern.",
+  "hinweis": "Petri Heil!",
+  "titel": "Angeln, hegen,",
+  "titelAkzent": "zusammenhalten.",
+  "text": "Der ASV Krebsbach ist ein fester Bestandteil von Neckarbischofsheim. Wir bewirtschaften unseren Auenteich am Vereinsheim, den Schlossteich sowie Krebsbach, Schwarzbach und Rosenbach – und kümmern uns gemeinsam um Gewässer und Natur.",
   "bildGross": "/uploads/auenteich.jpg",
   "bildKlein": "/uploads/fang-spiegelkarpfen-vereinsheim.jpg",
-  "vorteileTitel": "Was dich bei uns erwartet",
+  "vorteileTitel": "Das ist der ASV Krebsbach",
   "vorteile": [
     {
       "titel": "Unsere Gewässer",
@@ -17,19 +17,19 @@
     {
       "titel": "Gemeinschaft",
       "text": "Arbeitseinsätze, Anfischen, Helferfest und Abfischen: Bei uns angelt man nicht allein – und einige Gründungsmitglieder sind bis heute dabei.",
-      "link": "/termine/",
+      "link": "/verein/",
       "bild": "/uploads/fang-karpfen-auenteich.jpg",
       "platzhalter": "Foto: Vereinsleben"
     },
     {
-      "titel": "Einstieg leicht gemacht",
-      "text": "Du willst anfangen? Wir erklären dir Mitgliedschaft, Fischereischein und Gastkarten – und beim Jugendangeln geht es direkt ans Wasser.",
-      "link": "/mitgliedschaft/",
+      "titel": "Jugendarbeit",
+      "text": "Beim Jugendangeln am Forellensee bringen wir unseren Nachwuchs ans Wasser und geben unser Wissen weiter.",
+      "link": "/termine/",
       "bild": "/uploads/fang-jugend-spiegelkarpfen.jpg",
-      "platzhalter": "Foto: Jugend / Einsteiger"
+      "platzhalter": "Foto: Jugend am Wasser"
     }
   ],
-  "aufrufTitel": "Lust bekommen?",
-  "aufrufText": "Schreib uns einfach oder komm bei einem unserer Termine vorbei. Wir freuen uns auf dich!",
+  "aufrufTitel": "Fragen oder Anregungen?",
+  "aufrufText": "Schreib uns einfach – wir freuen uns über deine Nachricht.",
   "aufrufBild": "/uploads/fang-stoer.jpg"
 }
