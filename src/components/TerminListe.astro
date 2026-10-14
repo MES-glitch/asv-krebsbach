@@ -32,16 +32,16 @@ const { termine } = Astro.props;
 <style>
   .termine { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 1rem; }
   .termin { display: flex; gap: 1.25rem; padding: 1.1rem 1.25rem; align-items: flex-start; }
-  .termin__datum { flex: none; width: 4rem; text-align: center; background: var(--wasser-100); border-radius: 10px; padding: 0.5rem 0; color: var(--wasser-900); }
+  .termin__datum { flex: none; width: 4rem; text-align: center; background: var(--blau-100); border-radius: 10px; padding: 0.5rem 0; color: var(--blau-900); }
   .termin__tag { display: block; font-family: 'Fraunces', serif; font-size: 1.6rem; font-weight: 700; line-height: 1.1; }
   .termin__monat { display: block; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.06em; }
   .termin__info { min-width: 0; }
   .termin h3 { margin: 0.35rem 0 0.15rem; overflow-wrap: break-word; hyphens: auto; }
   .termin p { margin: 0; }
   .termin__text { margin-top: 0.4rem !important; white-space: pre-line; }
-  .etikett { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0.1rem 0.55rem; border-radius: 999px; background: #eef1f2; color: var(--text-leise); margin-right: 0.3rem; }
+  .etikett { display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0.1rem 0.55rem; border-radius: 999px; background: #efeff4; color: var(--text-leise); margin-right: 0.3rem; }
   .etikett--arbeitseinsatz { background: #fdf0dc; color: #8a5a12; }
-  .etikett--hegefischen { background: var(--wasser-100); color: var(--wasser-700); }
-  .etikett--versammlung { background: #ece6f6; color: #5a3e8a; }
+  .etikett--hegefischen { background: #e0f2f1; color: #0f6e6a; }
+  .etikett--versammlung { background: var(--blau-100); color: var(--blau-700); }
   .etikett--veranstaltung { background: var(--schilf-100); color: var(--schilf-600); }
 </style>

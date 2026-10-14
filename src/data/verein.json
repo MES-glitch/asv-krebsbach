@@ -1,10 +1,16 @@
 {
   "name": "ASV Krebsbach",
   "vollerName": "Angelsportverein Krebsbach e. V.",
+  "gruendungsjahr": 1983,
+  "orte": [
+    "Neckarbischofsheim",
+    "Helmhof",
+    "Untergimpern"
+  ],
   "slogan": "Gemeinsam angeln, Gewässer schützen, Natur erleben.",
-  "einleitung": "Willkommen beim Angelsportverein Krebsbach! Wir sind eine Gemeinschaft von Anglerinnen und Anglern, die sich um ihre Gewässer kümmert, Nachwuchs fördert und die Freude am Fischen teilt. [Platzhalter – bitte durch den Vorstand ergänzen]",
+  "einleitung": "Seit 1983 ist der ASV Krebsbach der Angelsportverein für Neckarbischofsheim, Helmhof und Untergimpern. Gemeinsam kümmern wir uns um unsere Gewässer und teilen die Freude am Angeln.",
   "titelbild": "",
-  "anschrift": "Musterstraße 1\n00000 Krebsbach",
+  "anschrift": "[Straße Hausnummer]\n[PLZ Ort]",
   "email": "info@example.de",
   "telefon": ""
 }

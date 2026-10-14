@@ -19,13 +19,17 @@ const titelbild = verein.titelbild ? url(verein.titelbild) : null;
 <Basis>
   <section class="held" style={titelbild ? `--bild: url('${titelbild}')` : undefined}>
     <div class="container held__innen">
-      <p class="held__dach">{verein.vollerName}</p>
-      <h1>{verein.slogan}</h1>
-      <p class="held__text">{verein.einleitung}</p>
-      <div class="held__knoepfe">
-        <a class="knopf knopf--hell" href={url('/termine/')}>Termine ansehen</a>
-        <a class="knopf" href={url('/mitgliedschaft/')}>Mitglied werden</a>
+      <div>
+        <p class="held__dach">{verein.vollerName} · seit {verein.gruendungsjahr}</p>
+        <h1>{verein.slogan}</h1>
+        <p class="held__text">{verein.einleitung}</p>
+        <div class="held__knoepfe">
+          <a class="knopf knopf--hell" href={url('/termine/')}>Termine ansehen</a>
+          <a class="knopf" href={url('/mitgliedschaft/')}>Mitglied werden</a>
+        </div>
+        <p class="held__orte">{verein.orte.join(' · ')}</p>
       </div>
+      <img class="held__wappen" src={url('/logo-gross.webp')} alt="Wappen des ASV Krebsbach" width="268" height="360" />
     </div>
     <svg class="held__welle" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
       <path d="M0 40c120 20 240 30 360 20S600 20 720 20s240 30 360 30 240-20 360-30v60H0z" fill="var(--sand-50)" />
@@ -71,10 +75,16 @@ const titelbild = verein.titelbild ? url(verein.titelbild) : null;
   .held {
     position: relative; color: var(--weiss); padding: 5rem 0 6rem;
     background:
-      linear-gradient(160deg, rgb(12 45 58 / 0.92), rgb(20 80 106 / 0.75)),
-      var(--bild, linear-gradient(160deg, var(--wasser-900), var(--wasser-500))) center / cover;
+      linear-gradient(160deg, rgb(29 24 80 / 0.93), rgb(58 50 144 / 0.8)),
+      var(--bild, linear-gradient(160deg, var(--blau-900), var(--blau-500))) center / cover;
   }
-  .held__innen { position: relative; z-index: 1; max-width: var(--breite); }
+  .held__innen { position: relative; z-index: 1; max-width: var(--breite); display: grid; gap: 2rem; align-items: center; }
+  .held__wappen { display: none; width: 15rem; height: auto; justify-self: center; filter: drop-shadow(0 12px 30px rgb(0 0 0 / 0.35)); }
+  @media (min-width: 900px) {
+    .held__innen { grid-template-columns: 1fr auto; }
+    .held__wappen { display: block; }
+  }
+  .held__orte { margin: 1.5rem 0 0; font-size: 0.9rem; letter-spacing: 0.04em; opacity: 0.75; }
   .held h1 { color: var(--weiss); max-width: 38rem; }
   .held__dach { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.8rem; font-weight: 600; opacity: 0.8; margin: 0 0 0.75rem; }
   .held__text { max-width: 36rem; font-size: 1.1rem; opacity: 0.9; }

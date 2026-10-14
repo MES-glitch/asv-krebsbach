@@ -81,6 +81,8 @@ collections:
         fields:
           - { name: name, label: Kurzname, widget: string }
           - { name: vollerName, label: Vollständiger Name, widget: string }
+          - { name: gruendungsjahr, label: Gründungsjahr, widget: number, value_type: int }
+          - { name: orte, label: Orte, widget: list, hint: "Orte, für die der Verein steht (erscheinen auf Startseite und im Fußbereich)" }
           - { name: slogan, label: Überschrift Startseite, widget: string }
           - { name: einleitung, label: Begrüßungstext Startseite, widget: text }
           - { name: titelbild, label: Titelbild Startseite, widget: image, required: false }
