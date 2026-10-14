@@ -21,7 +21,8 @@
       "eventId": 40354,
       "participantId": 683347,
       "logo": "/uploads/krebsbachbomber-logo.webp",
-      "thema": "krebsbachbomber"
+      "thema": "krebsbachbomber",
+      "logoHell": ""
     },
     {
       "id": "petri-pfeil",
@@ -31,11 +32,13 @@
       "slogan": "Petri Heil – und ab ins Triple.",
       "beschreibung": "[Platzhalter] Hier stellt sich das Team vor: Gründung, Spielstil, größte Erfolge.",
       "liga": "C-Liga",
-      "bild": "",
+      "bild": "/uploads/petri-pfeil-team.jpg",
       "spieler": [],
       "eventId": 40355,
       "participantId": 683468,
-      "logo": ""
+      "logo": "/uploads/petri-pfeil-logo.webp",
+      "logoHell": "/uploads/petri-pfeil-logo-kachel.webp",
+      "thema": "petri-pfeil"
     }
   ]
 }

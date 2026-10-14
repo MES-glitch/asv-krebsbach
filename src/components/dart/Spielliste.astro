@@ -37,7 +37,7 @@ const text = { sieg: 'S', niederlage: 'N', remis: 'U' };
 <style>
   .spiele { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
   .spiel { display: grid; grid-template-columns: 8.5rem 1fr auto; gap: 1rem; align-items: center; padding: 0.85rem 1.1rem; background: var(--d-flaeche); border-left: 6px solid var(--d-linie); }
-  .spiel--sieg { border-left-color: var(--d-gruen); }
+  .spiel--sieg { border-left-color: var(--d-sieg); }
   .spiel--niederlage { border-left-color: var(--d-rot); }
   @media (max-width: 640px) { .spiel { grid-template-columns: 1fr auto; } .spiel__wann { grid-column: 1 / -1; flex-direction: row !important; gap: 0.75rem !important; } }
   .spiel__wann { display: flex; flex-direction: column; gap: 0.1rem; font-size: 1rem; color: var(--d-leise); line-height: 1.2; }
@@ -48,7 +48,7 @@ const text = { sieg: 'S', niederlage: 'N', remis: 'U' };
   .spiel__paarung .wir { font-weight: 800; color: #fff; }
   .spiel__vs { font-family: var(--d-titel); font-size: 1.6rem; letter-spacing: 0.04em; color: var(--d-sisal); min-width: 4.5rem; text-align: center; line-height: 1; }
   .marke { display: grid; place-items: center; width: 2.2rem; height: 2.2rem; font-family: var(--d-titel); font-size: 1.4rem; color: #fff; }
-  .marke--sieg { background: var(--d-gruen); }
+  .marke--sieg { background: var(--d-sieg); }
   .marke--niederlage { background: var(--d-rot); }
   .marke--remis { background: #555; }
   .ort { font-family: var(--d-titel); letter-spacing: 0.1em; font-size: 0.95rem; color: var(--d-leise); }

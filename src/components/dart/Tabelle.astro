@@ -33,8 +33,8 @@ const diff = (a: number, b: number) => (a - b > 0 ? `+${a - b}` : `${a - b}`);
   .platz { font-family: var(--d-titel); font-size: 1.5rem; color: var(--d-leise); }
   .punkte { font-family: var(--d-titel); font-size: 1.6rem; }
   small { color: var(--d-leise); font-size: 0.85rem; }
-  .wir td { background: rgb(227 38 43 / 0.16); color: #fff; font-weight: 800; }
-  .tabelle--gruen .wir td { background: rgb(26 158 75 / 0.18); }
+  .wir td { background: color-mix(in srgb, var(--d-rot) 18%, transparent); color: #fff; font-weight: 800; }
+  .tabelle--gruen .wir td { background: color-mix(in srgb, var(--d-gruen) 20%, transparent); }
   .wir .platz, .wir .punkte { color: var(--d-rot); }
   .tabelle--gruen .wir .platz, .tabelle--gruen .wir .punkte { color: var(--d-gruen); }
   @media (max-width: 640px) { .breit { display: none; } .tabelle { min-width: 0; } }

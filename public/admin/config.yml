@@ -192,7 +192,8 @@ collections:
               - { name: beschreibung, label: Beschreibung, widget: text }
               - { name: liga, label: Liga, widget: string }
               - { name: bild, label: Mannschaftsfoto, widget: image, required: false }
-              - { name: logo, label: Team-Logo (freigestellt), widget: image, required: false }
+              - { name: logo, label: Team-Logo (freigestellt, für dunklen Hintergrund), widget: image, required: false }
+              - { name: logoHell, label: Team-Logo für hellen Hintergrund (optional), widget: image, required: false }
               - { name: thema, label: Farbthema, widget: hidden, required: false }
               - { name: eventId, label: 3K-Portal Event-ID, widget: number, value_type: int, hint: "Aus dem Portal-Link: …/event/<b>40354</b>/participants/…" }
               - { name: participantId, label: 3K-Portal Mannschafts-ID, widget: number, value_type: int, hint: "Aus dem Portal-Link: …/participants/<b>683347</b>" }

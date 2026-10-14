@@ -16,7 +16,7 @@ import { url } from '../../lib/utils';
         <div class="teams">
           {dart.teams.map((t) => (
             <div class:list={['team', `team--${t.farbe}`]}>
-              {t.logo ? <img class="team__logo" src={url(t.logo)} alt="" width="872" height="850" /> : <span class="team__kuerzel">{t.kuerzel}</span>}
+              {(t.logoHell || t.logo) ? <img class="team__logo" src={url(t.logoHell || t.logo)} alt="" width="872" height="850" /> : <span class="team__kuerzel">{t.kuerzel}</span>}
               <div>
                 <p class="team__name">{t.name}</p>
                 <p class="leise">{t.liga}</p>
