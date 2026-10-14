@@ -16,7 +16,7 @@ import { url } from '../../lib/utils';
         <div class="teams">
           {dart.teams.map((t) => (
             <div class:list={['team', `team--${t.farbe}`]}>
-              <span class="team__kuerzel">{t.kuerzel}</span>
+              {t.logo ? <img class="team__logo" src={url(t.logo)} alt="" width="872" height="850" /> : <span class="team__kuerzel">{t.kuerzel}</span>}
               <div>
                 <p class="team__name">{t.name}</p>
                 <p class="leise">{t.liga}</p>
@@ -42,6 +42,7 @@ import { url } from '../../lib/utils';
   .team { display: flex; gap: 1rem; align-items: center; padding: 1rem 1.25rem; background: var(--weiss); border-radius: var(--radius); box-shadow: var(--schatten); }
   .team p { margin: 0; }
   .team__kuerzel { display: grid; place-items: center; flex: none; width: 3.25rem; height: 3.25rem; border-radius: 50%; color: #fff; font-family: var(--schrift-titel); font-weight: 700; font-size: 1.2rem; }
+  .team__logo { width: 3.6rem; height: auto; flex: none; }
   .team--rot .team__kuerzel { background: #e3262b; }
   .team--gruen .team__kuerzel { background: #1a9e4b; }
   .team__name { font-family: var(--schrift-titel); font-weight: 700; font-size: 1.4rem; }

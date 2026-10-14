@@ -24,24 +24,29 @@ const spieler = liga?.kader.length
 const naechstes = liga?.spiele.find((s) => !s.fertig);
 const platz = liga?.tabelle.find((z) => z.id === liga.participantId);
 ---
-<DartBasis titel={team.name} beschreibung={team.slogan}>
+<DartBasis titel={team.name} beschreibung={team.slogan} thema={team.thema}>
   <section class:list={['held', `held--${team.farbe}`]}>
     <Dartscheibe class="held__scheibe" zahlen={false} />
     <div class="d-container held__innen">
+      <div class="held__marke">
+        {team.logo ? <img class="held__logo" src={url(team.logo)} alt={`Logo ${team.name}`} width="872" height="850" /> : (
+          <div class="held__platzhalter"><span>{team.kuerzel}</span><small>Logo folgt</small></div>
+        )}
+      </div>
       <div>
         <span class="d-label">{team.liga}</span>
         <h1>{team.name}</h1>
         <p class="held__slogan">„{team.slogan}“</p>
         <div class="held__reiter"><TeamReiter team={team} aktiv="team" /></div>
       </div>
-      <div class="held__bild">
-        {team.bild ? <img src={url(team.bild)} alt={`Mannschaft ${team.name}`} /> : (
-          <div class="held__platzhalter"><span>{team.kuerzel}</span><small>Mannschaftsfoto folgt</small></div>
-        )}
-      </div>
     </div>
   </section>
   <div class="d-kante"></div>
+  {team.bild && (
+    <figure class="d-container teamfoto">
+      <img src={url(team.bild)} alt={`Mannschaftsfoto ${team.name}`} />
+    </figure>
+  )}
 
   <section class:list={['d-container', 'inhalt', `inhalt--${team.farbe}`]}>
     <div class="ueber">
@@ -84,21 +89,24 @@ const platz = liga?.tabelle.find((z) => z.id === liga.participantId);
   .held--gruen { --akzent: var(--d-gruen); }
   :global(.held__scheibe) { position: absolute; left: -16rem; bottom: -16rem; width: 34rem; max-width: none; opacity: 0.18; transform: rotate(12deg); }
   .held__innen { position: relative; display: grid; gap: 2.5rem; align-items: center; }
-  @media (min-width: 900px) { .held__innen { grid-template-columns: 1.2fr 1fr; } }
+  @media (min-width: 900px) { .held__innen { grid-template-columns: auto 1fr; gap: 3.5rem; } }
   .held .d-label { color: var(--akzent); }
-  .held h1 { font-size: clamp(4rem, 12vw, 8.5rem); margin: 0.75rem 0 1rem; }
+  .held h1 { font-size: clamp(2.6rem, 11.5vw, 8.5rem); margin: 0.75rem 0 1rem; }
   .held__reiter { margin-top: 2rem; }
+  .held__logo { display: block; width: clamp(10rem, 24vw, 17rem); height: auto; filter: drop-shadow(0 16px 30px rgb(0 0 0 / 0.6)); }
+  .teamfoto { margin-top: 3rem; }
+  .teamfoto img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; object-position: center 45%; clip-path: polygon(0 0, calc(100% - 48px) 0, 100% 48px, 100% 100%, 48px 100%, 0 calc(100% - 48px)); }
   dd a { color: var(--d-sisal); }
   .held__slogan { font-size: 1.5rem; font-style: italic; color: var(--d-sisal); margin: 0; border-left: 6px solid var(--akzent); padding-left: 1rem; }
-  .held__bild img, .held__platzhalter {
-    width: 100%; aspect-ratio: 4 / 3; object-fit: cover;
+  .held__platzhalter {
+    width: clamp(10rem, 24vw, 17rem); aspect-ratio: 1;
     clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 40px, 100% 100%, 40px 100%, 0 calc(100% - 40px));
   }
   .held__platzhalter {
     display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.25rem;
     background: repeating-linear-gradient(-45deg, var(--d-flaeche) 0 18px, #1d1d1d 18px 36px); border: 2px solid var(--akzent);
   }
-  .held__platzhalter span { font-family: var(--d-titel); font-size: 8rem; line-height: 0.9; color: var(--akzent); }
+  .held__platzhalter span { font-family: var(--d-titel); font-size: 6rem; line-height: 0.9; color: var(--akzent); }
   .held__platzhalter small { color: var(--d-leise); letter-spacing: 0.1em; text-transform: uppercase; }
 
   .inhalt { display: grid; gap: 3rem; margin-top: 4rem; }

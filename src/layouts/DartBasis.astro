@@ -9,8 +9,8 @@ import dart from '../data/dart.json';
 import verein from '../data/verein.json';
 import { url } from '../lib/utils';
 
-interface Props { titel?: string; beschreibung?: string }
-const { titel, beschreibung = dart.dartIntro } = Astro.props;
+interface Props { titel?: string; beschreibung?: string; thema?: string }
+const { titel, beschreibung = dart.dartIntro, thema } = Astro.props;
 const seitenTitel = titel ? `${titel} – Dart | ${verein.name}` : `Dart-Abteilung | ${verein.name}`;
 const aktuell = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').replace(/\/$/, '');
 const links = [
@@ -29,7 +29,7 @@ const links = [
     <meta name="theme-color" content="#0b0b0b" />
     <link rel="icon" href={url('/favicon-32.png')} type="image/png" sizes="32x32" />
   </head>
-  <body>
+  <body class={thema ? `thema-${thema}` : undefined}>
     <a class="asv-leiste" href={url('/')}>
       <img src={url('/logo.webp')} alt="" width="144" height="192" />
       <span><strong>← Zurück zum ASV Krebsbach</strong><small>Die Dart-Abteilung ist Teil des {verein.vollerName}</small></span>
@@ -108,6 +108,18 @@ const links = [
   .d-knopf--gruen:hover { background: #22b85a; }
   .d-knopf--rand { background: transparent; box-shadow: inset 0 0 0 2px var(--d-sisal); clip-path: none; color: var(--d-sisal); }
   .d-knopf--rand:hover { background: var(--d-sisal); color: var(--d-schwarz); }
+
+  /* Team-Thema Krebsbachbomber – Farben aus Logo und Trikot: Krebsrot, Chrom, Schwarz, Trikot-Navy */
+  body.thema-krebsbachbomber {
+    --d-rot: #e4210c; --d-gruen: #c9ced8; --d-sisal: #d9dde6; --d-leise: #9ba1b4;
+    --d-schwarz: #07080f; --d-flaeche: #12142a; --d-linie: #262a4d;
+    background:
+      radial-gradient(circle at 85% -10%, rgb(228 33 12 / 0.28), transparent 45%),
+      radial-gradient(circle at -10% 70%, rgb(28 29 74 / 0.9), transparent 55%),
+      #07080f;
+  }
+  .thema-krebsbachbomber .d-kante { background: repeating-linear-gradient(90deg, #e4210c 0 28px, #d9dde6 28px 56px, #07080f 56px 84px); }
+  .thema-krebsbachbomber h1 { background: linear-gradient(180deg, #ffffff 0%, #e3e6ec 45%, #8d93a3 55%, #f1f3f7 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 3px 0 #000) drop-shadow(0 0 1px #000); }
 
   /* Schachbrett-Kante wie der Doppelring der Scheibe */
   .d-kante { height: 10px; background: repeating-linear-gradient(90deg, var(--d-rot) 0 28px, var(--d-gruen) 28px 56px); }

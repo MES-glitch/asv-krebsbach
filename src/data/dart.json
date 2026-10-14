@@ -16,10 +16,12 @@
       "slogan": "Wir werfen nicht. Wir schlagen ein.",
       "beschreibung": "[Platzhalter] Hier stellt sich das Team vor: Gründung, Spielstil, größte Erfolge.",
       "liga": "A-Liga",
-      "bild": "",
+      "bild": "/uploads/krebsbachbomber-team.jpg",
       "spieler": [],
       "eventId": 40354,
-      "participantId": 683347
+      "participantId": 683347,
+      "logo": "/uploads/krebsbachbomber-logo.webp",
+      "thema": "krebsbachbomber"
     },
     {
       "id": "petri-pfeil",
@@ -32,7 +34,8 @@
       "bild": "",
       "spieler": [],
       "eventId": 40355,
-      "participantId": 683468
+      "participantId": 683468,
+      "logo": ""
     }
   ]
 }

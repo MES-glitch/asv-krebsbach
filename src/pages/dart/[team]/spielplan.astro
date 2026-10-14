@@ -4,6 +4,7 @@ import TeamReiter from '../../../components/dart/TeamReiter.astro';
 import Spielliste from '../../../components/dart/Spielliste.astro';
 import Tabelle from '../../../components/dart/Tabelle.astro';
 import dart from '../../../data/dart.json';
+import { url } from '../../../lib/utils';
 import { ladeLiga, spielDatum, spielZeit, standDatum } from '../../../lib/dart-liga';
 
 export function getStaticPaths() {
@@ -16,9 +17,10 @@ const fertig = [...(liga?.spiele.filter((s) => s.fertig) ?? [])].reverse();
 const naechstes = offen[0];
 const platz = liga?.tabelle.find((z) => z.id === liga.participantId);
 ---
-<DartBasis titel={`Spielplan ${team.name}`} beschreibung={`Spielplan, Ergebnisse und Tabelle der ${team.name} (${team.liga}).`}>
+<DartBasis titel={`Spielplan ${team.name}`} beschreibung={`Spielplan, Ergebnisse und Tabelle der ${team.name} (${team.liga}).`} thema={team.thema}>
   <section class:list={['kopf', `kopf--${team.farbe}`]}>
     <div class="d-container">
+      {team.logo && <img class="kopf__logo" src={url(team.logo)} alt={`Logo ${team.name}`} width="872" height="850" />}
       <span class="d-label">{team.liga}{liga && ` · ${liga.dartart} · ${liga.saison}`}</span>
       <h1>{team.name}</h1>
       <TeamReiter team={team} aktiv="spielplan" />
@@ -75,7 +77,10 @@ const platz = liga?.tabelle.find((z) => z.id === liga.participantId);
   .kopf { padding: 3.5rem 0 2rem; --akzent: var(--d-rot); }
   .kopf--gruen { --akzent: var(--d-gruen); }
   .kopf .d-label { color: var(--akzent); }
-  .kopf h1 { font-size: clamp(3.5rem, 10vw, 7rem); margin: 0.5rem 0 1.5rem; }
+  .kopf .d-container { position: relative; }
+  .kopf__logo { position: absolute; right: 1.5rem; top: -1rem; width: clamp(7rem, 18vw, 12rem); height: auto; filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.6)); }
+  @media (max-width: 640px) { .kopf__logo { position: static; width: 7rem; margin-bottom: 0.75rem; } }
+  .kopf h1 { font-size: clamp(2.6rem, 11.5vw, 7rem); margin: 0.5rem 0 1.5rem; }
 
   .kacheln { display: grid; gap: 1rem; margin-top: 3rem; }
   @media (min-width: 800px) { .kacheln { grid-template-columns: 2fr 1fr; } }

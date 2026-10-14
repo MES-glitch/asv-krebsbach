@@ -33,7 +33,7 @@ const news = (await getCollection('dartnews', (n) => !n.data.entwurf)).sort((x, 
   <section class="d-container teams">
     {teams.map((t) => (
       <a class:list={['team', `team--${t.farbe}`]} href={url(`/dart/${t.id}/`)}>
-        <span class="team__kuerzel" aria-hidden="true">{t.kuerzel}</span>
+        {t.logo ? <img class="team__logo" src={url(t.logo)} alt="" width="872" height="850" /> : <span class="team__kuerzel" aria-hidden="true">{t.kuerzel}</span>}
         <span class="d-label">{t.liga}</span>
         <h2>{t.name}</h2>
         <p class="team__slogan">„{t.slogan}“</p>
@@ -94,6 +94,8 @@ const news = (await getCollection('dartnews', (n) => !n.data.entwurf)).sort((x, 
   .team--gruen::before { background: var(--d-gruen); }
   .team--gruen .d-label { color: var(--d-gruen); }
   .team__kuerzel { position: absolute; right: -0.5rem; bottom: -2.5rem; font-family: var(--d-titel); font-size: 13rem; line-height: 1; color: rgb(255 255 255 / 0.04); }
+  .team__logo { position: absolute; right: 1rem; bottom: 1rem; width: clamp(7rem, 14vw, 10rem); height: auto; opacity: 0.95; filter: drop-shadow(0 10px 20px rgb(0 0 0 / 0.6)); transition: transform 0.2s; }
+  .team:hover .team__logo { transform: rotate(-4deg) scale(1.05); }
   .team h2 { font-size: clamp(3rem, 6vw, 4.5rem); margin: 0.5rem 0 0.75rem; }
   .team__slogan { font-size: 1.3rem; color: var(--d-sisal); margin: 0 0 1.75rem; font-style: italic; max-width: 22rem; }
   .team__stand { margin: -0.75rem 0 0.25rem; font-size: 1.15rem; }
