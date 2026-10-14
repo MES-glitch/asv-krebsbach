@@ -1,0 +1,55 @@
+---
+import type { Spiel } from '../../lib/dart-liga';
+import { spielDatum, spielZeit, ergebnis } from '../../lib/dart-liga';
+
+interface Props { spiele: Spiel[]; eigeneId: number }
+const { spiele, eigeneId } = Astro.props;
+const text = { sieg: 'S', niederlage: 'N', remis: 'U' };
+---
+<ol class="spiele">
+  {spiele.map((s) => {
+    const e = ergebnis(s, eigeneId);
+    const heimspiel = s.heimId === eigeneId;
+    return (
+      <li class:list={['spiel', e && `spiel--${e.ausgang}`]}>
+        <div class="spiel__wann">
+          <span class="spiel__runde">{s.runde}</span>
+          <span>{spielDatum(s.datum)}</span>
+          {!s.fertig && <span class="spiel__zeit">{spielZeit(s.datum)} Uhr</span>}
+        </div>
+        <div class="spiel__paarung">
+          <span class:list={{ wir: s.heimId === eigeneId }}>{s.heim}</span>
+          <span class="spiel__vs">{s.fertig ? `${s.setsHeim} : ${s.setsGast}` : 'vs'}</span>
+          <span class:list={{ wir: s.gastId === eigeneId }}>{s.gast}</span>
+        </div>
+        <div class="spiel__info">
+          {e ? (
+            <span class={`marke marke--${e.ausgang}`} title={e.ausgang}>{text[e.ausgang]}</span>
+          ) : (
+            <span class="ort">{heimspiel ? 'Heim' : 'Auswärts'}</span>
+          )}
+        </div>
+      </li>
+    );
+  })}
+</ol>
+
+<style>
+  .spiele { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.5rem; }
+  .spiel { display: grid; grid-template-columns: 8.5rem 1fr auto; gap: 1rem; align-items: center; padding: 0.85rem 1.1rem; background: var(--d-flaeche); border-left: 6px solid var(--d-linie); }
+  .spiel--sieg { border-left-color: var(--d-gruen); }
+  .spiel--niederlage { border-left-color: var(--d-rot); }
+  @media (max-width: 640px) { .spiel { grid-template-columns: 1fr auto; } .spiel__wann { grid-column: 1 / -1; flex-direction: row !important; gap: 0.75rem !important; } }
+  .spiel__wann { display: flex; flex-direction: column; gap: 0.1rem; font-size: 1rem; color: var(--d-leise); line-height: 1.2; }
+  .spiel__runde { font-family: var(--d-titel); letter-spacing: 0.1em; color: var(--d-sisal); font-size: 1rem; }
+  .spiel__zeit { color: var(--d-text); }
+  .spiel__paarung { display: grid; grid-template-columns: 1fr auto 1fr; gap: 0.75rem; align-items: center; font-size: 1.15rem; }
+  .spiel__paarung > span:first-child { text-align: right; }
+  .spiel__paarung .wir { font-weight: 800; color: #fff; }
+  .spiel__vs { font-family: var(--d-titel); font-size: 1.6rem; letter-spacing: 0.04em; color: var(--d-sisal); min-width: 4.5rem; text-align: center; line-height: 1; }
+  .marke { display: grid; place-items: center; width: 2.2rem; height: 2.2rem; font-family: var(--d-titel); font-size: 1.4rem; color: #fff; }
+  .marke--sieg { background: var(--d-gruen); }
+  .marke--niederlage { background: var(--d-rot); }
+  .marke--remis { background: #555; }
+  .ort { font-family: var(--d-titel); letter-spacing: 0.1em; font-size: 0.95rem; color: var(--d-leise); }
+</style>

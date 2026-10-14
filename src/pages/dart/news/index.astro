@@ -1,0 +1,30 @@
+---
+import { getCollection } from 'astro:content';
+import DartBasis from '../../../layouts/DartBasis.astro';
+import NewsKarte from '../../../components/dart/NewsKarte.astro';
+
+const news = (await getCollection('dartnews', (n) => !n.data.entwurf))
+  .sort((a, b) => b.data.datum.getTime() - a.data.datum.getTime());
+---
+<DartBasis titel="News" beschreibung="Spielberichte und Neuigkeiten der Dart-Abteilung des ASV Krebsbach.">
+  <section class="kopf">
+    <div class="d-container">
+      <span class="d-label">Dart-Abteilung</span>
+      <h1>News</h1>
+      <p>Spielberichte, Ergebnisse und alles rund ums Board.</p>
+    </div>
+  </section>
+  <div class="d-kante"></div>
+  <section class="d-container liste">
+    {news.length ? news.map((n) => <NewsKarte eintrag={n} />) : <p class="leer">Noch keine News – bald geht's los.</p>}
+  </section>
+</DartBasis>
+
+<style>
+  .kopf { padding: 3.5rem 0 2.5rem; }
+  .kopf h1 { font-size: clamp(4rem, 12vw, 8rem); margin: 0.5rem 0 0.5rem; }
+  .kopf p { color: var(--d-sisal); font-size: 1.3rem; margin: 0; }
+  .liste { display: grid; gap: 1.5rem; margin-top: 3rem; }
+  @media (min-width: 800px) { .liste { grid-template-columns: repeat(2, 1fr); } }
+  .leer { color: var(--d-leise); }
+</style>

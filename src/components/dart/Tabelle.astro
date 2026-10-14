@@ -1,0 +1,41 @@
+---
+import type { Tabellenzeile } from '../../lib/dart-liga';
+interface Props { zeilen: Tabellenzeile[]; eigeneId: number; farbe?: string }
+const { zeilen, eigeneId, farbe = 'rot' } = Astro.props;
+const diff = (a: number, b: number) => (a - b > 0 ? `+${a - b}` : `${a - b}`);
+---
+<div class="tabelle-rahmen">
+  <table class:list={['tabelle', `tabelle--${farbe}`]}>
+    <thead>
+      <tr><th>Pl.</th><th class="links">Mannschaft</th><th>Sp</th><th>S</th><th>U</th><th>N</th><th class="breit">Sets</th><th class="breit">Legs</th><th>Pkt</th></tr>
+    </thead>
+    <tbody>
+      {zeilen.map((z) => (
+        <tr class:list={{ wir: z.id === eigeneId }}>
+          <td class="platz">{z.platz}</td>
+          <td class="links name">{z.name}</td>
+          <td>{z.spiele}</td><td>{z.siege}</td><td>{z.unentschieden}</td><td>{z.niederlagen}</td>
+          <td class="breit">{z.sets1}:{z.sets2} <small>{diff(z.sets1, z.sets2)}</small></td>
+          <td class="breit">{z.legs1}:{z.legs2} <small>{diff(z.legs1, z.legs2)}</small></td>
+          <td class="punkte">{z.punkte}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+<style>
+  .tabelle-rahmen { overflow-x: auto; }
+  .tabelle { width: 100%; border-collapse: collapse; font-size: 1.1rem; min-width: 30rem; }
+  th { font-family: var(--d-titel); font-weight: 400; letter-spacing: 0.1em; color: var(--d-leise); font-size: 1rem; padding: 0.5rem 0.6rem; border-bottom: 2px solid var(--d-linie); text-align: center; }
+  td { padding: 0.75rem 0.6rem; border-bottom: 1px solid var(--d-linie); text-align: center; }
+  .links { text-align: left; }
+  .platz { font-family: var(--d-titel); font-size: 1.5rem; color: var(--d-leise); }
+  .punkte { font-family: var(--d-titel); font-size: 1.6rem; }
+  small { color: var(--d-leise); font-size: 0.85rem; }
+  .wir td { background: rgb(227 38 43 / 0.16); color: #fff; font-weight: 800; }
+  .tabelle--gruen .wir td { background: rgb(26 158 75 / 0.18); }
+  .wir .platz, .wir .punkte { color: var(--d-rot); }
+  .tabelle--gruen .wir .platz, .tabelle--gruen .wir .punkte { color: var(--d-gruen); }
+  @media (max-width: 640px) { .breit { display: none; } .tabelle { min-width: 0; } }
+</style>

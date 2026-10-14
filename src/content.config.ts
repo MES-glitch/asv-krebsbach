@@ -37,4 +37,16 @@ const seiten = defineCollection({
   }),
 });
 
-export const collections = { termine, neuigkeiten, seiten };
+const dartnews = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/dartnews' }),
+  schema: z.object({
+    titel: z.string(),
+    datum: z.coerce.date(),
+    team: z.enum(['alle', 'krebsbachbomber', 'petri-pfeil']).default('alle'),
+    kurztext: z.string().optional(),
+    bild: z.string().optional(),
+    entwurf: z.boolean().default(false),
+  }),
+});
+
+export const collections = { termine, neuigkeiten, seiten, dartnews };

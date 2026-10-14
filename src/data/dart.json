@@ -3,9 +3,9 @@
   "untertitel": "Zwei eigene Dart-Mannschaften unter dem Dach des ASV Krebsbach.",
   "einleitung": "In unserem Vereinsheim fliegen nicht nur Geschichten vom großen Fang durch den Raum: Mit den „Krebsbachbombern“ und „Petri Pfeil“ beherbergen wir zwei eigene Dart-Mannschaften. Beide trainieren in unseren Räumlichkeiten und tragen hier auch einen Teil ihrer Ligaspiele aus.",
   "bild": "",
-  "dartHeld": "Steel. Spitze. Krebsbach.",
-  "dartIntro": "Zwei Teams, ein Board, null Gnade. Die Dart-Abteilung des ASV Krebsbach trainiert und spielt im Vereinsheim am Ablassweg – und wirft in der Liga um jeden Punkt.",
-  "spielort": "Vereinsheim ASV Krebsbach, Ablassweg, 74924 Neckarbischofsheim",
+  "dartHeld": "Pfeil. Spitze. Krebsbach.",
+  "dartIntro": "Zwei Teams, ein Board, null Gnade. Die Dart-Abteilung des ASV Krebsbach trainiert und spielt im Vereinsheim am Ablassweg – und wirft in der E-Dart-Liga des DSAB um jeden Punkt.",
+  "spielort": "Vereinsheim ASV Krebsbach, Ablassweg 27, 74924 Neckarbischofsheim",
   "training": "[Trainingszeiten eintragen]",
   "teams": [
     {
@@ -15,14 +15,11 @@
       "farbe": "rot",
       "slogan": "Wir werfen nicht. Wir schlagen ein.",
       "beschreibung": "[Platzhalter] Hier stellt sich das Team vor: Gründung, Spielstil, größte Erfolge.",
-      "liga": "[Liga eintragen]",
+      "liga": "A-Liga",
       "bild": "",
-      "spieler": [
-        { "name": "[Spieler 1]", "spitzname": "", "rolle": "Kapitän" },
-        { "name": "[Spieler 2]", "spitzname": "", "rolle": "" },
-        { "name": "[Spieler 3]", "spitzname": "", "rolle": "" },
-        { "name": "[Spieler 4]", "spitzname": "", "rolle": "" }
-      ]
+      "spieler": [],
+      "eventId": 40354,
+      "participantId": 683347
     },
     {
       "id": "petri-pfeil",
@@ -31,14 +28,11 @@
       "farbe": "gruen",
       "slogan": "Petri Heil – und ab ins Triple.",
       "beschreibung": "[Platzhalter] Hier stellt sich das Team vor: Gründung, Spielstil, größte Erfolge.",
-      "liga": "[Liga eintragen]",
+      "liga": "C-Liga",
       "bild": "",
-      "spieler": [
-        { "name": "[Spieler 1]", "spitzname": "", "rolle": "Kapitän" },
-        { "name": "[Spieler 2]", "spitzname": "", "rolle": "" },
-        { "name": "[Spieler 3]", "spitzname": "", "rolle": "" },
-        { "name": "[Spieler 4]", "spitzname": "", "rolle": "" }
-      ]
+      "spieler": [],
+      "eventId": 40355,
+      "participantId": 683468
     }
   ]
 }

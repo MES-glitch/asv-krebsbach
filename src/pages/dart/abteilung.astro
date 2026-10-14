@@ -2,7 +2,16 @@
 import DartBasis from '../../layouts/DartBasis.astro';
 import Dartscheibe from '../../components/dart/Dartscheibe.astro';
 import dart from '../../data/dart.json';
+import { getCollection } from 'astro:content';
+import NewsKarte from '../../components/dart/NewsKarte.astro';
 import { url } from '../../lib/utils';
+import { ladeLiga, spielDatum, spielZeit } from '../../lib/dart-liga';
+
+const teams = await Promise.all(dart.teams.map(async (t) => {
+  const daten = await ladeLiga(t.eventId, t.participantId);
+  return { ...t, naechstes: daten?.spiele.find((s) => !s.fertig), platz: daten?.tabelle.find((z) => z.id === daten.participantId) };
+}));
+const news = (await getCollection('dartnews', (n) => !n.data.entwurf)).sort((x, y) => y.data.datum.getTime() - x.data.datum.getTime()).slice(0, 2);
 ---
 <DartBasis>
   <section class="held">
@@ -22,16 +31,25 @@ import { url } from '../../lib/utils';
   <div class="d-kante"></div>
 
   <section class="d-container teams">
-    {dart.teams.map((t) => (
+    {teams.map((t) => (
       <a class:list={['team', `team--${t.farbe}`]} href={url(`/dart/${t.id}/`)}>
         <span class="team__kuerzel" aria-hidden="true">{t.kuerzel}</span>
         <span class="d-label">{t.liga}</span>
         <h2>{t.name}</h2>
         <p class="team__slogan">„{t.slogan}“</p>
+        {t.platz && <p class="team__stand"><strong>{t.platz.platz}</strong> Platz · {t.platz.punkte} Punkte</p>}
+        {t.naechstes && <p class="team__naechstes">Next: {spielDatum(t.naechstes.datum)}, {spielZeit(t.naechstes.datum)} · {t.naechstes.heimId === t.participantId ? 'vs ' + t.naechstes.gast : '@ ' + t.naechstes.heim}</p>}
         <span class="team__mehr">Zum Team →</span>
       </a>
     ))}
   </section>
+
+  {news.length > 0 && (
+    <section class="d-container news">
+      <div class="news__kopf"><h2>News</h2><a href={url('/dart/news/')}>Alle News →</a></div>
+      <div class="news__liste">{news.map((n) => <NewsKarte eintrag={n} />)}</div>
+    </section>
+  )}
 
   <section class="d-container fakten">
     <div class="fakt">
@@ -78,6 +96,15 @@ import { url } from '../../lib/utils';
   .team__kuerzel { position: absolute; right: -0.5rem; bottom: -2.5rem; font-family: var(--d-titel); font-size: 13rem; line-height: 1; color: rgb(255 255 255 / 0.04); }
   .team h2 { font-size: clamp(3rem, 6vw, 4.5rem); margin: 0.5rem 0 0.75rem; }
   .team__slogan { font-size: 1.3rem; color: var(--d-sisal); margin: 0 0 1.75rem; font-style: italic; max-width: 22rem; }
+  .team__stand { margin: -0.75rem 0 0.25rem; font-size: 1.15rem; }
+  .team__stand strong { font-family: var(--d-titel); font-size: 1.8rem; font-weight: 400; }
+  .team__naechstes { margin: 0 0 1.5rem; color: var(--d-leise); }
+  .news { margin-top: 4rem; }
+  .news__kopf { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; margin-bottom: 1.25rem; }
+  .news__kopf h2 { font-size: 3rem; }
+  .news__kopf a { font-family: var(--d-titel); font-size: 1.3rem; letter-spacing: 0.06em; color: var(--d-sisal); text-decoration: none; }
+  .news__liste { display: grid; gap: 1.5rem; }
+  @media (min-width: 800px) { .news__liste { grid-template-columns: 1fr 1fr; } }
   .team__mehr { font-family: var(--d-titel); font-size: 1.4rem; letter-spacing: 0.06em; }
   .team--rot .team__mehr { color: var(--d-rot); }
   .team--gruen .team__mehr { color: var(--d-gruen); }

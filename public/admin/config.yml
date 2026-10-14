@@ -70,6 +70,24 @@ collections:
       - { name: impressum, label: Impressum, file: src/content/seiten/impressum.md, fields: *seitenfelder }
       - { name: datenschutz, label: Datenschutz, file: src/content/seiten/datenschutz.md, fields: *seitenfelder }
 
+  - name: dartnews
+    label: Dart-News
+    label_singular: Dart-News
+    description: Spielberichte und Neuigkeiten der Dart-Abteilung.
+    folder: src/content/dartnews
+    create: true
+    slug: "{{datum}}-{{titel}}"
+    summary: "{{datum}} · {{titel}}"
+    sortable_fields: [datum, titel]
+    fields:
+      - { name: titel, label: Titel, widget: string }
+      - { name: datum, label: Datum, widget: datetime, time_format: false, date_format: "DD.MM.YYYY", format: "YYYY-MM-DD" }
+      - { name: team, label: Mannschaft, widget: select, options: [{ label: Beide / Abteilung, value: alle }, { label: Krebsbachbomber, value: krebsbachbomber }, { label: Petri Pfeil, value: petri-pfeil }], default: alle }
+      - { name: kurztext, label: Kurztext (Vorschau), widget: text, required: false }
+      - { name: bild, label: Bild, widget: image, required: false }
+      - { name: entwurf, label: "Entwurf (noch nicht veröffentlichen)", widget: boolean, default: false }
+      - { name: body, label: Text, widget: markdown }
+
   - name: einstellungen
     label: Startseite, Verein & Vorstand
     description: Texte und Fotos der Startseite, allgemeine Angaben zum Verein und die Vorstandsmitglieder.
@@ -174,9 +192,12 @@ collections:
               - { name: beschreibung, label: Beschreibung, widget: text }
               - { name: liga, label: Liga, widget: string }
               - { name: bild, label: Mannschaftsfoto, widget: image, required: false }
+              - { name: eventId, label: 3K-Portal Event-ID, widget: number, value_type: int, hint: "Aus dem Portal-Link: …/event/<b>40354</b>/participants/…" }
+              - { name: participantId, label: 3K-Portal Mannschafts-ID, widget: number, value_type: int, hint: "Aus dem Portal-Link: …/participants/<b>683347</b>" }
               - name: spieler
-                label: Spieler
+                label: Spitznamen & Rollen (optional)
                 label_singular: Spieler
+                hint: "Der Kader kommt automatisch aus dem 3K-Portal. Hier nur Spitznamen oder Rollen ergänzen – der Name muss genau wie im Portal geschrieben sein."
                 widget: list
                 summary: "{{name}}"
                 fields:

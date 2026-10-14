@@ -1,0 +1,493 @@
+{
+  "683347": {
+    "abgerufen": "2026-10-14T15:05:59.779Z",
+    "teamName": "Krebsbach Bomber",
+    "participantId": 683347,
+    "gruppe": "A 02",
+    "region": "Heilbronner",
+    "saison": "2026 - 2. Halbjahr",
+    "dartart": "E-Dart",
+    "kader": [
+      {
+        "name": "Christoph Pieper",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Felix Beathalter",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Jonas Brennenstuhl",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Alexander Wennes",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Danny Richter",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Marcel Wehrle",
+        "captain": false,
+        "coCaptain": true
+      },
+      {
+        "name": "Sven Malosczyk",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Maik Seussler",
+        "captain": true,
+        "coCaptain": false
+      }
+    ],
+    "spiele": [
+      {
+        "runde": "Spieltag 1",
+        "datum": "2026-09-12T17:00:00.000+0000",
+        "heim": "Team Schorle",
+        "gast": "Krebsbach Bomber",
+        "heimId": 683345,
+        "gastId": 683347,
+        "fertig": true,
+        "setsHeim": 6,
+        "setsGast": 12,
+        "legsHeim": 16,
+        "legsGast": 26
+      },
+      {
+        "runde": "Spieltag 2",
+        "datum": "2026-10-03T18:30:00.000+0000",
+        "heim": "Krebsbach Bomber",
+        "gast": "Piraten des Kraichgaus 3",
+        "heimId": 683347,
+        "gastId": 683348,
+        "fertig": true,
+        "setsHeim": 13,
+        "setsGast": 5,
+        "legsHeim": 29,
+        "legsGast": 16
+      },
+      {
+        "runde": "Spieltag 3",
+        "datum": "2026-10-17T18:30:00.000+0000",
+        "heim": "Die Gallier",
+        "gast": "Krebsbach Bomber",
+        "heimId": 683349,
+        "gastId": 683347,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 4",
+        "datum": "2026-10-24T18:30:00.000+0000",
+        "heim": "Minions Reloaded",
+        "gast": "Krebsbach Bomber",
+        "heimId": 683350,
+        "gastId": 683347,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 5",
+        "datum": "2026-11-07T19:30:00.000+0000",
+        "heim": "Dart Devils",
+        "gast": "Krebsbach Bomber",
+        "heimId": 683346,
+        "gastId": 683347,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 6",
+        "datum": "2026-11-21T19:30:00.000+0000",
+        "heim": "Krebsbach Bomber",
+        "gast": "Team Schorle",
+        "heimId": 683347,
+        "gastId": 683345,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 7",
+        "datum": "2026-12-19T18:00:00.000+0000",
+        "heim": "Piraten des Kraichgaus 3",
+        "gast": "Krebsbach Bomber",
+        "heimId": 683348,
+        "gastId": 683347,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 8",
+        "datum": "2027-01-02T19:30:00.000+0000",
+        "heim": "Krebsbach Bomber",
+        "gast": "Die Gallier",
+        "heimId": 683347,
+        "gastId": 683349,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 9",
+        "datum": "2027-01-23T19:00:00.000+0000",
+        "heim": "Krebsbach Bomber",
+        "gast": "Minions Reloaded",
+        "heimId": 683347,
+        "gastId": 683350,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 10",
+        "datum": "2027-02-06T19:30:00.000+0000",
+        "heim": "Krebsbach Bomber",
+        "gast": "Dart Devils",
+        "heimId": 683347,
+        "gastId": 683346,
+        "fertig": false
+      }
+    ],
+    "tabelle": [
+      {
+        "platz": "1.",
+        "name": "Krebsbach Bomber",
+        "id": 683347,
+        "spiele": 2,
+        "siege": 2,
+        "niederlagen": 0,
+        "unentschieden": 0,
+        "punkte": 6,
+        "sets1": 25,
+        "sets2": 11,
+        "legs1": 55,
+        "legs2": 32
+      },
+      {
+        "platz": "2.",
+        "name": "Dart Devils",
+        "id": 683346,
+        "spiele": 3,
+        "siege": 2,
+        "niederlagen": 1,
+        "unentschieden": 0,
+        "punkte": 6,
+        "sets1": 31,
+        "sets2": 23,
+        "legs1": 73,
+        "legs2": 62
+      },
+      {
+        "platz": "3.",
+        "name": "Die Gallier",
+        "id": 683349,
+        "spiele": 2,
+        "siege": 2,
+        "niederlagen": 0,
+        "unentschieden": 0,
+        "punkte": 6,
+        "sets1": 22,
+        "sets2": 14,
+        "legs1": 55,
+        "legs2": 40
+      },
+      {
+        "platz": "4.",
+        "name": "Minions Reloaded",
+        "id": 683350,
+        "spiele": 3,
+        "siege": 1,
+        "niederlagen": 2,
+        "unentschieden": 0,
+        "punkte": 3,
+        "sets1": 26,
+        "sets2": 28,
+        "legs1": 64,
+        "legs2": 71
+      },
+      {
+        "platz": "5.",
+        "name": "Team Schorle",
+        "id": 683345,
+        "spiele": 2,
+        "siege": 0,
+        "niederlagen": 2,
+        "unentschieden": 0,
+        "punkte": 0,
+        "sets1": 12,
+        "sets2": 24,
+        "legs1": 34,
+        "legs2": 51
+      },
+      {
+        "platz": "6.",
+        "name": "Piraten des Kraichgaus 3",
+        "id": 683348,
+        "spiele": 2,
+        "siege": 0,
+        "niederlagen": 2,
+        "unentschieden": 0,
+        "punkte": 0,
+        "sets1": 10,
+        "sets2": 26,
+        "legs1": 31,
+        "legs2": 56
+      }
+    ],
+    "portalUrl": "https://portal.3k-darts.com/frontend/events/9/event/40354/participants/683347"
+  },
+  "683468": {
+    "abgerufen": "2026-10-14T15:05:59.919Z",
+    "teamName": "DC Petri Pfeil",
+    "participantId": 683468,
+    "gruppe": "C 07",
+    "region": "Heilbronner",
+    "saison": "2026 - 2. Halbjahr",
+    "dartart": "E-Dart",
+    "kader": [
+      {
+        "name": "Marcus Göddertz",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Bianca Hrubesch",
+        "captain": true,
+        "coCaptain": false
+      },
+      {
+        "name": "Rainer Betz",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Claudio Tundis",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Nicole Schön",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Julia Pröll",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Enrico Franke",
+        "captain": false,
+        "coCaptain": true
+      },
+      {
+        "name": "Peter Fuchs",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Ruth Pflugfelder",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Michael Pröll",
+        "captain": false,
+        "coCaptain": false
+      },
+      {
+        "name": "Marcel Pflugfelder",
+        "captain": false,
+        "coCaptain": false
+      }
+    ],
+    "spiele": [
+      {
+        "runde": "Spieltag 1",
+        "datum": "2026-09-19T18:30:00.000+0000",
+        "heim": "DC Petri Pfeil",
+        "gast": "Triple X",
+        "heimId": 683468,
+        "gastId": 683467,
+        "fertig": true,
+        "setsHeim": 4,
+        "setsGast": 14,
+        "legsHeim": 16,
+        "legsGast": 30
+      },
+      {
+        "runde": "Spieltag 2",
+        "datum": "2026-10-10T15:00:00.000+0000",
+        "heim": "Crazy Jack's",
+        "gast": "DC Petri Pfeil",
+        "heimId": 683469,
+        "gastId": 683468,
+        "fertig": true,
+        "setsHeim": 11,
+        "setsGast": 7,
+        "legsHeim": 25,
+        "legsGast": 18
+      },
+      {
+        "runde": "Spieltag 3",
+        "datum": "2026-10-17T18:30:00.000+0000",
+        "heim": "DC Petri Pfeil",
+        "gast": "X-Darts",
+        "heimId": 683468,
+        "gastId": 683470,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 4",
+        "datum": "2026-11-14T19:30:00.000+0000",
+        "heim": "DC Petri Pfeil",
+        "gast": "Die Schluckspechte",
+        "heimId": 683468,
+        "gastId": 683465,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 5",
+        "datum": "2026-11-28T16:00:00.000+0000",
+        "heim": "The Mighty Arrows Reloaded",
+        "gast": "DC Petri Pfeil",
+        "heimId": 683466,
+        "gastId": 683468,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 6",
+        "datum": "2026-12-05T19:00:00.000+0000",
+        "heim": "Triple X",
+        "gast": "DC Petri Pfeil",
+        "heimId": 683467,
+        "gastId": 683468,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 7",
+        "datum": "2026-12-12T19:30:00.000+0000",
+        "heim": "DC Petri Pfeil",
+        "gast": "Crazy Jack's",
+        "heimId": 683468,
+        "gastId": 683469,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 8",
+        "datum": "2027-01-09T18:00:00.000+0000",
+        "heim": "X-Darts",
+        "gast": "DC Petri Pfeil",
+        "heimId": 683470,
+        "gastId": 683468,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 9",
+        "datum": "2027-01-16T17:00:00.000+0000",
+        "heim": "Die Schluckspechte",
+        "gast": "DC Petri Pfeil",
+        "heimId": 683465,
+        "gastId": 683468,
+        "fertig": false
+      },
+      {
+        "runde": "Spieltag 10",
+        "datum": "2027-01-30T19:30:00.000+0000",
+        "heim": "DC Petri Pfeil",
+        "gast": "The Mighty Arrows Reloaded",
+        "heimId": 683468,
+        "gastId": 683466,
+        "fertig": false
+      }
+    ],
+    "tabelle": [
+      {
+        "platz": "1.",
+        "name": "Triple X",
+        "id": 683467,
+        "spiele": 2,
+        "siege": 2,
+        "niederlagen": 0,
+        "unentschieden": 0,
+        "punkte": 6,
+        "sets1": 27,
+        "sets2": 9,
+        "legs1": 59,
+        "legs2": 29
+      },
+      {
+        "platz": "2.",
+        "name": "Die Schluckspechte",
+        "id": 683465,
+        "spiele": 2,
+        "siege": 2,
+        "niederlagen": 0,
+        "unentschieden": 0,
+        "punkte": 5,
+        "sets1": 21,
+        "sets2": 16,
+        "legs1": 46,
+        "legs2": 41
+      },
+      {
+        "platz": "3.",
+        "name": "Crazy Jack's",
+        "id": 683469,
+        "spiele": 2,
+        "siege": 1,
+        "niederlagen": 1,
+        "unentschieden": 0,
+        "punkte": 3,
+        "sets1": 18,
+        "sets2": 18,
+        "legs1": 45,
+        "legs2": 43
+      },
+      {
+        "platz": "4.",
+        "name": "The Mighty Arrows Reloaded",
+        "id": 683466,
+        "spiele": 2,
+        "siege": 1,
+        "niederlagen": 1,
+        "unentschieden": 0,
+        "punkte": 3,
+        "sets1": 18,
+        "sets2": 18,
+        "legs1": 46,
+        "legs2": 45
+      },
+      {
+        "platz": "5.",
+        "name": "X-Darts",
+        "id": 683470,
+        "spiele": 2,
+        "siege": 0,
+        "niederlagen": 2,
+        "unentschieden": 0,
+        "punkte": 1,
+        "sets1": 14,
+        "sets2": 23,
+        "legs1": 33,
+        "legs2": 50
+      },
+      {
+        "platz": "6.",
+        "name": "DC Petri Pfeil",
+        "id": 683468,
+        "spiele": 2,
+        "siege": 0,
+        "niederlagen": 2,
+        "unentschieden": 0,
+        "punkte": 0,
+        "sets1": 11,
+        "sets2": 25,
+        "legs1": 34,
+        "legs2": 55
+      }
+    ],
+    "portalUrl": "https://portal.3k-darts.com/frontend/events/9/event/40355/participants/683468"
+  }
+}

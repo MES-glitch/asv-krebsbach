@@ -1,14 +1,28 @@
 ---
-import DartBasis from '../../layouts/DartBasis.astro';
-import Dartscheibe from '../../components/dart/Dartscheibe.astro';
-import dart from '../../data/dart.json';
-import { url } from '../../lib/utils';
+import DartBasis from '../../../layouts/DartBasis.astro';
+import Dartscheibe from '../../../components/dart/Dartscheibe.astro';
+import dart from '../../../data/dart.json';
+import TeamReiter from '../../../components/dart/TeamReiter.astro';
+import { url } from '../../../lib/utils';
+import { ladeLiga, spielDatum, spielZeit } from '../../../lib/dart-liga';
 
 export function getStaticPaths() {
   return dart.teams.map((team) => ({ params: { team: team.id }, props: { team } }));
 }
 const { team } = Astro.props;
 const anderes = dart.teams.find((t) => t.id !== team.id);
+const liga = await ladeLiga(team.eventId, team.participantId);
+// Kader aus dem 3K-Portal; Spitznamen/Rollen können im Redaktionsbereich ergänzt werden (Abgleich über den Namen)
+const extra = new Map(team.spieler.map((s: any) => [s.name, s]));
+const rang = (k: { captain: boolean; coCaptain: boolean }) => (k.captain ? 0 : k.coCaptain ? 1 : 2);
+const spieler = liga?.kader.length
+  ? [...liga.kader].sort((a, b) => rang(a) - rang(b) || a.name.localeCompare(b.name, 'de')).map((k) => {
+      const e: any = extra.get(k.name) ?? {};
+      return { name: k.name, spitzname: e.spitzname ?? '', rolle: e.rolle || (k.captain ? 'Teamcaptain' : k.coCaptain ? 'Co-Captain' : '') };
+    })
+  : team.spieler;
+const naechstes = liga?.spiele.find((s) => !s.fertig);
+const platz = liga?.tabelle.find((z) => z.id === liga.participantId);
 ---
 <DartBasis titel={team.name} beschreibung={team.slogan}>
   <section class:list={['held', `held--${team.farbe}`]}>
@@ -18,6 +32,7 @@ const anderes = dart.teams.find((t) => t.id !== team.id);
         <span class="d-label">{team.liga}</span>
         <h1>{team.name}</h1>
         <p class="held__slogan">„{team.slogan}“</p>
+        <div class="held__reiter"><TeamReiter team={team} aktiv="team" /></div>
       </div>
       <div class="held__bild">
         {team.bild ? <img src={url(team.bild)} alt={`Mannschaft ${team.name}`} /> : (
@@ -33,7 +48,9 @@ const anderes = dart.teams.find((t) => t.id !== team.id);
       <span class="d-label">Das Team</span>
       <p>{team.beschreibung}</p>
       <dl>
-        <div><dt>Liga</dt><dd>{team.liga}</dd></div>
+        <div><dt>Liga</dt><dd>{team.liga}{liga && ` · Gruppe ${liga.gruppe} · ${liga.dartart}`}</dd></div>
+        {platz && <div><dt>Tabellenplatz</dt><dd>{platz.platz} mit {platz.punkte} Punkten</dd></div>}
+        {naechstes && <div><dt>Nächstes Spiel</dt><dd>{spielDatum(naechstes.datum)}, {spielZeit(naechstes.datum)} Uhr: {naechstes.heim} – {naechstes.gast}<br /><a href={url(`/dart/${team.id}/spielplan/`)}>Zum Spielplan →</a></dd></div>}
         <div><dt>Heimspielort</dt><dd>{dart.spielort}</dd></div>
         <div><dt>Training</dt><dd>{dart.training}</dd></div>
       </dl>
@@ -43,7 +60,7 @@ const anderes = dart.teams.find((t) => t.id !== team.id);
       <span class="d-label">Line-up</span>
       <h2>Die Spieler</h2>
       <ol class="spieler">
-        {team.spieler.map((s, i) => (
+        {spieler.map((s: any, i: number) => (
           <li>
             <span class="spieler__nr">{String(i + 1).padStart(2, '0')}</span>
             <span class="spieler__name">{s.name}{s.spitzname && <em> „{s.spitzname}“</em>}</span>
@@ -70,6 +87,8 @@ const anderes = dart.teams.find((t) => t.id !== team.id);
   @media (min-width: 900px) { .held__innen { grid-template-columns: 1.2fr 1fr; } }
   .held .d-label { color: var(--akzent); }
   .held h1 { font-size: clamp(4rem, 12vw, 8.5rem); margin: 0.75rem 0 1rem; }
+  .held__reiter { margin-top: 2rem; }
+  dd a { color: var(--d-sisal); }
   .held__slogan { font-size: 1.5rem; font-style: italic; color: var(--d-sisal); margin: 0; border-left: 6px solid var(--akzent); padding-left: 1rem; }
   .held__bild img, .held__platzhalter {
     width: 100%; aspect-ratio: 4 / 3; object-fit: cover;

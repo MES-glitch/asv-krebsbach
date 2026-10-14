@@ -1,0 +1,101 @@
+---
+import DartBasis from '../../../layouts/DartBasis.astro';
+import TeamReiter from '../../../components/dart/TeamReiter.astro';
+import Spielliste from '../../../components/dart/Spielliste.astro';
+import Tabelle from '../../../components/dart/Tabelle.astro';
+import dart from '../../../data/dart.json';
+import { ladeLiga, spielDatum, spielZeit, standDatum } from '../../../lib/dart-liga';
+
+export function getStaticPaths() {
+  return dart.teams.map((team) => ({ params: { team: team.id }, props: { team } }));
+}
+const { team } = Astro.props;
+const liga = await ladeLiga(team.eventId, team.participantId);
+const offen = liga?.spiele.filter((s) => !s.fertig) ?? [];
+const fertig = [...(liga?.spiele.filter((s) => s.fertig) ?? [])].reverse();
+const naechstes = offen[0];
+const platz = liga?.tabelle.find((z) => z.id === liga.participantId);
+---
+<DartBasis titel={`Spielplan ${team.name}`} beschreibung={`Spielplan, Ergebnisse und Tabelle der ${team.name} (${team.liga}).`}>
+  <section class:list={['kopf', `kopf--${team.farbe}`]}>
+    <div class="d-container">
+      <span class="d-label">{team.liga}{liga && ` · ${liga.dartart} · ${liga.saison}`}</span>
+      <h1>{team.name}</h1>
+      <TeamReiter team={team} aktiv="spielplan" />
+    </div>
+  </section>
+  <div class="d-kante"></div>
+
+  {!liga ? (
+    <section class="d-container"><p class="hinweis">Der Spielplan ist gerade nicht verfügbar.</p></section>
+  ) : (
+    <>
+      <section class:list={['d-container', 'kacheln', `kacheln--${team.farbe}`]}>
+        {naechstes && (
+          <div class="kachel kachel--gross">
+            <span class="d-label">Nächstes Spiel · {naechstes.runde}</span>
+            <p class="paarung"><span class:list={{ wir: naechstes.heimId === liga.participantId }}>{naechstes.heim}</span> <em>vs</em> <span class:list={{ wir: naechstes.gastId === liga.participantId }}>{naechstes.gast}</span></p>
+            <p class="wann">{spielDatum(naechstes.datum)} · {spielZeit(naechstes.datum)} Uhr · {naechstes.heimId === liga.participantId ? 'Heimspiel im Vereinsheim' : 'Auswärts'}</p>
+          </div>
+        )}
+        {platz && (
+          <div class="kachel">
+            <span class="d-label">Tabelle</span>
+            <p class="zahl">{platz.platz}</p>
+            <p class="wann">{platz.punkte} Punkte · {platz.siege} S / {platz.unentschieden} U / {platz.niederlagen} N</p>
+          </div>
+        )}
+      </section>
+
+      <section class="d-container raster">
+        <div>
+          <h2>Spielplan</h2>
+          {offen.length ? <Spielliste spiele={offen} eigeneId={liga.participantId} /> : <p class="hinweis">Keine offenen Spiele.</p>}
+          {fertig.length > 0 && (
+            <>
+              <h2 class="abstand">Ergebnisse</h2>
+              <Spielliste spiele={fertig} eigeneId={liga.participantId} />
+            </>
+          )}
+        </div>
+        <div>
+          <h2>Tabelle <small>{liga.gruppe}</small></h2>
+          <Tabelle zeilen={liga.tabelle} eigeneId={liga.participantId} farbe={team.farbe} />
+          <p class="quelle">
+            Stand: {standDatum(liga.abgerufen)} · Daten aus dem <a href={liga.portalUrl} rel="noopener">3K-Darts-Portal ({liga.region})</a>.
+            Ergebnis in Sets, S = Sieg, U = Unentschieden, N = Niederlage.
+          </p>
+        </div>
+      </section>
+    </>
+  )}
+</DartBasis>
+
+<style>
+  .kopf { padding: 3.5rem 0 2rem; --akzent: var(--d-rot); }
+  .kopf--gruen { --akzent: var(--d-gruen); }
+  .kopf .d-label { color: var(--akzent); }
+  .kopf h1 { font-size: clamp(3.5rem, 10vw, 7rem); margin: 0.5rem 0 1.5rem; }
+
+  .kacheln { display: grid; gap: 1rem; margin-top: 3rem; }
+  @media (min-width: 800px) { .kacheln { grid-template-columns: 2fr 1fr; } }
+  .kachel { background: var(--d-flaeche); padding: 1.5rem 1.75rem; border-top: 6px solid var(--d-sisal); }
+  .kachel--gross { border-top-color: var(--d-rot); }
+  .kacheln--gruen .kachel--gross { border-top-color: var(--d-gruen); }
+  .kacheln--gruen .kachel--gross .d-label, .kacheln--gruen .paarung em { color: var(--d-gruen); }
+  .kachel p { margin: 0; }
+  .paarung { font-family: var(--d-titel); font-size: clamp(2rem, 5vw, 3rem); line-height: 1; margin: 0.6rem 0 0.5rem !important; }
+  .paarung em { font-style: normal; color: var(--d-rot); padding: 0 0.3rem; }
+  .paarung span:not(.wir) { color: var(--d-leise); }
+  .zahl { font-family: var(--d-titel); font-size: 5rem; line-height: 1; margin: 0.25rem 0 !important; }
+  .wann { color: var(--d-sisal); }
+
+  .raster { display: grid; gap: 3rem; margin-top: 3rem; }
+  @media (min-width: 1100px) { .raster { grid-template-columns: 1.15fr 1fr; align-items: start; } }
+  h2 { font-size: 2.6rem; margin-bottom: 1rem; }
+  h2 small { font-size: 1.2rem; color: var(--d-leise); letter-spacing: 0.1em; }
+  .abstand { margin-top: 2.5rem; }
+  .quelle { color: var(--d-leise); font-size: 1rem; margin-top: 1rem; }
+  .quelle a { color: var(--d-sisal); }
+  .hinweis { color: var(--d-leise); }
+</style>

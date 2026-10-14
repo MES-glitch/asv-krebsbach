@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "dart:stand": "node scripts/dart-stand.mjs"
   },
   "dependencies": {
     "@astrojs/markdown-remark": "^7.3.2",

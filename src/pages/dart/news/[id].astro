@@ -1,0 +1,37 @@
+---
+import { getCollection, render } from 'astro:content';
+import DartBasis from '../../../layouts/DartBasis.astro';
+import dart from '../../../data/dart.json';
+import { url, datumLang } from '../../../lib/utils';
+
+export async function getStaticPaths() {
+  const news = await getCollection('dartnews', (n) => !n.data.entwurf);
+  return news.map((eintrag) => ({ params: { id: eintrag.id }, props: { eintrag } }));
+}
+const { eintrag } = Astro.props;
+const { Content } = await render(eintrag);
+const { titel, datum, kurztext, bild, team } = eintrag.data;
+const t = dart.teams.find((x) => x.id === team);
+---
+<DartBasis titel={titel} beschreibung={kurztext}>
+  <article class="d-container artikel">
+    <a class="zurueck" href={url('/dart/news/')}>← Alle News</a>
+    <p class="meta">{datumLang(datum)} · {t ? t.name : 'Dart-Abteilung'}</p>
+    <h1>{titel}</h1>
+    {bild && <img src={url(bild)} alt="" />}
+    <div class="text"><Content /></div>
+    {t && <a class:list={['d-knopf', { 'd-knopf--gruen': t.farbe === 'gruen' }]} href={url(`/dart/${t.id}/spielplan/`)}>Spielplan {t.name} →</a>}
+  </article>
+</DartBasis>
+
+<style>
+  .artikel { max-width: 50rem; padding-top: 3rem; }
+  .zurueck { font-family: var(--d-titel); letter-spacing: 0.08em; font-size: 1.2rem; color: var(--d-leise); text-decoration: none; }
+  .zurueck:hover { color: var(--d-text); }
+  .meta { font-family: var(--d-titel); letter-spacing: 0.1em; color: var(--d-rot); margin: 1.5rem 0 0.5rem; font-size: 1.1rem; }
+  h1 { font-size: clamp(2.8rem, 7vw, 4.8rem); margin-bottom: 2rem; }
+  img { width: 100%; margin-bottom: 2rem; }
+  .text { font-size: 1.25rem; color: var(--d-sisal); margin-bottom: 2.5rem; }
+  .text :global(strong) { color: #fff; }
+  .text :global(p) { margin: 0 0 1.1rem; }
+</style>

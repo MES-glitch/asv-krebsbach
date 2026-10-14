@@ -1,0 +1,33 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import dart from '../../data/dart.json';
+import { url, datumKurz } from '../../lib/utils';
+
+interface Props { eintrag: CollectionEntry<'dartnews'> }
+const { eintrag } = Astro.props;
+const { titel, datum, kurztext, bild, team } = eintrag.data;
+const t = dart.teams.find((x) => x.id === team);
+---
+<article class:list={['news', `news--${t?.farbe ?? 'alle'}`]}>
+  {bild && <img src={url(bild)} alt="" loading="lazy" />}
+  <div class="news__inhalt">
+    <p class="news__meta"><span>{datumKurz(datum)}</span><span class="news__team">{t ? t.name : 'Dart-Abteilung'}</span></p>
+    <h3><a href={url(`/dart/news/${eintrag.id}/`)}>{titel}</a></h3>
+    {kurztext && <p class="news__text">{kurztext}</p>}
+  </div>
+</article>
+
+<style>
+  .news { position: relative; background: var(--d-flaeche); border-top: 6px solid var(--d-sisal); display: flex; flex-direction: column; transition: transform 0.2s; }
+  .news--rot { border-top-color: var(--d-rot); }
+  .news--gruen { border-top-color: var(--d-gruen); }
+  .news:hover { transform: translateY(-3px); }
+  .news img { width: 100%; aspect-ratio: 16 / 9; object-fit: cover; }
+  .news__inhalt { padding: 1.25rem 1.5rem 1.5rem; }
+  .news__meta { display: flex; gap: 0.75rem; flex-wrap: wrap; margin: 0; font-family: var(--d-titel); letter-spacing: 0.1em; color: var(--d-leise); font-size: 1rem; }
+  .news__team { color: var(--d-sisal); }
+  .news h3 { font-size: 2rem; margin: 0.5rem 0 0.6rem; }
+  .news h3 a { text-decoration: none; }
+  .news h3 a::after { content: ''; position: absolute; inset: 0; }
+  .news__text { margin: 0; color: var(--d-sisal); }
+</style>

@@ -1,0 +1,21 @@
+---
+// Reiter „Team | Spielplan & Tabelle“ auf den Team-Seiten
+import { url } from '../../lib/utils';
+interface Props { team: { id: string; farbe: string }; aktiv: 'team' | 'spielplan' }
+const { team, aktiv } = Astro.props;
+---
+<nav class:list={['reiter', `reiter--${team.farbe}`]} aria-label="Team-Bereiche">
+  <a href={url(`/dart/${team.id}/`)} aria-current={aktiv === 'team' ? 'page' : undefined}>Team</a>
+  <a href={url(`/dart/${team.id}/spielplan/`)} aria-current={aktiv === 'spielplan' ? 'page' : undefined}>Spielplan & Tabelle</a>
+</nav>
+
+<style>
+  .reiter { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .reiter a {
+    font-family: var(--d-titel); font-size: 1.35rem; letter-spacing: 0.06em; text-decoration: none; color: var(--d-leise);
+    padding: 0.55rem 1.2rem 0.4rem; border: 2px solid var(--d-linie);
+  }
+  .reiter a:hover { color: var(--d-text); border-color: var(--d-leise); }
+  .reiter a[aria-current='page'] { color: #fff; background: var(--d-rot); border-color: var(--d-rot); }
+  .reiter--gruen a[aria-current='page'] { background: var(--d-gruen); border-color: var(--d-gruen); }
+</style>

@@ -15,6 +15,7 @@ const seitenTitel = titel ? `${titel} – Dart | ${verein.name}` : `Dart-Abteilu
 const aktuell = Astro.url.pathname.replace(import.meta.env.BASE_URL.replace(/\/$/, ''), '').replace(/\/$/, '');
 const links = [
   { href: '/dart/abteilung', text: 'Übersicht' },
+  { href: '/dart/news', text: 'News' },
   ...dart.teams.map((t) => ({ href: `/dart/${t.id}`, text: t.name })),
 ];
 ---
@@ -41,7 +42,7 @@ const links = [
         </a>
         <nav aria-label="Dart-Navigation">
           {links.map((l) => (
-            <a href={url(l.href + '/')} aria-current={aktuell === l.href ? 'page' : undefined}>{l.text}</a>
+            <a href={url(l.href + '/')} aria-current={aktuell === l.href || aktuell.startsWith(l.href + '/') ? 'page' : undefined}>{l.text}</a>
           ))}
         </nav>
       </div>
