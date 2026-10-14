@@ -13,15 +13,19 @@ Natürlich steht nicht nur Angeln auf unserem Plan: Auch die Hege und Pflege der
 
 Von der Planung im Jahr 1989 bis zur ersten Baggerschaufel im Jahre 1992 vergingen drei Jahre und unzählige Stunden harte Arbeit unserer Mitglieder. Trotz einiger Rückschläge – Verunreinigungen des Krebsbachs durch Öl und Gülle, ein Rohrbruch am Zulauf, Bisamratten, die sich vom See zum Bach durchgruben, und Hochwasser – setzte man seine Energie weiterhin in den Wunsch nach einem eigenen See.
 
-Dank dieser unermüdlichen Mitglieder besitzen wir heute unseren See direkt am Vereinsheim.
+Dank dieser unermüdlichen Mitglieder besitzen wir heute unseren See direkt am Vereinsheim – und pflegen ihn bis heute gemeinsam.
+
+![Gewässerpflege am Auenteich](/uploads/auenteich-gewaesserpflege.jpg)
 
 Mit einer Länge von **80 m** und einer Breite von **45 m** ist er das Zuhause von Aalen, Barschen, Brachsen, Forellen, Graskarpfen, Schuppenkarpfen, Spiegelkarpfen, Schleien, Stören, Weißfischen und Zandern.
 
 ## Schlossteich
 
-![Der Schlossteich im Schlosspark Neckarbischofsheim](/uploads/schlossteich.jpg)
+![Der Schlossteich im Schlosspark Neckarbischofsheim](/uploads/schlossteich-park.jpg)
 
 Der Schlossteich liegt mitten im Schlosspark und dient uns hauptsächlich zur Aufzucht von Karpfen, Schleien und Weißfischen. Beangelt wird er **nur nach Absprache**.
+
+![Besatz am Schlossteich](/uploads/besatz-schlossteich.jpg)
 
 ## Krebsbach
 

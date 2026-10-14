@@ -66,7 +66,7 @@ h3 { font-size: 1.4rem; font-weight: 600; margin: 1.4em 0 0.4em; line-height: 1.
 .container.prosa { max-width: var(--breite); }
 .container.prosa > * { max-width: 46rem; }
 .prosa h2 { font-size: 2rem; margin-top: 1.6em; }
-.prosa img { border-radius: var(--radius); margin: 1.5rem 0; }
+.prosa img { border-radius: var(--radius); margin: 1.5rem 0; width: 100%; max-height: 30rem; object-fit: cover; }
 .prosa table { border-collapse: collapse; width: 100%; margin: 1.5rem 0; display: block; overflow-x: auto; }
 .prosa th, .prosa td { border: 1px solid var(--rand); padding: 0.5rem 0.75rem; text-align: left; }
 .prosa th { background: var(--blau-100); font-weight: 600; }

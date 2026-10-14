@@ -4,14 +4,14 @@
   "titelAkzent": "zusammenhalten.",
   "text": "Der ASV Krebsbach ist ein fester Bestandteil von Neckarbischofsheim. Wir bewirtschaften unseren Auenteich am Vereinsheim, den Schlossteich sowie Krebsbach, Schwarzbach und Rosenbach – und kümmern uns gemeinsam um Gewässer und Natur.",
   "bildGross": "/uploads/auenteich.jpg",
-  "bildKlein": "/uploads/fang-spiegelkarpfen-vereinsheim.jpg",
+  "bildKlein": "/uploads/aufnaeher-nah.jpg",
   "vorteileTitel": "Das ist der ASV Krebsbach",
   "vorteile": [
     {
       "titel": "Unsere Gewässer",
       "text": "Unser Auenteich direkt am Vereinsheim, der Schlossteich, Krebsbach, Schwarzbach und Rosenbach – rund um Neckarbischofsheim.",
       "link": "/gewaesser/",
-      "bild": "/uploads/schwarzbach.jpg",
+      "bild": "/uploads/bach-panorama.jpg",
       "platzhalter": "Foto: Vereinsgewässer"
     },
     {
@@ -25,7 +25,7 @@
       "titel": "Jugendarbeit",
       "text": "Kinder und Jugendliche ab 10 Jahren lernen bei uns waidgerechtes Angeln und Naturverständnis – und beim Jugendangeln geht es gemeinsam ans Wasser.",
       "link": "/jugend/",
-      "bild": "/uploads/fang-jugend-spiegelkarpfen.jpg",
+      "bild": "/uploads/jugend-gewaesserpflege.jpg",
       "platzhalter": "Foto: Jugend am Wasser"
     }
   ],

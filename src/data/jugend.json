@@ -1,26 +1,26 @@
 {
   "titel": "Jugendabteilung",
   "untertitel": "Angeln lernen, Natur verstehen, Freunde finden – bei uns kommen Kinder und Jugendliche ab 10 Jahren ans Wasser.",
-  "bild": "/uploads/fang-jugend-spiegelkarpfen.jpg",
+  "bild": "/uploads/jugend-theorie-vereinsheim.jpg",
   "einleitung": "Unsere Jugendabteilung legt Wert auf eine gute fischereiliche Ausbildung, Naturverständnis und ein faires Miteinander. Gemeinsam lernen unsere Jungfischer, wie man waidgerecht angelt, Fische richtig behandelt und unsere Gewässer pflegt – immer unter Aufsicht erfahrener Angler aus dem Verein.",
   "aktivitaetenTitel": "Was wir gemeinsam machen",
   "aktivitaeten": [
     {
       "titel": "Theoriestunden",
       "text": "Gemeinsam lernen wir alles rund ums Angeln – von Fischkunde über Gerät und Knoten bis zum richtigen Umgang mit dem Fang. Mit praktischen Versuchen und gemeinsamen Übungen bleibt das Wissen auch hängen.",
-      "bild": "",
+      "bild": "/uploads/jugend-theorie-fischkunde.jpg",
       "platzhalter": "Foto: Theoriestunde"
     },
     {
       "titel": "Angelstunden am Vereinsgewässer",
       "text": "Am eigenen Gewässer wird gemeinsam geangelt. Unsere erfahrenen Angler stehen den Jungfischern zur Seite und geben ihre Tipps und Tricks weiter.",
-      "bild": "",
+      "bild": "/uploads/jugend-wels.jpg",
       "platzhalter": "Foto: Angelstunde am See"
     },
     {
       "titel": "Gemeinsame Ausflüge",
       "text": "Ob Forellensee, Angeln am Bach oder Hegeaktionen an unseren Gewässern: Bei unseren Ausflügen sammeln die Jungfischer neue Erfahrungen und erleben die Natur hautnah.",
-      "bild": "",
+      "bild": "/uploads/jugend-forellenbesatz.jpg",
       "platzhalter": "Foto: Ausflug Forellensee"
     }
   ],

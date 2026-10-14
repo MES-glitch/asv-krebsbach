@@ -1,6 +1,7 @@
 ---
 titel: Unsere neue Webseite ist online
 datum: 2026-10-14
+bild: /uploads/aufnaeher-nah.jpg
 kurztext: Ab sofort findet ihr alle Termine, Neuigkeiten und Infos rund um den Verein hier.
 ---
 Ab sofort hat der ASV Krebsbach eine eigene Webseite! Hier findet ihr künftig alle **Termine**, **Neuigkeiten** und Informationen rund um unsere Gewässer und die Mitgliedschaft.
