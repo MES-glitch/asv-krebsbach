@@ -14,8 +14,8 @@ const teams = await Promise.all(dart.teams.map(async (t) => {
 const news = (await getCollection('dartnews', (n) => !n.data.entwurf)).sort((x, y) => y.data.datum.getTime() - x.data.datum.getTime()).slice(0, 2);
 ---
 <DartBasis>
-  <section class="held">
-    <Dartscheibe class="held__scheibe" />
+  <section class:list={['held', { 'held--foto': dart.dartBild }]} style={dart.dartBild ? `--foto: url('${url(dart.dartBild)}')` : undefined}>
+    {!dart.dartBild && <Dartscheibe class="held__scheibe" />}
     <div class="d-container held__innen">
       <span class="d-label">ASV Krebsbach · Dart-Abteilung</span>
       <h1>{dart.dartHeld.split('. ').map((t, i, a) => <span class:list={{ rot: i === a.length - 1 }}>{t}{i < a.length - 1 ? '.' : ''}</span>)}</h1>
@@ -70,6 +70,14 @@ const news = (await getCollection('dartnews', (n) => !n.data.entwurf)).sort((x, 
 <style>
   .held { position: relative; overflow: hidden; padding: 4.5rem 0 5rem; }
   :global(.held__scheibe) { position: absolute; right: -14rem; top: 50%; transform: translateY(-50%) rotate(-9deg); width: 44rem; max-width: none; opacity: 0.9; filter: drop-shadow(0 30px 60px rgb(0 0 0 / 0.6)); }
+  .held--foto {
+    background:
+      linear-gradient(90deg, var(--d-schwarz) 38%, rgb(11 11 11 / 0.55) 52%, transparent 72%),
+      linear-gradient(0deg, var(--d-schwarz) 0%, transparent 22%),
+      var(--foto) right 32% / 62% auto no-repeat,
+      var(--d-schwarz);
+  }
+  @media (max-width: 899px) { .held--foto { background: linear-gradient(0deg, var(--d-schwarz) 5%, rgb(11 11 11 / 0.78) 50%, rgb(11 11 11 / 0.55) 100%), var(--foto) 60% 40% / cover no-repeat; } }
   @media (max-width: 899px) { :global(.held__scheibe) { width: 26rem; right: -11rem; top: 2rem; transform: rotate(-9deg); opacity: 0.35; } }
   .held__innen { position: relative; z-index: 1; }
   .held h1 { font-size: clamp(4rem, 13vw, 9.5rem); margin: 1rem 0 1.5rem; max-width: 11ch; text-shadow: 0 4px 30px rgb(0 0 0 / 0.6); }

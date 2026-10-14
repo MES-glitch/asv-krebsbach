@@ -2,7 +2,7 @@
   "titel": "Dart im Vereinsheim",
   "untertitel": "Zwei eigene Dart-Mannschaften unter dem Dach des ASV Krebsbach.",
   "einleitung": "In unserem Vereinsheim fliegen nicht nur Geschichten vom großen Fang durch den Raum: Mit den „Krebsbachbombern“ und „Petri Pfeil“ beherbergen wir zwei eigene Dart-Mannschaften. Beide trainieren in unseren Räumlichkeiten und tragen hier auch einen Teil ihrer Ligaspiele aus.",
-  "bild": "",
+  "bild": "/uploads/dart-pfeile-glas.jpg",
   "dartHeld": "Pfeil. Spitze. Krebsbach.",
   "dartIntro": "Zwei Teams, ein Board, null Gnade. Die Dart-Abteilung des ASV Krebsbach trainiert und spielt im Vereinsheim am Ablassweg – und wirft in der E-Dart-Liga des DSAB um jeden Punkt.",
   "spielort": "Vereinsheim ASV Krebsbach, Ablassweg 27, 74924 Neckarbischofsheim",
@@ -40,5 +40,6 @@
       "logoHell": "/uploads/petri-pfeil-logo-kachel.webp",
       "thema": "petri-pfeil"
     }
-  ]
+  ],
+  "dartBild": "/uploads/dart-triple20.jpg"
 }
