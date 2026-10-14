@@ -94,12 +94,35 @@ collections:
             fields:
               - { name: titel, label: Titel, widget: string }
               - { name: text, label: Text, widget: text }
-              - { name: link, label: Verlinkte Seite, widget: select, options: ["/gewaesser/", "/termine/", "/mitgliedschaft/", "/verein/", "/neuigkeiten/"] }
+              - { name: link, label: Verlinkte Seite, widget: select, options: ["/gewaesser/", "/termine/", "/jugend/", "/mitgliedschaft/", "/verein/", "/neuigkeiten/"] }
               - { name: bild, label: Foto, widget: image, required: false }
               - { name: platzhalter, label: Text im Foto-Platzhalter, widget: string, required: false }
           - { name: aufrufTitel, label: Aufruf unten – Überschrift, widget: string }
           - { name: aufrufText, label: Aufruf unten – Text, widget: text }
           - { name: aufrufBild, label: Aufruf unten – Foto, widget: image, required: false }
+      - name: jugend
+        label: Jugendabteilung
+        file: src/data/jugend.json
+        fields:
+          - { name: titel, label: Titel, widget: string }
+          - { name: untertitel, label: Untertitel, widget: text }
+          - { name: bild, label: Foto oben, widget: image, required: false }
+          - { name: einleitung, label: Einleitung, widget: text }
+          - { name: aktivitaetenTitel, label: Überschrift Aktivitäten, widget: string }
+          - name: aktivitaeten
+            label: Aktivitäten
+            label_singular: Aktivität
+            widget: list
+            summary: "{{titel}}"
+            fields:
+              - { name: titel, label: Titel, widget: string }
+              - { name: text, label: Text, widget: text }
+              - { name: bild, label: Foto, widget: image, required: false }
+              - { name: platzhalter, label: Text im Foto-Platzhalter, widget: string, required: false }
+          - { name: voraussetzungen, label: Voraussetzungen, widget: list }
+          - { name: anmeldung, label: Anmeldung, widget: text }
+          - { name: regeln, label: Wichtigste Regeln, widget: list }
+          - { name: regelnHinweis, label: Hinweis unter den Regeln, widget: text }
       - name: verein
         label: Vereinsangaben & Startseite
         file: src/data/verein.json

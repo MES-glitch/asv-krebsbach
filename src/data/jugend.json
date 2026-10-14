@@ -1,0 +1,44 @@
+{
+  "titel": "Jugendabteilung",
+  "untertitel": "Angeln lernen, Natur verstehen, Freunde finden – bei uns kommen Kinder und Jugendliche ab 10 Jahren ans Wasser.",
+  "bild": "/uploads/fang-jugend-spiegelkarpfen.jpg",
+  "einleitung": "Unsere Jugendabteilung legt Wert auf eine gute fischereiliche Ausbildung, Naturverständnis und ein faires Miteinander. Gemeinsam lernen unsere Jungfischer, wie man waidgerecht angelt, Fische richtig behandelt und unsere Gewässer pflegt – immer unter Aufsicht erfahrener Angler aus dem Verein.",
+  "aktivitaetenTitel": "Was wir gemeinsam machen",
+  "aktivitaeten": [
+    {
+      "titel": "Jugendangeln",
+      "text": "Im Sommer geht es gemeinsam zum Jugendangeln an den Forellensee.",
+      "bild": "",
+      "platzhalter": "Foto: Jugendangeln"
+    },
+    {
+      "titel": "Platzhalter: Aktivität 2",
+      "text": "Hier beschreibt die Jugendleitung eine weitere Aktivität, z. B. Schulungen, Gewässerpflege oder Ausflüge.",
+      "bild": "",
+      "platzhalter": "Foto folgt"
+    },
+    {
+      "titel": "Platzhalter: Aktivität 3",
+      "text": "Hier beschreibt die Jugendleitung eine weitere Aktivität.",
+      "bild": "",
+      "platzhalter": "Foto folgt"
+    }
+  ],
+  "voraussetzungen": [
+    "Mindestalter 10 Jahre – jüngere Kinder nur nach vorheriger Absprache mit der Jugendleitung",
+    "Gültiger Jugendfischereischein (gibt es ab 7 Jahren beim Bürgerbüro bzw. der Gemeindeverwaltung, ohne Prüfung)",
+    "Jahresbeitrag 15 € (Abbuchung jeweils im März)",
+    "Ab 16 Jahren ist eine aktive Mitgliedschaft mit bestandener staatlicher Fischerprüfung und gültigem Fischereischein nötig"
+  ],
+  "anmeldung": "Die Beitrittserklärung für die Jugendabteilung kann im Vereinsheim (Neckarbischofsheim, Kreuzung Ablassweg / Von-Hindenburg-Straße) abgegeben oder direkt dem Jugendverantwortlichen übergeben werden. Sprich uns einfach an – wir schicken dir das Formular gern zu.",
+  "regeln": [
+    "Jungfischer angeln nur unter Aufsicht einer volljährigen Person mit gültigem Fischereischein.",
+    "Jugendfischereischein, Gewässerkarte und Personalausweis sind beim Angeln immer dabei.",
+    "Maximal zwei Ruten mit Naturköder, je ein Haken – Kunstköder sind nicht erlaubt.",
+    "Geangelt wird von Sonnenaufgang bis Sonnenuntergang.",
+    "Kescher, Abhakmatte, Maßband, Hakenlöser und Messer gehören zur Ausrüstung.",
+    "Gefangene Fische werden waidgerecht behandelt – untermaßige oder geschonte Fische werden schonend zurückgesetzt.",
+    "Müll, Schnurreste und Köderreste nehmen wir wieder mit. Lärm, Feuer und Grillen sind am Wasser tabu."
+  ],
+  "regelnHinweis": "Ausführlich ist alles in unserer Jugendfischereiordnung geregelt, die jeder Jungfischer beim Eintritt erhält."
+}

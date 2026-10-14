@@ -1,0 +1,124 @@
+---
+import { getCollection } from 'astro:content';
+import Basis from '../layouts/Basis.astro';
+import SeitenKopf from '../components/SeitenKopf.astro';
+import Foto from '../components/Foto.astro';
+import TerminListe from '../components/TerminListe.astro';
+import jugend from '../data/jugend.json';
+import vorstand from '../data/vorstand.json';
+import { url, heute } from '../lib/utils';
+
+const ansprechpartner = vorstand.mitglieder.filter((m) => /jugend/i.test(m.amt) && m.name && m.name !== 'N. N.');
+const termine = (await getCollection('termine', (t) => (t.data.bis ?? t.data.datum) >= heute() && /jugend/i.test(t.data.titel)))
+  .sort((a, b) => a.data.datum.getTime() - b.data.datum.getTime());
+
+const farben = ['schilf', 'blau', 'koralle'] as const;
+const formen = ['blatt', 'tropfen', 'blatt-gespiegelt'] as const;
+---
+<Basis titel={jugend.titel} beschreibung={jugend.untertitel}>
+  <SeitenKopf dachzeile="Ab 10 Jahren" titel={jugend.titel} beschreibung={jugend.untertitel} bild={jugend.bild} bildPlatzhalter="Foto: Jugendgruppe" />
+
+  <section class="abschnitt">
+    <div class="container">
+      <p class="einleitung">{jugend.einleitung}</p>
+    </div>
+  </section>
+
+  <!-- Aktivitäten -->
+  <section class="abschnitt abschnitt--weiss abschnitt--rund">
+    <div class="container">
+      <span class="dachzeile">Mit dabei sein</span>
+      <h2>{jugend.aktivitaetenTitel}</h2>
+      <div class="aktivitaeten">
+        {jugend.aktivitaeten.map((a, i) => (
+          <article class="aktivitaet">
+            <div class="aktivitaet__foto">
+              <Foto bild={a.bild} alt={a.titel} platzhalter={a.platzhalter || 'Foto folgt'} form={formen[i % 3]} farbe={farben[i % 3]} />
+            </div>
+            <h3>{a.titel}</h3>
+            <p>{a.text}</p>
+          </article>
+        ))}
+      </div>
+      {termine.length > 0 && (
+        <div class="jugend-termine">
+          <h3>Nächste Jugendtermine</h3>
+          <TerminListe termine={termine} />
+        </div>
+      )}
+    </div>
+  </section>
+
+  <!-- Mitmachen -->
+  <section class="abschnitt">
+    <div class="container mitmachen">
+      <div>
+        <span class="dachzeile">Mitmachen</span>
+        <h2>So wirst du Jungfischer</h2>
+        <ul class="haken">
+          {jugend.voraussetzungen.map((v) => <li>{v}</li>)}
+        </ul>
+        <p class="leise">{jugend.anmeldung}</p>
+      </div>
+      <aside class="ansprechpartner karte">
+        <span class="dachzeile">Ansprechpartner</span>
+        {ansprechpartner.length ? ansprechpartner.map((m) => (
+          <div>
+            <p class="ansprechpartner__name">{m.name}</p>
+            <p class="leise">{m.amt}</p>
+            {m.telefon && <p><a href={`tel:${m.telefon.replace(/[^+\d]/g, '')}`}>{m.telefon}</a></p>}
+            {m.email && <p><a href={`mailto:${m.email}`}>{m.email}</a></p>}
+          </div>
+        )) : <p class="leise">Die Jugendleitung erreichst du über den Vorstand.</p>}
+        <a class="knopf" href={url('/verein/#kontakt')}>Kontakt aufnehmen</a>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Regeln -->
+  <section class="abschnitt abschnitt--weiss abschnitt--rund">
+    <div class="container">
+      <span class="dachzeile">Gut zu wissen</span>
+      <h2>Die wichtigsten Regeln am Wasser</h2>
+      <ol class="regeln">
+        {jugend.regeln.map((r) => <li>{r}</li>)}
+      </ol>
+      <p class="leise">{jugend.regelnHinweis} Schonzeiten und Mindestmaße findest du beim <a href="https://www.lfvbw.de/schonzeiten-und-mindestmasse" rel="noopener">Landesfischereiverband Baden-Württemberg</a>.</p>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .einleitung { font-size: 1.25rem; max-width: 46rem; margin: 0; }
+  .abschnitt--rund { border-radius: 40px; margin: 0 0.5rem; }
+  @media (min-width: 1200px) { .abschnitt--rund { margin: 0 1.5rem; } }
+
+  .aktivitaeten { display: grid; gap: 1.5rem; margin-top: 2rem; }
+  @media (min-width: 800px) { .aktivitaeten { grid-template-columns: repeat(3, 1fr); } }
+  .aktivitaet__foto { height: 12rem; }
+  @media (min-width: 800px) { .aktivitaet__foto { height: 14rem; } }
+  .aktivitaet h3 { margin: 1.1rem 0 0.35rem; font-size: 1.5rem; font-weight: 700; }
+  .aktivitaet p { margin: 0; color: var(--text-leise); }
+  .jugend-termine { margin-top: 3rem; max-width: 46rem; }
+
+  .mitmachen { display: grid; gap: 2rem; align-items: start; }
+  @media (min-width: 900px) { .mitmachen { grid-template-columns: 1.6fr 1fr; } }
+  .haken { list-style: none; padding: 0; margin: 1.5rem 0; display: grid; gap: 0.75rem; }
+  .haken li { position: relative; padding-left: 2.2rem; }
+  .haken li::before {
+    content: '✓'; position: absolute; left: 0; top: 0.05rem; width: 1.5rem; height: 1.5rem; border-radius: 50%;
+    background: var(--schilf-100); color: var(--schilf-800); display: grid; place-items: center; font-weight: 700; font-size: 0.85rem;
+  }
+  .ansprechpartner { padding: 1.75rem; display: grid; gap: 1rem; }
+  .ansprechpartner p { margin: 0; }
+  .ansprechpartner__name { font-family: var(--schrift-titel); font-weight: 700; font-size: 1.5rem; }
+  .ansprechpartner .knopf { justify-self: start; }
+
+  .regeln { counter-reset: regel; list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1rem; }
+  @media (min-width: 800px) { .regeln { grid-template-columns: 1fr 1fr; } }
+  .regeln li { counter-increment: regel; position: relative; padding: 1rem 1.25rem 1rem 3.75rem; background: var(--creme); border-radius: var(--radius-klein); }
+  .regeln li::before {
+    content: counter(regel); position: absolute; left: 1rem; top: 0.9rem; width: 2rem; height: 2rem; border-radius: 50%;
+    background: var(--blau-700); color: var(--weiss); display: grid; place-items: center; font-family: var(--schrift-titel); font-weight: 700;
+  }
+</style>

@@ -39,6 +39,18 @@ Hauptfischart in diesem Gewässer ist die **Bachforelle**, von der auch schon ei
 
 > **Platzhalter** – hier kann der Vorstand eine kurze Beschreibung des Rosenbachs ergänzen.
 
+## Angeln nur für Vereinsmitglieder
+
+Das Angeln an unseren Gewässern ist **ausschließlich Mitgliedern des ASV Krebsbach 1983 e. V.** gestattet. Voraussetzungen sind:
+
+- ein gültiger Fischereischein,
+- ein gültiger Erlaubnisschein (Gewässerkarte) des Vereins,
+- die Einhaltung der Gewässerordnung und aller gesetzlichen Vorschriften (Landesfischereigesetz und Landesfischereiverordnung Baden-Württemberg).
+
+**Das Angeln durch Nichtmitglieder ist verboten.** Zuwiderhandlungen werden als unerlaubte Fischerei (§ 293 StGB) und als Verstoß gegen das Landesfischereigesetz verfolgt. Gastkarten geben wir nicht aus.
+
+Am Wasser gilt: Ordnung und Sauberkeit sind oberstes Gebot, Natur-, Tier- und Pflanzenschutz sind stets zu wahren, und den Anweisungen der Vereinsaufsicht ist Folge zu leisten.
+
 ## Gewässerordnung
 
 > **Platzhalter** – die wichtigsten Regeln für das Angeln an unseren Gewässern. Die vollständige Gewässerordnung kann hier als PDF verlinkt werden.
