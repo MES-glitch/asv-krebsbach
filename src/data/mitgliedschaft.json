@@ -1,0 +1,51 @@
+{
+  "titel": "Mitgliedschaft",
+  "untertitel": "Ob mit der Angel oder als helfende Hand: Beim ASV Krebsbach gibt es verschiedene Wege, Teil unserer Gemeinschaft zu werden.",
+  "bild": "/uploads/fang-schuppenkarpfen.jpg",
+  "einleitung": "Unser Verein lebt von seinen Mitgliedern – von denen, die an unseren Gewässern angeln, und genauso von denen, die uns bei Festen, Arbeitseinsätzen und im Vereinsleben unterstützen. Je nachdem, was zu dir passt, kannst du als aktives oder passives Mitglied dabei sein. Für Kinder und Jugendliche gibt es unsere Jugendabteilung.",
+  "arten": [
+    {
+      "id": "aktiv",
+      "titel": "Aktive Mitgliedschaft",
+      "kurz": "Für alle, die an unseren Gewässern angeln möchten.",
+      "punkte": [
+        "Angeln an unseren Vereinsgewässern mit Gewässerkarte",
+        "Voraussetzung: bestandene staatliche Fischerprüfung und gültiger Fischereischein",
+        "Teilnahme an Arbeitseinsätzen und der Hege und Pflege unserer Gewässer",
+        "Mitwirkung bei Anfischen, Abfischen und unseren Veranstaltungen"
+      ],
+      "hinweis": "Die Zahl der Gewässerkarten, die wir ausgeben dürfen, ist begrenzt. Deshalb vergeben wir aktive Mitgliedschaften nach Verfügbarkeit – wir melden uns nach deiner Anfrage persönlich bei dir."
+    },
+    {
+      "id": "passiv",
+      "titel": "Passive Mitgliedschaft",
+      "kurz": "Für alle, die den Verein unterstützen und dazugehören möchten – ohne selbst zu angeln.",
+      "punkte": [
+        "Voll eingebunden ins Vereinsleben – bei Festen, Versammlungen und gemeinsamen Aktionen",
+        "Mithelfen bei Veranstaltungen wie Karfreitag, Helferfest oder Seefest",
+        "Unterstützung unserer Jugendarbeit und der Pflege unserer Gewässer",
+        "Kein Fischereischein nötig"
+      ],
+      "hinweis": "Passive Mitglieder sind für uns unverzichtbar: Ohne sie wären viele Feste, Arbeitseinsätze und Projekte nicht möglich. Sie gehören ganz selbstverständlich dazu – vom Aufbau am Karfreitag bis zum Helferfest."
+    },
+    {
+      "id": "jugend",
+      "titel": "Jugendabteilung",
+      "kurz": "Für Kinder und Jugendliche ab 10 Jahren.",
+      "punkte": [
+        "Theoriestunden, gemeinsame Angelstunden und Ausflüge",
+        "Voraussetzung: gültiger Jugendfischereischein",
+        "Jahresbeitrag 50 €",
+        "Angeln immer unter Aufsicht erfahrener Angler"
+      ],
+      "hinweis": ""
+    }
+  ],
+  "ablaufTitel": "So geht's",
+  "ablauf": [
+    "Anfrage über unser Formular senden – unverbindlich und ohne Bankdaten.",
+    "Wir melden uns bei dir und beantworten deine Fragen.",
+    "Passt alles, füllst du die Beitrittserklärung aus und gibst sie im Vereinsheim oder bei einem Vorstandsmitglied ab."
+  ],
+  "hinweisGastkarten": "Gastkarten geben wir nicht aus – das Angeln an unseren Gewässern ist ausschließlich Vereinsmitgliedern vorbehalten."
+}

@@ -6,31 +6,31 @@
   "aktivitaetenTitel": "Was wir gemeinsam machen",
   "aktivitaeten": [
     {
-      "titel": "Jugendangeln",
-      "text": "Im Sommer geht es gemeinsam zum Jugendangeln an den Forellensee.",
+      "titel": "Theoriestunden",
+      "text": "Gemeinsam lernen wir alles rund ums Angeln – von Fischkunde über Gerät und Knoten bis zum richtigen Umgang mit dem Fang. Mit praktischen Versuchen und gemeinsamen Übungen bleibt das Wissen auch hängen.",
       "bild": "",
-      "platzhalter": "Foto: Jugendangeln"
+      "platzhalter": "Foto: Theoriestunde"
     },
     {
-      "titel": "Platzhalter: Aktivität 2",
-      "text": "Hier beschreibt die Jugendleitung eine weitere Aktivität, z. B. Schulungen, Gewässerpflege oder Ausflüge.",
+      "titel": "Angelstunden am Vereinsgewässer",
+      "text": "Am eigenen Gewässer wird gemeinsam geangelt. Unsere erfahrenen Angler stehen den Jungfischern zur Seite und geben ihre Tipps und Tricks weiter.",
       "bild": "",
-      "platzhalter": "Foto folgt"
+      "platzhalter": "Foto: Angelstunde am See"
     },
     {
-      "titel": "Platzhalter: Aktivität 3",
-      "text": "Hier beschreibt die Jugendleitung eine weitere Aktivität.",
+      "titel": "Gemeinsame Ausflüge",
+      "text": "Ob Forellensee, Angeln am Bach oder Hegeaktionen an unseren Gewässern: Bei unseren Ausflügen sammeln die Jungfischer neue Erfahrungen und erleben die Natur hautnah.",
       "bild": "",
-      "platzhalter": "Foto folgt"
+      "platzhalter": "Foto: Ausflug Forellensee"
     }
   ],
   "voraussetzungen": [
     "Mindestalter 10 Jahre – jüngere Kinder nur nach vorheriger Absprache mit der Jugendleitung",
     "Gültiger Jugendfischereischein (gibt es ab 7 Jahren beim Bürgerbüro bzw. der Gemeindeverwaltung, ohne Prüfung)",
-    "Jahresbeitrag 15 € (Abbuchung jeweils im März)",
+    "Jahresbeitrag 50 € (Abbuchung jeweils im März)",
     "Ab 16 Jahren ist eine aktive Mitgliedschaft mit bestandener staatlicher Fischerprüfung und gültigem Fischereischein nötig"
   ],
-  "anmeldung": "Die Beitrittserklärung für die Jugendabteilung kann im Vereinsheim (Neckarbischofsheim, Kreuzung Ablassweg / Von-Hindenburg-Straße) abgegeben oder direkt dem Jugendverantwortlichen übergeben werden. Sprich uns einfach an – wir schicken dir das Formular gern zu.",
+  "anmeldung": "Du möchtest bei uns mitmachen? Schick uns einfach eine Anfrage – wir melden uns bei dir und besprechen alles Weitere. Die Beitrittserklärung kann anschließend im Vereinsheim (Neckarbischofsheim, Kreuzung Ablassweg / Von-Hindenburg-Straße) abgegeben oder direkt dem Jugendverantwortlichen übergeben werden.",
   "regeln": [
     "Jungfischer angeln nur unter Aufsicht einer volljährigen Person mit gültigem Fischereischein.",
     "Jugendfischereischein, Gewässerkarte und Personalausweis sind beim Angeln immer dabei.",

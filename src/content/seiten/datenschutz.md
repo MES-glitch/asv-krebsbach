@@ -21,6 +21,10 @@ Diese Webseite setzt keine Cookies, verwendet keine Analyse- oder Tracking-Diens
 
 Wenn Sie uns per E-Mail kontaktieren, verarbeiten wir Ihre Angaben zur Bearbeitung der Anfrage.
 
+## Anfrageformular Mitgliedschaft
+
+Wenn Sie unser Anfrageformular für eine Mitgliedschaft nutzen, werden Ihre Angaben **nicht auf dieser Webseite gespeichert oder an Dritte übertragen**. Beim Absenden öffnet sich Ihr eigenes E-Mail-Programm mit einer vorausgefüllten Nachricht an uns, die Sie selbst abschicken. Wir verarbeiten die Angaben ausschließlich zur Bearbeitung Ihrer Anfrage und zur Anbahnung einer Mitgliedschaft (Art. 6 Abs. 1 lit. b DSGVO) und löschen sie, wenn keine Mitgliedschaft zustande kommt.
+
 ## Ihre Rechte
 
 Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung, Datenübertragbarkeit und Widerspruch sowie das Recht auf Beschwerde bei einer Aufsichtsbehörde.

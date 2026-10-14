@@ -66,7 +66,6 @@ collections:
     description: Feste Seiten der Webseite.
     files:
       - { name: gewaesser, label: Gewässer, file: src/content/seiten/gewaesser.md, fields: &seitenfelder [ { name: dachzeile, label: Dachzeile, widget: string, required: false, hint: "Kleine Zeile über dem Titel" }, { name: titel, label: Titel, widget: string }, { name: beschreibung, label: Untertitel, widget: string, required: false }, { name: bild, label: Foto, widget: image, required: false, hint: "Erscheint rechts neben dem Titel" }, { name: bildPlatzhalter, label: Foto-Platzhalter, widget: hidden, required: false }, { name: body, label: Inhalt, widget: markdown } ] }
-      - { name: mitgliedschaft, label: Mitgliedschaft, file: src/content/seiten/mitgliedschaft.md, fields: *seitenfelder }
       - { name: verein, label: "Verein & Kontakt (Einleitung)", file: src/content/seiten/verein.md, fields: *seitenfelder }
       - { name: impressum, label: Impressum, file: src/content/seiten/impressum.md, fields: *seitenfelder }
       - { name: datenschutz, label: Datenschutz, file: src/content/seiten/datenschutz.md, fields: *seitenfelder }
@@ -100,6 +99,30 @@ collections:
           - { name: aufrufTitel, label: Aufruf unten – Überschrift, widget: string }
           - { name: aufrufText, label: Aufruf unten – Text, widget: text }
           - { name: aufrufBild, label: Aufruf unten – Foto, widget: image, required: false }
+      - name: mitgliedschaft
+        label: Mitgliedschaft
+        file: src/data/mitgliedschaft.json
+        fields:
+          - { name: titel, label: Titel, widget: string }
+          - { name: untertitel, label: Untertitel, widget: text }
+          - { name: bild, label: Foto oben, widget: image, required: false }
+          - { name: einleitung, label: Einleitung, widget: text }
+          - name: arten
+            label: Arten der Mitgliedschaft
+            label_singular: Art
+            widget: list
+            allow_add: false
+            allow_remove: false
+            summary: "{{titel}}"
+            fields:
+              - { name: id, label: Kennung, widget: hidden }
+              - { name: titel, label: Titel, widget: string }
+              - { name: kurz, label: Kurzbeschreibung, widget: string }
+              - { name: punkte, label: Punkte, widget: list }
+              - { name: hinweis, label: Hinweis, widget: text, required: false }
+          - { name: ablaufTitel, label: Überschrift Ablauf, widget: string }
+          - { name: ablauf, label: Ablauf-Schritte, widget: list }
+          - { name: hinweisGastkarten, label: Hinweis Gastkarten, widget: text }
       - name: jugend
         label: Jugendabteilung
         file: src/data/jugend.json

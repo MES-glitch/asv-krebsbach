@@ -1,0 +1,237 @@
+---
+// Mitgliedschaftsanfrage. Felder abgeleitet aus der Beitrittserklärung – bewusst ohne Bankdaten/Unterschrift.
+// Versand: Das Formular erzeugt eine fertige E-Mail an den Verein (kein Server, kein Drittanbieter).
+import Basis from '../../layouts/Basis.astro';
+import SeitenKopf from '../../components/SeitenKopf.astro';
+import verein from '../../data/verein.json';
+import { url } from '../../lib/utils';
+---
+<Basis titel="Mitgliedschaft anfragen" beschreibung="Unverbindliche Anfrage für eine Mitgliedschaft im ASV Krebsbach 1983 e. V.">
+  <SeitenKopf dachzeile="Mitgliedschaft" titel="Anfrage senden" beschreibung="Unverbindlich und ohne Bankdaten – wir melden uns bei dir und besprechen alles Weitere persönlich." />
+
+  <section class="abschnitt">
+    <div class="container">
+      <form id="anfrage" class="formular karte" novalidate data-empfaenger={verein.email}>
+        <fieldset>
+          <legend>Art der Mitgliedschaft</legend>
+          <div class="auswahl">
+            <label class="auswahl__feld"><input type="radio" name="art" value="aktiv" required /><span><strong>Aktiv</strong><small>Angeln an unseren Gewässern</small></span></label>
+            <label class="auswahl__feld"><input type="radio" name="art" value="passiv" /><span><strong>Passiv</strong><small>Dabei sein, ohne zu angeln</small></span></label>
+            <label class="auswahl__feld"><input type="radio" name="art" value="jugend" /><span><strong>Jugendabteilung</strong><small>Kinder und Jugendliche ab 10 Jahren</small></span></label>
+          </div>
+          <p class="fehler" data-fehler-fuer="art" hidden>Bitte wähle eine Art der Mitgliedschaft.</p>
+        </fieldset>
+
+        <fieldset>
+          <legend data-titel-person>Deine Angaben</legend>
+          <div class="raster-felder">
+            <label>Vorname*<input name="vorname" autocomplete="given-name" required /></label>
+            <label>Nachname*<input name="nachname" autocomplete="family-name" required /></label>
+            <label class="breit">Straße und Hausnummer*<input name="strasse" autocomplete="street-address" required /></label>
+            <label>PLZ*<input name="plz" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" required /></label>
+            <label>Ort*<input name="ort" autocomplete="address-level2" required /></label>
+            <label>Geburtsdatum*<input name="geburtsdatum" type="date" autocomplete="bday" required /></label>
+            <label>Gewünschter Eintritt<input name="eintritt" type="month" /></label>
+            <label data-nur-erwachsen>Telefon*<input name="telefon" type="tel" autocomplete="tel" required /></label>
+            <label data-nur-erwachsen>E-Mail*<input name="email" type="email" autocomplete="email" required /></label>
+          </div>
+        </fieldset>
+
+        <fieldset data-nur-jugend hidden>
+          <legend>Erziehungsberechtigte</legend>
+          <div class="raster-felder">
+            <label>Vorname*<input name="eb1_vorname" required /></label>
+            <label>Nachname*<input name="eb1_nachname" required /></label>
+            <label>Telefon*<input name="eb1_telefon" type="tel" required /></label>
+            <label>E-Mail*<input name="eb1_email" type="email" required /></label>
+          </div>
+          <details class="zweite">
+            <summary>Zweite erziehungsberechtigte Person angeben (optional)</summary>
+            <div class="raster-felder">
+              <label>Vorname<input name="eb2_vorname" /></label>
+              <label>Nachname<input name="eb2_nachname" /></label>
+              <label>Telefon<input name="eb2_telefon" type="tel" /></label>
+              <label>E-Mail<input name="eb2_email" type="email" /></label>
+            </div>
+          </details>
+        </fieldset>
+
+        <fieldset data-schein hidden>
+          <legend>Fischereischein</legend>
+          <label class="einzeln">Welchen Fischereischein hast du?
+            <select name="schein">
+              <option value="">Bitte wählen</option>
+              <option data-fuer="aktiv">Fischereischein (Fischerprüfung bestanden)</option>
+              <option data-fuer="aktiv">Fischerprüfung geplant</option>
+              <option data-fuer="jugend">Jugendfischereischein vorhanden</option>
+              <option data-fuer="jugend">Jugendfischereischein wird beantragt</option>
+              <option data-fuer="jugend">Fischereischein (Fischerprüfung bestanden)</option>
+            </select>
+          </label>
+        </fieldset>
+
+        <fieldset>
+          <legend>Nachricht</legend>
+          <label class="einzeln">Möchtest du uns noch etwas mitteilen?<textarea name="nachricht" rows="4"></textarea></label>
+        </fieldset>
+
+        <label class="zustimmung">
+          <input type="checkbox" name="datenschutz" required />
+          <span>Ich bin einverstanden, dass der ASV Krebsbach meine Angaben zur Bearbeitung dieser Anfrage verwendet. Mehr dazu in der <a href={url('/datenschutz/')}>Datenschutzerklärung</a>.*</span>
+        </label>
+        <p class="fehler" data-fehler-fuer="datenschutz" hidden>Bitte bestätige die Einwilligung.</p>
+
+        <div class="absenden">
+          <button class="knopf" type="submit">Anfrage per E-Mail senden</button>
+          <p class="leise klein">Beim Absenden öffnet sich dein E-Mail-Programm mit einer fertig ausgefüllten Nachricht an {verein.email}. Du musst sie nur noch abschicken.</p>
+        </div>
+        <p class="fehler" data-fehler-allgemein hidden>Bitte fülle alle Pflichtfelder (*) korrekt aus.</p>
+      </form>
+
+      <div id="fallback" class="karte fallback" hidden>
+        <h2>Kein E-Mail-Programm geöffnet?</h2>
+        <p>Kopiere den Text und schick ihn an <a href={`mailto:${verein.email}`}>{verein.email}</a>:</p>
+        <textarea id="fallback-text" rows="12" readonly></textarea>
+        <button class="knopf knopf--leise" type="button" id="kopieren">Text kopieren</button>
+      </div>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .formular { padding: 1.5rem; max-width: 48rem; display: grid; gap: 1.75rem; }
+  @media (min-width: 640px) { .formular { padding: 2.5rem; } }
+  fieldset { border: 0; padding: 0; margin: 0; }
+  legend { font-family: var(--schrift-titel); font-weight: 700; font-size: 1.5rem; margin-bottom: 0.9rem; padding: 0; }
+  .raster-felder { display: grid; gap: 1rem; }
+  @media (min-width: 640px) { .raster-felder { grid-template-columns: 1fr 1fr; } .breit { grid-column: 1 / -1; } }
+  label { display: grid; gap: 0.35rem; font-weight: 500; font-size: 0.98rem; }
+  input:not([type='radio']):not([type='checkbox']), select, textarea {
+    font: inherit; font-weight: 400; padding: 0.7rem 0.9rem; border: 1.5px solid var(--rand); border-radius: var(--radius-klein);
+    background: var(--creme); color: var(--text); width: 100%;
+  }
+  input:focus, select:focus, textarea:focus { outline: 2px solid var(--blau-500); outline-offset: 1px; border-color: var(--blau-500); }
+  [aria-invalid='true'] { border-color: #c0392b !important; background: #fff5f3 !important; }
+  .einzeln { max-width: 100%; }
+
+  .auswahl { display: grid; gap: 0.75rem; }
+  @media (min-width: 640px) { .auswahl { grid-template-columns: repeat(3, 1fr); } }
+  .auswahl__feld { display: flex; gap: 0.6rem; align-items: flex-start; padding: 1rem; border: 1.5px solid var(--rand); border-radius: var(--radius-klein); cursor: pointer; background: var(--creme); }
+  .auswahl__feld:has(input:checked) { border-color: var(--blau-700); background: var(--blau-100); }
+  .auswahl__feld input { margin-top: 0.3rem; accent-color: var(--blau-700); }
+  .auswahl__feld span { display: grid; }
+  .auswahl__feld small { color: var(--text-leise); font-weight: 400; }
+
+  .zweite { margin-top: 1rem; }
+  .zweite summary { cursor: pointer; color: var(--blau-700); font-weight: 500; margin-bottom: 1rem; }
+  .zustimmung { display: flex; gap: 0.7rem; align-items: flex-start; font-weight: 400; }
+  .zustimmung input { margin-top: 0.35rem; accent-color: var(--blau-700); width: 1.1rem; height: 1.1rem; flex: none; }
+  .absenden { display: grid; gap: 0.6rem; justify-items: start; }
+  .klein { font-size: 0.92rem; margin: 0; }
+  button.knopf { border: 0; cursor: pointer; }
+  .fehler { color: #c0392b; font-size: 0.95rem; margin: 0.4rem 0 0; }
+  .fallback { padding: 1.5rem; max-width: 48rem; margin-top: 1.5rem; display: grid; gap: 0.75rem; }
+  .fallback h2 { font-size: 1.6rem; margin: 0; }
+  .fallback textarea { font: inherit; font-size: 0.9rem; padding: 0.8rem; border-radius: var(--radius-klein); border: 1.5px solid var(--rand); width: 100%; }
+</style>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>('#anfrage')!;
+  const jugendTeile = form.querySelectorAll<HTMLElement>('[data-nur-jugend]');
+  const scheinTeil = form.querySelector<HTMLElement>('[data-schein]')!;
+  const titelPerson = form.querySelector<HTMLElement>('[data-titel-person]')!;
+  const erwachsenFelder = form.querySelectorAll<HTMLElement>('[data-nur-erwachsen]');
+
+  // Art der Mitgliedschaft aus dem Link übernehmen (?art=aktiv|passiv|jugend)
+  const vorauswahl = new URLSearchParams(location.search).get('art');
+  const radio = form.querySelector<HTMLInputElement>(`input[name="art"][value="${vorauswahl}"]`);
+  if (radio) radio.checked = true;
+
+  function aktualisieren() {
+    const art = (form.querySelector<HTMLInputElement>('input[name="art"]:checked'))?.value;
+    const jugend = art === 'jugend';
+    jugendTeile.forEach((el) => { el.hidden = !jugend; el.querySelectorAll('input').forEach((i) => (i.disabled = !jugend)); });
+    titelPerson.textContent = jugend ? 'Angaben zum Jungfischer' : 'Deine Angaben';
+    // Beim Kind sind Telefon/E-Mail optional – erreicht werden die Eltern
+    erwachsenFelder.forEach((el) => {
+      const input = el.querySelector('input')!;
+      input.required = !jugend;
+      el.firstChild!.textContent = el.firstChild!.textContent!.replace(/\*?$/, jugend ? '' : '*');
+    });
+    scheinTeil.hidden = !(art === 'aktiv' || jugend);
+    scheinTeil.querySelectorAll<HTMLOptionElement>('option[data-fuer]').forEach((o) => { o.hidden = o.dataset.fuer !== art; });
+    const select = scheinTeil.querySelector('select')!;
+    if (select.selectedOptions[0]?.hidden) select.value = '';
+  }
+  form.addEventListener('change', (e) => {
+    if ((e.target as HTMLInputElement).name === 'art') aktualisieren();
+  });
+  aktualisieren();
+
+  // Fehlermarkierung beim Tippen wieder entfernen
+  form.addEventListener('input', (e) => {
+    const el = e.target as HTMLInputElement;
+    el.removeAttribute('aria-invalid');
+    form.querySelectorAll<HTMLElement>(`[data-fehler-fuer="${el.name}"], [data-fehler-allgemein]`).forEach((f) => (f.hidden = true));
+  });
+
+  const wert = (n: string) => (form.elements.namedItem(n) as HTMLInputElement | null)?.value.trim() ?? '';
+  const datum = (d: string) => (d ? d.split('-').reverse().join('.') : '');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    let ok = true;
+    form.querySelectorAll<HTMLInputElement>('input, select, textarea').forEach((el) => {
+      if (el.disabled || el.closest('[hidden]')) return;
+      const gueltig = el.checkValidity();
+      if (el.type !== 'radio') el.setAttribute('aria-invalid', String(!gueltig));
+      if (!gueltig) ok = false;
+    });
+    const artGewaehlt = !!form.querySelector('input[name="art"]:checked');
+    form.querySelector<HTMLElement>('[data-fehler-fuer="art"]')!.hidden = artGewaehlt;
+    form.querySelector<HTMLElement>('[data-fehler-fuer="datenschutz"]')!.hidden = (form.elements.namedItem('datenschutz') as HTMLInputElement).checked;
+    form.querySelector<HTMLElement>('[data-fehler-allgemein]')!.hidden = ok;
+    if (!ok) { form.querySelector<HTMLElement>('[aria-invalid="true"], input:invalid')?.focus(); return; }
+
+    const art = form.querySelector<HTMLInputElement>('input[name="art"]:checked')!.value as 'aktiv' | 'passiv' | 'jugend';
+    const artText = { aktiv: 'Aktive Mitgliedschaft', passiv: 'Passive Mitgliedschaft', jugend: 'Jugendabteilung' }[art];
+    // Optionale Zeilen nur, wenn ausgefüllt (null wird unten herausgefiltert)
+    const opt = (v: string, text: string) => (v ? text : null);
+    const zeilen: (string | null)[] = [
+      `Anfrage: ${artText}`,
+      '',
+      art === 'jugend' ? 'JUNGFISCHER' : 'PERSON',
+      `Name: ${wert('vorname')} ${wert('nachname')}`,
+      `Anschrift: ${wert('strasse')}, ${wert('plz')} ${wert('ort')}`,
+      `Geburtsdatum: ${datum(wert('geburtsdatum'))}`,
+      opt(wert('eintritt'), `Gewünschter Eintritt: ${wert('eintritt').split('-').reverse().join('/')}`),
+      opt(wert('telefon'), `Telefon: ${wert('telefon')}`),
+      opt(wert('email'), `E-Mail: ${wert('email')}`),
+    ];
+    if (art === 'jugend') {
+      zeilen.push('', 'ERZIEHUNGSBERECHTIGTE/R 1', `Name: ${wert('eb1_vorname')} ${wert('eb1_nachname')}`, `Telefon: ${wert('eb1_telefon')}`, `E-Mail: ${wert('eb1_email')}`);
+      if (wert('eb2_vorname') || wert('eb2_nachname')) {
+        zeilen.push('', 'ERZIEHUNGSBERECHTIGTE/R 2', `Name: ${wert('eb2_vorname')} ${wert('eb2_nachname')}`, opt(wert('eb2_telefon'), `Telefon: ${wert('eb2_telefon')}`), opt(wert('eb2_email'), `E-Mail: ${wert('eb2_email')}`));
+      }
+    }
+    if (wert('schein')) zeilen.push('', `Fischereischein: ${wert('schein')}`);
+    if (wert('nachricht')) zeilen.push('', 'NACHRICHT', wert('nachricht'));
+    zeilen.push('', '—', 'Gesendet über das Anfrageformular auf der Webseite des ASV Krebsbach.');
+
+    const text = zeilen.filter((z) => z !== null).join('\n');
+    const betreff = `Mitgliedschaftsanfrage (${artText}): ${wert('vorname')} ${wert('nachname')}`;
+    const an = form.dataset.empfaenger!;
+    location.href = `mailto:${an}?subject=${encodeURIComponent(betreff)}&body=${encodeURIComponent(text)}`;
+
+    // Falls sich kein E-Mail-Programm öffnet: Text zum Kopieren anzeigen
+    const fallback = document.querySelector<HTMLElement>('#fallback')!;
+    (document.querySelector('#fallback-text') as HTMLTextAreaElement).value = `An: ${an}\nBetreff: ${betreff}\n\n${text}`;
+    fallback.hidden = false;
+  });
+
+  document.querySelector('#kopieren')!.addEventListener('click', async (e) => {
+    const t = document.querySelector('#fallback-text') as HTMLTextAreaElement;
+    try { await navigator.clipboard.writeText(t.value); } catch { t.select(); document.execCommand('copy'); }
+    (e.target as HTMLButtonElement).textContent = 'Kopiert ✓';
+  });
+</script>

@@ -1,0 +1,74 @@
+---
+import Basis from '../../layouts/Basis.astro';
+import SeitenKopf from '../../components/SeitenKopf.astro';
+import daten from '../../data/mitgliedschaft.json';
+import { url } from '../../lib/utils';
+
+const farben: Record<string, string> = { aktiv: 'blau', passiv: 'sonne', jugend: 'schilf' };
+---
+<Basis titel={daten.titel} beschreibung={daten.untertitel}>
+  <SeitenKopf dachzeile="Dabei sein" titel={daten.titel} beschreibung={daten.untertitel} bild={daten.bild} bildPlatzhalter="Foto: Vereinsleben" />
+
+  <section class="abschnitt">
+    <div class="container">
+      <p class="einleitung">{daten.einleitung}</p>
+      <div class="arten">
+        {daten.arten.map((a) => (
+          <article class:list={['art', `art--${farben[a.id] ?? 'blau'}`]}>
+            <h2>{a.titel}</h2>
+            <p class="art__kurz">{a.kurz}</p>
+            <ul>
+              {a.punkte.map((p) => <li>{p}</li>)}
+            </ul>
+            {a.hinweis && <p class="art__hinweis">{a.hinweis}</p>}
+            <div class="art__fuss">
+              {a.id === 'jugend' ? (
+                <>
+                  <a class="knopf" href={url('/mitgliedschaft/anfrage/?art=jugend')}>Anfrage senden</a>
+                  <a class="knopf knopf--leise" href={url('/jugend/')}>Mehr zur Jugend →</a>
+                </>
+              ) : (
+                <a class="knopf" href={url(`/mitgliedschaft/anfrage/?art=${a.id}`)}>Anfrage senden</a>
+              )}
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="abschnitt abschnitt--weiss abschnitt--rund">
+    <div class="container">
+      <span class="dachzeile">Ablauf</span>
+      <h2>{daten.ablaufTitel}</h2>
+      <ol class="ablauf">
+        {daten.ablauf.map((s) => <li>{s}</li>)}
+      </ol>
+      <p class="leise">{daten.hinweisGastkarten}</p>
+    </div>
+  </section>
+</Basis>
+
+<style>
+  .einleitung { font-size: 1.25rem; max-width: 46rem; margin: 0 0 2.5rem; }
+  .arten { display: grid; gap: 1.5rem; }
+  @media (min-width: 900px) { .arten { grid-template-columns: repeat(3, 1fr); } }
+  .art { border-radius: var(--radius); padding: 1.75rem; display: flex; flex-direction: column; background: var(--weiss); box-shadow: var(--schatten); border-top: 8px solid; }
+  .art--blau { border-color: var(--blau-700); }
+  .art--sonne { border-color: var(--sonne-300); }
+  .art--schilf { border-color: var(--schilf-300); }
+  .art h2 { font-size: 1.9rem; margin: 0 0 0.3rem; }
+  .art__kurz { margin: 0 0 1rem; color: var(--text-leise); font-size: 1.1rem; }
+  .art ul { padding-left: 1.2rem; margin: 0 0 1rem; display: grid; gap: 0.4rem; }
+  .art__hinweis { background: var(--creme); border-radius: var(--radius-klein); padding: 0.9rem 1rem; margin: 0 0 1rem; font-size: 0.98rem; }
+  .art__fuss { margin-top: auto; display: flex; flex-wrap: wrap; gap: 0.5rem; padding-top: 0.5rem; }
+
+  .abschnitt--rund { border-radius: 40px; margin: 0 0.5rem; }
+  @media (min-width: 1200px) { .abschnitt--rund { margin: 0 1.5rem; } }
+  .ablauf { counter-reset: schritt; list-style: none; padding: 0; margin: 2rem 0; display: grid; gap: 1rem; max-width: 46rem; }
+  .ablauf li { counter-increment: schritt; position: relative; padding: 0.9rem 1.25rem 0.9rem 3.75rem; background: var(--creme); border-radius: var(--radius-klein); }
+  .ablauf li::before {
+    content: counter(schritt); position: absolute; left: 1rem; top: 0.8rem; width: 2rem; height: 2rem; border-radius: 50%;
+    background: var(--blau-700); color: var(--weiss); display: grid; place-items: center; font-family: var(--schrift-titel); font-weight: 700;
+  }
+</style>
