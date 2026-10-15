@@ -2,7 +2,6 @@
 // Vorstellung der Dart-Abteilung im normalen ASV-Design – der Knopf führt in den eigenen Dart-Bereich.
 import Basis from '../../layouts/Basis.astro';
 import SeitenKopf from '../../components/SeitenKopf.astro';
-import Dartscheibe from '../../components/dart/Dartscheibe.astro';
 import dart from '../../data/dart.json';
 import { url } from '../../lib/utils';
 ---
@@ -10,8 +9,8 @@ import { url } from '../../lib/utils';
   <SeitenKopf dachzeile="Abteilung" titel={dart.titel} beschreibung={dart.untertitel} bild={dart.bild || undefined} />
 
   <section class="abschnitt">
-    <div class="container dart-raster">
-      <div>
+    <div class="container">
+      <div class="inhalt">
         <p class="einleitung">{dart.einleitung}</p>
         <div class="teams">
           {dart.teams.map((t) => (
@@ -19,23 +18,19 @@ import { url } from '../../lib/utils';
               {(t.logoHell || t.logo) ? <img class="team__logo" src={url(t.logoHell || t.logo)} alt="" width="872" height="850" /> : <span class="team__kuerzel">{t.kuerzel}</span>}
               <div>
                 <p class="team__name">{t.name}</p>
-                <p class="leise">{t.liga}</p>
+                <p class="leise">{t.liga} · Training {t.training}</p>
               </div>
             </div>
           ))}
         </div>
         <a class="knopf knopf--dart" href={url('/dart/abteilung/')}>Zur Dart-Abteilung →</a>
       </div>
-      <div class="scheibe-rahmen">
-        <Dartscheibe class="scheibe" />
-      </div>
     </div>
   </section>
 </Basis>
 
 <style>
-  .dart-raster { display: grid; gap: 2.5rem; align-items: center; }
-  @media (min-width: 900px) { .dart-raster { grid-template-columns: 1.3fr 1fr; } }
+  .inhalt { max-width: 52rem; }
   .einleitung { font-size: 1.25rem; margin: 0 0 2rem; }
   .teams { display: grid; gap: 1rem; margin-bottom: 2rem; }
   @media (min-width: 640px) { .teams { grid-template-columns: 1fr 1fr; } }
@@ -48,6 +43,4 @@ import { url } from '../../lib/utils';
   .team__name { font-family: var(--schrift-titel); font-weight: 700; font-size: 1.4rem; }
   .knopf--dart { background: #111; }
   .knopf--dart:hover { background: #e3262b; }
-  .scheibe-rahmen { justify-self: center; width: min(100%, 22rem); }
-  :global(.scheibe) { width: 100%; height: auto; filter: drop-shadow(0 20px 40px rgb(0 0 0 / 0.25)); transform: rotate(-9deg); }
 </style>

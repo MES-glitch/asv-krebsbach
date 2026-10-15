@@ -1,42 +1,103 @@
 {
   "titel": "Dart im Vereinsheim",
   "untertitel": "Zwei eigene Dart-Mannschaften unter dem Dach des ASV Krebsbach.",
-  "einleitung": "In unserem Vereinsheim fliegen nicht nur Geschichten vom großen Fang durch den Raum: Mit den „Krebsbachbombern“ und „Petri Pfeil“ beherbergen wir zwei eigene Dart-Mannschaften. Beide trainieren in unseren Räumlichkeiten und tragen hier auch einen Teil ihrer Ligaspiele aus.",
+  "einleitung": "In unserem Vereinsheim fliegen nicht nur Geschichten vom großen Fang durch den Raum: Mit den „Krebsbach Bombern“ und „DC Petri Pfeil“ beherbergen wir zwei eigene Dart-Mannschaften. Beide trainieren in unseren Räumlichkeiten und tragen hier auch einen Teil ihrer Ligaspiele aus.",
   "bild": "/uploads/dart-pfeile-glas.jpg",
   "dartHeld": "Pfeil. Spitze. Krebsbach.",
   "dartIntro": "Zwei Teams, ein Board, null Gnade. Die Dart-Abteilung des ASV Krebsbach trainiert und spielt im Vereinsheim am Ablassweg – und wirft in der E-Dart-Liga des DSAB um jeden Punkt.",
   "spielort": "Vereinsheim ASV Krebsbach, Ablassweg 27, 74924 Neckarbischofsheim",
-  "training": "[Trainingszeiten eintragen]",
   "teams": [
     {
       "id": "krebsbachbomber",
-      "name": "Krebsbachbomber",
+      "name": "Krebsbach Bomber",
       "kuerzel": "KB",
       "farbe": "rot",
       "slogan": "Wir werfen nicht. Wir schlagen ein.",
-      "beschreibung": "[Platzhalter] Hier stellt sich das Team vor: Gründung, Spielstil, größte Erfolge.",
+      "beschreibung": "",
       "liga": "A-Liga",
       "bild": "/uploads/krebsbachbomber-team.jpg",
       "spieler": [
         {
           "name": "Maik Seussler",
           "spitzname": "Captain Jack",
-          "rolle": "Kapitän"
+          "rolle": "Kapitän",
+          "foto": "/uploads/steckbrief-maik.jpg",
+          "dartsSeit": "2021",
+          "lieblingsdoppel": "20 – 10 – 2",
+          "lieblingsgetraenk": "Jacky Cola",
+          "erfolge": "1× Meister C-Liga, 3× Meister B-Liga",
+          "info": "Gründungsmitglied der Krebsbach Bomber"
+        },
+        {
+          "name": "Marcel Wehrle",
+          "spitzname": "Hummel",
+          "rolle": "2. Kapitän",
+          "foto": "/uploads/steckbrief-marcel.jpg",
+          "dartsSeit": "2019",
+          "lieblingsdoppel": "16",
+          "lieblingsgetraenk": "Schorle",
+          "erfolge": "1× Meister C-Liga, 1× Meister B-Liga",
+          "info": ""
+        },
+        {
+          "name": "Sven Malosczyk",
+          "spitzname": "Tüten Joe",
+          "rolle": "",
+          "foto": "/uploads/steckbrief-sven.jpg",
+          "dartsSeit": "2019",
+          "lieblingsdoppel": "20",
+          "lieblingsgetraenk": "Bier",
+          "erfolge": "1× Meister C-Liga, 1× Meister B-Liga",
+          "info": ""
+        },
+        {
+          "name": "Christoph Pieper",
+          "spitzname": "Halbe Meter",
+          "rolle": "",
+          "foto": "/uploads/steckbrief-christoph.jpg",
+          "dartsSeit": "2026",
+          "lieblingsdoppel": "15, 10",
+          "lieblingsgetraenk": "Bier",
+          "erfolge": "Meister B-Liga",
+          "info": ""
+        },
+        {
+          "name": "Jonas Brennenstuhl",
+          "spitzname": "Roundhouse Kick",
+          "rolle": "",
+          "foto": "/uploads/steckbrief-jonas.jpg",
+          "dartsSeit": "2025",
+          "lieblingsdoppel": "20, 16",
+          "lieblingsgetraenk": "Jäger-Bull",
+          "erfolge": "Meister B-Liga",
+          "info": ""
+        },
+        {
+          "name": "Felix Beathalter",
+          "spitzname": "Stecher",
+          "rolle": "",
+          "foto": "/uploads/steckbrief-felix.jpg",
+          "dartsSeit": "2026",
+          "lieblingsdoppel": "3",
+          "lieblingsgetraenk": "Cola-Weizen",
+          "erfolge": "Meister B-Liga",
+          "info": ""
         }
       ],
       "eventId": 40354,
       "participantId": 683347,
       "logo": "/uploads/krebsbachbomber-logo.webp",
       "thema": "krebsbachbomber",
-      "logoHell": ""
+      "logoHell": "",
+      "training": "Mittwochs ab 19:00 Uhr"
     },
     {
       "id": "petri-pfeil",
-      "name": "Petri Pfeil",
+      "name": "DC Petri Pfeil",
       "kuerzel": "PP",
       "farbe": "gruen",
       "slogan": "Petri Heil – und ab ins Triple.",
-      "beschreibung": "[Platzhalter] Hier stellt sich das Team vor: Gründung, Spielstil, größte Erfolge.",
+      "beschreibung": "",
       "liga": "C-Liga",
       "bild": "/uploads/petri-pfeil-team.jpg",
       "spieler": [],
@@ -44,7 +105,8 @@
       "participantId": 683468,
       "logo": "/uploads/petri-pfeil-logo.webp",
       "logoHell": "/uploads/petri-pfeil-logo-kachel.webp",
-      "thema": "petri-pfeil"
+      "thema": "petri-pfeil",
+      "training": "Donnerstags ab 19:00 Uhr"
     }
   ],
   "dartBild": "/uploads/dart-triple20.jpg"

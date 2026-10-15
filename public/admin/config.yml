@@ -140,7 +140,6 @@ collections:
               - { name: hinweis, label: Hinweis, widget: text, required: false }
           - { name: ablaufTitel, label: Überschrift Ablauf, widget: string }
           - { name: ablauf, label: Ablauf-Schritte, widget: list }
-          - { name: hinweisGastkarten, label: Hinweis Gastkarten, widget: text }
       - name: jugend
         label: Jugendabteilung
         file: src/data/jugend.json
@@ -176,7 +175,6 @@ collections:
           - { name: dartIntro, label: Einleitung Dart-Bereich, widget: text }
           - { name: dartBild, label: Hintergrundfoto Dart-Bereich, widget: image, required: false }
           - { name: spielort, label: Heimspielort, widget: string }
-          - { name: training, label: Trainingszeiten, widget: string }
           - name: teams
             label: Mannschaften
             label_singular: Mannschaft
@@ -192,6 +190,7 @@ collections:
               - { name: slogan, label: Slogan, widget: string }
               - { name: beschreibung, label: Beschreibung, widget: text }
               - { name: liga, label: Liga, widget: string }
+              - { name: training, label: Trainingszeiten, widget: string }
               - { name: bild, label: Mannschaftsfoto, widget: image, required: false }
               - { name: logo, label: Team-Logo (freigestellt, für dunklen Hintergrund), widget: image, required: false }
               - { name: logoHell, label: Team-Logo für hellen Hintergrund (optional), widget: image, required: false }
@@ -199,15 +198,21 @@ collections:
               - { name: eventId, label: 3K-Portal Event-ID, widget: number, value_type: int, hint: "Aus dem Portal-Link: …/event/<b>40354</b>/participants/…" }
               - { name: participantId, label: 3K-Portal Mannschafts-ID, widget: number, value_type: int, hint: "Aus dem Portal-Link: …/participants/<b>683347</b>" }
               - name: spieler
-                label: Spitznamen & Rollen (optional)
+                label: Spieler-Steckbriefe (optional)
                 label_singular: Spieler
-                hint: "Der Kader kommt automatisch aus dem 3K-Portal. Hier nur Spitznamen oder Rollen ergänzen – der Name muss genau wie im Portal geschrieben sein."
+                hint: "Der Kader kommt automatisch aus dem 3K-Portal. Hier Spitznamen, Rollen und Steckbriefe ergänzen – der Name muss genau wie im Portal geschrieben sein."
                 widget: list
                 summary: "{{name}}"
                 fields:
                   - { name: name, label: Name, widget: string }
                   - { name: spitzname, label: Spitzname, widget: string, required: false }
                   - { name: rolle, label: Rolle, widget: string, required: false, hint: "z. B. Kapitän" }
+                  - { name: foto, label: Steckbrief-Foto, widget: image, required: false, hint: "Mit Foto wird der Name auf der Team-Seite anklickbar" }
+                  - { name: dartsSeit, label: Darts seit, widget: string, required: false }
+                  - { name: lieblingsdoppel, label: Lieblingsdoppel, widget: string, required: false }
+                  - { name: lieblingsgetraenk, label: Lieblingsgetränk, widget: string, required: false }
+                  - { name: erfolge, label: Sportliche Erfolge, widget: string, required: false }
+                  - { name: info, label: Besonderes, widget: string, required: false }
       - name: verein
         label: Vereinsangaben & Startseite
         file: src/data/verein.json

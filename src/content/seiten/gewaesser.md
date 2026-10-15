@@ -41,7 +41,7 @@ Hauptfischart in diesem Gewässer ist die **Bachforelle**, von der auch schon ei
 
 ## Rosenbach
 
-> **Platzhalter** – hier kann der Vorstand eine kurze Beschreibung des Rosenbachs ergänzen.
+Der Rosenbach ist ein kleiner Bach, der bei **Hasselbach** entspringt und in der Stadt Neckarbischofsheim in den **Krebsbach** mündet.
 
 ## Angeln nur für Vereinsmitglieder
 
@@ -51,10 +51,12 @@ Das Angeln an unseren Gewässern ist **ausschließlich Mitgliedern des ASV Krebs
 - ein gültiger Erlaubnisschein (Gewässerkarte) des Vereins,
 - die Einhaltung der Gewässerordnung und aller gesetzlichen Vorschriften (Landesfischereigesetz und Landesfischereiverordnung Baden-Württemberg).
 
-**Das Angeln durch Nichtmitglieder ist verboten.** Zuwiderhandlungen werden als unerlaubte Fischerei (§ 293 StGB) und als Verstoß gegen das Landesfischereigesetz verfolgt. Gastkarten geben wir nicht aus.
+**Das Angeln durch Nichtmitglieder ist verboten.** Zuwiderhandlungen werden als unerlaubte Fischerei (§ 293 StGB) und als Verstoß gegen das Landesfischereigesetz verfolgt.
 
 Am Wasser gilt: Ordnung und Sauberkeit sind oberstes Gebot, Natur-, Tier- und Pflanzenschutz sind stets zu wahren, und den Anweisungen der Vereinsaufsicht ist Folge zu leisten.
 
 ## Gewässerordnung
 
-> **Platzhalter** – die wichtigsten Regeln für das Angeln an unseren Gewässern. Die vollständige Gewässerordnung kann hier als PDF verlinkt werden.
+Für das Angeln an allen Vereinsgewässern gilt unsere Gewässerordnung. Jedes Mitglied ist verpflichtet, sie zu kennen und einzuhalten.
+
+[Gewässerordnung als PDF herunterladen](/uploads/gewaesserordnung.pdf)

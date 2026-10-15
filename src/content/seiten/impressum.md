@@ -9,8 +9,8 @@ Ablassweg
 
 **Vertreten durch den Vorstand:**
 Maik Seussler (1. Vorsitzender)
-
-> **Platzhalter** – weitere vertretungsberechtigte Vorstandsmitglieder bitte ergänzen.
+Enrico Franke (2. Vorsitzender)
+Kevin Canales (Kassenwart)
 
 **Registereintrag:**
 Eingetragen im Vereinsregister

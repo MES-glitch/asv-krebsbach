@@ -58,7 +58,7 @@ const news = (await getCollection('dartnews', (n) => !n.data.entwurf)).sort((x, 
     </div>
     <div class="fakt">
       <span class="d-label">Training</span>
-      <p>{dart.training}</p>
+      {dart.teams.map((t) => <p><strong>{t.name}:</strong> {t.training}</p>)}
     </div>
     <div class="fakt">
       <span class="d-label">Checkout</span>
