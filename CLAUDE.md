@@ -19,7 +19,7 @@ Eine moderne, mobilfreundliche Vereinswebseite, die Mitglieder und Interessierte
 
 ## Entscheidungen
 - Technik: Astro 7 (statisch) + Sveltia CMS unter `/admin` – der Vorstand pflegt Termine, Neuigkeiten, Seiten und Vorstand selbst
-- Repo: github.com/MES-glitch/asv-krebsbach (öffentlich), Hosting über GitHub Pages (Deploy per GitHub Actions, täglicher Rebuild)
+- Repo: github.com/MES-glitch/asv-krebsbach – muss **öffentlich** bleiben (GitHub Free: Pages nur bei öffentlichen Repos; beim Umschalten auf privat löscht GitHub die Pages-Einstellungen inkl. Domain). Hosting über GitHub Pages (Deploy per GitHub Actions, täglicher Rebuild)
 - **Mitgliedschaft:** Aktive Plätze sind durch die Zahl der Gewässerkarten begrenzt – auf der Seite **nicht als Aufnahmestopp** formulieren, sondern „Vergabe nach Verfügbarkeit“. Aktive und passive Mitgliedschaft per Anfrage; passive Mitglieder wertschätzend als voll eingebunden darstellen. **Keine Gastkarten.** Jugendabteilung ab 10 J., Jugendfischereischein, **50 €/Jahr** → `/jugend/` (`src/data/jugend.json`), Mitgliedschaft: `src/data/mitgliedschaft.json`
 - **Dart-Abteilung** (Teams „Krebsbachbomber“, „Petri Pfeil“): `/dart/` im ASV-Design als Teaser, ab `/dart/abteilung/` und `/dart/<team>/` **eigenes Design** (`layouts/DartBasis.astro`: dunkel, Rot/Grün, Bebas Neue). Jede Dart-Seite braucht die Leiste „Zurück zum ASV“ + Impressum/Datenschutz. Daten: `src/data/dart.json`
 - **Dart-Ligadaten** (Kader, Spielplan, Ergebnisse, Tabelle) kommen beim Build **live aus dem 3K-Darts-Portal** (DSAB, E-Dart; IDs `eventId`/`participantId` in `dart.json`). API braucht Origin/Referer-Header (sonst 403) → `src/lib/dart-liga-api.mjs`. Rückfall-Stand: `src/data/dart-liga-stand.json` (aktualisieren mit `npm run dart:stand`). Teams spielen **E-Dart**, nicht Steel. Team-Farbthema über `thema` in `dart.json` (Krebsbachbomber: Krebsrot #e4210c, Chrom, Schwarz, Trikot-Navy; Petri Pfeil: Logo-Violettblau #3c2c98, Royalblau #2557c9, Orange #f19334 – CSS in `DartBasis.astro`; Siege immer grün über `--d-sieg`). Logos: `logo` (für dunklen Hintergrund), optional `logoHell` (für ASV-Seiten). Dart-News: Sammlung `src/content/dartnews/`
@@ -36,5 +36,5 @@ Eine moderne, mobilfreundliche Vereinswebseite, die Mitglieder und Interessierte
 - Echte Inhalte, Logo, Impressum und Datenschutz vom Vorstand
 
 ## Ordner
-- `inhalte/` – Texte, Infos und Material vom Verein
+- `inhalte/` – Texte, Infos und Material vom Verein (**nur lokal**, per .gitignore aus dem öffentlichen Repo ausgeschlossen; Bilder für die Seite aufbereitet nach `public/uploads/`)
 - `inhalte/bilder/` – Fotos und Logo
