@@ -2,8 +2,8 @@
 
 Webseite des Angelsportvereins Krebsbach e. V., gebaut mit [Astro](https://astro.build) und gepflegt über das [Sveltia CMS](https://github.com/sveltia/sveltia-cms).
 
-- **Webseite:** https://mes-glitch.github.io/asv-krebsbach/
-- **Redaktionsbereich:** https://mes-glitch.github.io/asv-krebsbach/admin/
+- **Webseite:** https://asv-krebsbach.de/
+- **Redaktionsbereich:** https://asv-krebsbach.de/admin/
 
 ## Für den Vorstand: Inhalte pflegen
 

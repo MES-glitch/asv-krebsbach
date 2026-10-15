@@ -31,7 +31,7 @@ Eine moderne, mobilfreundliche Vereinswebseite, die Mitglieder und Interessierte
 - Astro 7: Markdown-Plugins über `unified()` aus `@astrojs/markdown-remark`
 
 ## Offene Punkte
-- Eigene Domain (dann in GitHub Pages hinterlegen; `BASE` wird automatisch angepasst)
+- ~~Eigene Domain~~ erledigt (15.10.2026): **asv-krebsbach.de** über GitHub Pages; DNS bei IONOS (A/AAAA auf GitHub, CNAME www → mes-glitch.github.io). **MX/SPF/DKIM/DMARC-Einträge bei IONOS nie anfassen** (E-Mail vorstand@asv-krebsbach.de)
 - OAuth-Login fürs CMS (sveltia-cms-auth auf Cloudflare Workers), bis dahin Login per Zugangstoken
 - Echte Inhalte, Logo, Impressum und Datenschutz vom Vorstand
 
