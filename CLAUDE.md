@@ -32,7 +32,7 @@ Eine moderne, mobilfreundliche Vereinswebseite, die Mitglieder und Interessierte
 
 ## Offene Punkte
 - ~~Eigene Domain~~ erledigt (15.10.2026): **asv-krebsbach.de** über GitHub Pages; DNS bei IONOS (A/AAAA auf GitHub, CNAME www → mes-glitch.github.io). **MX/SPF/DKIM/DMARC-Einträge bei IONOS nie anfassen** (E-Mail vorstand@asv-krebsbach.de)
-- OAuth-Login fürs CMS (sveltia-cms-auth auf Cloudflare Workers), bis dahin Login per Zugangstoken
+- CMS-Login „Mit GitHub anmelden“: sveltia-cms-auth auf Cloudflare Workers (https://sveltia-cms-auth.konstantin-lackmann.workers.dev, `base_url` in `public/admin/config.yml`), GitHub-OAuth-App + Worker-Variablen GITHUB_CLIENT_ID/GITHUB_CLIENT_SECRET/ALLOWED_DOMAINS=asv-krebsbach.de. Redakteure brauchen ein GitHub-Konto + Einladung als Collaborator
 - Echte Inhalte, Logo, Impressum und Datenschutz vom Vorstand
 
 ## Ordner

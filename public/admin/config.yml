@@ -3,6 +3,8 @@ backend:
   name: github
   repo: MES-glitch/asv-krebsbach
   branch: main
+  # Anmeldedienst für „Mit GitHub anmelden“ (sveltia-cms-auth auf Cloudflare Workers)
+  base_url: https://sveltia-cms-auth.konstantin-lackmann.workers.dev
   commit_messages:
     create: "{{collection}}: „{{slug}}“ angelegt"
     update: "{{collection}}: „{{slug}}“ geändert"
