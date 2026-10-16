@@ -18,10 +18,10 @@ Webseite des Angelsportvereins Krebsbach e. V., gebaut mit [Astro](https://astro
 ### Anmeldung
 
 1. Kostenloses GitHub-Konto anlegen (https://github.com/signup) und den Benutzernamen an Konstantin schicken.
-2. Die Einladung zum Repository  per E-Mail annehmen.
+2. Die Einladung zum Repository `asv-krebsbach` per E-Mail annehmen.
 3. Auf https://asv-krebsbach.de/admin/ auf **„Mit GitHub anmelden“** klicken – fertig.
 
-Technik: Der Login läuft über den Anmeldedienst  auf Cloudflare Workers
+Technik: Der Login läuft über den Anmeldedienst `sveltia-cms-auth` auf Cloudflare Workers
 (https://sveltia-cms-auth.konstantin-lackmann.workers.dev) und die GitHub-OAuth-App „ASV Krebsbach Redaktion“.
 
 ## Für Entwickler
