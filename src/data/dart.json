@@ -82,6 +82,17 @@
           "lieblingsgetraenk": "Cola-Weizen",
           "erfolge": "Meister B-Liga",
           "info": ""
+        },
+        {
+          "name": "Danny Richter",
+          "spitzname": "Meister Bob",
+          "rolle": "",
+          "foto": "/uploads/steckbrief-danny.jpg",
+          "dartsSeit": "2019",
+          "lieblingsdoppel": "16",
+          "lieblingsgetraenk": "Wodka Bull",
+          "erfolge": "Meister B-Liga",
+          "info": ""
         }
       ],
       "eventId": 40354,
