@@ -212,6 +212,7 @@ collections:
                   - { name: foto, label: Steckbrief-Foto, widget: image, required: false, hint: "Mit Foto wird der Name auf der Team-Seite anklickbar" }
                   - { name: dartsSeit, label: Darts seit, widget: string, required: false }
                   - { name: lieblingsdoppel, label: Lieblingsdoppel, widget: string, required: false }
+                  - { name: lieblingszahl, label: Lieblingszahl, widget: string, required: false }
                   - { name: lieblingsgetraenk, label: Lieblingsgetränk, widget: string, required: false }
                   - { name: erfolge, label: Sportliche Erfolge, widget: string, required: false }
                   - { name: info, label: Besonderes, widget: string, required: false }

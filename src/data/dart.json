@@ -111,7 +111,41 @@
       "beschreibung": "",
       "liga": "C-Liga",
       "bild": "/uploads/petri-pfeil-team.jpg",
-      "spieler": [],
+      "spieler": [
+        {
+          "name": "Bianca Hrubesch",
+          "spitzname": "Bibi",
+          "rolle": "Kapitänin",
+          "foto": "/uploads/steckbrief-bianca.jpg",
+          "dartsSeit": "2021",
+          "lieblingszahl": "19",
+          "lieblingsgetraenk": "Jacky Cola",
+          "erfolge": "Meister C-Liga, beste Dame beim B-Liga-Abschlussturnier",
+          "info": ""
+        },
+        {
+          "name": "Michael Pröll",
+          "spitzname": "Micha",
+          "rolle": "",
+          "foto": "/uploads/steckbrief-michael.jpg",
+          "dartsSeit": "2011",
+          "lieblingszahl": "20, 19",
+          "lieblingsgetraenk": "Bier",
+          "erfolge": "3. Platz beim Blutberg-Turnier",
+          "info": ""
+        },
+        {
+          "name": "Julia Pröll",
+          "spitzname": "Jule",
+          "rolle": "",
+          "foto": "/uploads/steckbrief-julia.jpg",
+          "dartsSeit": "1994",
+          "lieblingszahl": "20, 18",
+          "lieblingsgetraenk": "Diesel",
+          "erfolge": "Mehrere Titel als beste Dame (Bullshooter)",
+          "info": ""
+        }
+      ],
       "eventId": 40355,
       "participantId": 683468,
       "logo": "/uploads/petri-pfeil-logo.webp",
