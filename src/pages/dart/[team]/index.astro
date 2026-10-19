@@ -162,6 +162,7 @@ const platz = liga?.tabelle.find((z) => z.id === liga.participantId);
 
   .steckbrief { padding: 0; border: 0; background: var(--d-flaeche); color: var(--d-text); width: min(58rem, calc(100vw - 2rem)); max-height: calc(100dvh - 2rem); border-top: 8px solid var(--d-rot); }
   .steckbrief--gruen { border-top-color: var(--d-gruen); }
+  .steckbrief--gruen .d-label { color: var(--d-gruen); }
   .steckbrief::backdrop { background: rgb(0 0 0 / 0.8); backdrop-filter: blur(4px); }
   .steckbrief__innen { display: grid; }
   @media (min-width: 760px) { .steckbrief__innen { grid-template-columns: 1fr 1fr; } }
